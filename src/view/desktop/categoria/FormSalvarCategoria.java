@@ -147,53 +147,59 @@ public class FormSalvarCategoria extends javax.swing.JInternalFrame {
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
         // TODO add your handling code here:
-        Categoria categoria = new Categoria();
-        if (this.idCategoria == 0) {
-            categoria.setNome(jTextFieldNome.getText());
-            
-            if(jRadioButtonAtivo.isSelected()){
-                categoria.setStatus(true);
+        try {
+            Categoria categoria = new Categoria();
+            if (this.idCategoria == 0) {
+                categoria.setNome(jTextFieldNome.getText());
+
+                if(jRadioButtonAtivo.isSelected()){
+                    categoria.setStatus(true);
+                }else{
+                    categoria.setStatus(false);
+                }
+
+                Fachada fachada = new Fachada();
+                fachada.categoriaCadastrar(categoria);
+
+                JOptionPane.showMessageDialog(null, "Categoria cadastrada com sucesso!");
+                this.dispose();
+
+                FormCategoria fc = new FormCategoria();
+                fc.buscarCategorias();
             }else{
-                categoria.setStatus(false);
+                categoria.setId(this.idCategoria);
+                categoria.setNome(jTextFieldNome.getText());
+
+                if(jRadioButtonAtivo.isSelected()){
+                    categoria.setStatus(true);
+                }else{
+                    categoria.setStatus(false);
+                }
+
+                Fachada fachada = new Fachada();
+                fachada.categoriaAlterar(categoria);
+
+                JOptionPane.showMessageDialog(null, "Categoria editada com sucesso!");
+                this.dispose();
+
+                FormCategoria fc = new FormCategoria();
+                fc.buscarCategorias();
             }
-
-            Fachada fachada = new Fachada();
-            fachada.categoriaCadastrar(categoria);
-
-            JOptionPane.showMessageDialog(null, "Categoria cadastrada com sucesso!");
-            this.dispose();
-            
-            FormCategoria fc = new FormCategoria();
-            fc.buscarCategorias();
-        }else{
-            categoria.setId(this.idCategoria);
-            categoria.setNome(jTextFieldNome.getText());
-            
-            if(jRadioButtonAtivo.isSelected()){
-                categoria.setStatus(true);
-            }else{
-                categoria.setStatus(false);
-            }
-
-            Fachada fachada = new Fachada();
-            fachada.categoriaAlterar(categoria);
-            
-            JOptionPane.showMessageDialog(null, "Categoria editada com sucesso!");
-            this.dispose();
-            
-            FormCategoria fc = new FormCategoria();
-            fc.buscarCategorias();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
-        
-        
     }//GEN-LAST:event_jButtonConfirmarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
-        FormCategoria fc = new FormCategoria();
-        fc.setVisible(true);
-        this.getDesktopPane().add(fc);
-        this.dispose();
+        try {
+            FormCategoria fc = new FormCategoria();
+            fc.setVisible(true);
+            this.getDesktopPane().add(fc);
+            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
 

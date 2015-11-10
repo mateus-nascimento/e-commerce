@@ -251,23 +251,23 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
                 //fazer a busca por email do usuário e retornar o usuário que possui esse email.
 
                 //atribuir esse endereco para esse usuario buscado
-                Endereco endereco = new Endereco();
-                endereco.setLogradouro(jTextFieldLogradouro.getText());
-                endereco.setCep(jFormattedTextFieldCep.getText().replace("-", ""));
-                endereco.setBairro(jTextFieldBairro.getText());
-                endereco.setCidade(jTextFieldCidade.getText());
-                endereco.setEstado(jComboBoxEstado.getSelectedItem().toString());
-                endereco.setNumero(Integer.parseInt(jTextFieldNumero.getText()));
-                endereco.setComplemento(jTextFieldComplemento.getText());
+                Endereco end = new Endereco();
+                end.setLogradouro(jTextFieldLogradouro.getText());
+                end.setCep(jFormattedTextFieldCep.getText().replace("-", ""));
+                end.setBairro(jTextFieldBairro.getText());
+                end.setCidade(jTextFieldCidade.getText());
+                end.setEstado(jComboBoxEstado.getSelectedItem().toString());
+                end.setNumero(Integer.parseInt(jTextFieldNumero.getText()));
+                end.setComplemento(jTextFieldComplemento.getText());
 
-                endereco.setUsuario(this.usuario);
+                end.setUsuario(this.usuario);
 
                 Fachada fachada = new Fachada();
                 if(this.endereco.getId() > 0){
-                    endereco.setId(this.endereco.getId());
-                    fachada.enderecoAlterar(endereco);
+                    end.setId(this.endereco.getId());
+                    fachada.enderecoAlterar(end);
                 }else{
-                    fachada.enderecoCadastrar(endereco);
+                    fachada.enderecoCadastrar(end);
                 }
 
                 JOptionPane.showMessageDialog(null, "Endereco correspondente ao usuário salvo com sucesso!");
@@ -283,7 +283,7 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
                 
             } catch (Exception e) {
                 
-                JOptionPane.showMessageDialog(null, "CadastrarEndereco()");
+                JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
             }
         
 
@@ -297,7 +297,7 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
             this.getDesktopPane().add(fe);
             this.dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_jButtonCancelarActionPerformed

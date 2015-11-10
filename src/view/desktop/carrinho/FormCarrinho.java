@@ -7,6 +7,8 @@ package View.desktop.carrinho;
 
 import View.desktop.usuario.FormUsuario;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import projeto.fachada.Fachada;
@@ -28,16 +30,16 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
     private List<Carrinho> lista;
     Fachada fachada = new Fachada();
     
-    public FormCarrinho(Usuario usuario) {
+    public FormCarrinho(Usuario usuario) throws Exception {
         initComponents();
         this.usuario = usuario;
         listarCarrinhos();
     }
     
-    public void listarCarrinhos(){
+    public void listarCarrinhos() throws Exception{
         
-        this.lista = this.fachada.carrinhoListar(this.usuario.getId());
         try {
+            this.lista = this.fachada.carrinhoListar(this.usuario.getId());
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.setColumnIdentifiers(new String[]{"ID", "Quantidade de Itens", "Valor Total", "Status"});
             
@@ -53,7 +55,7 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
             }
             jTableCarrinho.setModel(modelo);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "metodo listar carrinho");
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
         
     }
@@ -157,62 +159,58 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComprarActionPerformed
-        // TODO add your handling code here:
-        //Se o carrinho existir e ainda estiver em aberto abre o carrinho para adcionar 
-        //produtos a ele...
-        if (this.fachada.carrinhoExiste(this.usuario.getId())) {
-            //confirm dialog pls
-            int confirm = JOptionPane.showConfirmDialog(null, "Existe um carrinho em andamento, deseja abri-lo?");
-            if (confirm == 0){
-                Carrinho carrinho = this.fachada.getCarrinho(this.usuario.getId());
+        try {
+            // TODO add your handling code here:
+            //Se o carrinho existir e ainda estiver em aberto abre o carrinho para adcionar
+            //produtos a ele...
+            if (this.fachada.carrinhoExiste(this.usuario.getId())) {
+                //confirm dialog pls
+                int confirm = JOptionPane.showConfirmDialog(null, "Existe um carrinho em andamento, deseja abri-lo?");
+                if (confirm == 0){
+                    Carrinho carrinho = this.fachada.getCarrinho(this.usuario.getId());
+                    carrinho.setUsuario(this.usuario);
+                    FormCarrinhoExistente fce = new FormCarrinhoExistente(carrinho, this.usuario);
+                    fce.setVisible(true);
+                    this.getDesktopPane().add(fce);
+                    this.dispose();
+                }
+            }else{
+                
+                Carrinho carrinho = new Carrinho();
+                carrinho.setStatus(true);
+                carrinho.setUsuario(this.usuario);
+                this.fachada.carrinhoCadastrar(carrinho);
+                
+                
+                //para pegar o carrinho criado
+                carrinho = this.fachada.getCarrinho(this.usuario.getId());
                 carrinho.setUsuario(this.usuario);
                 FormCarrinhoExistente fce = new FormCarrinhoExistente(carrinho, this.usuario);
                 fce.setVisible(true);
                 this.getDesktopPane().add(fce);
                 this.dispose();
             }
-        }else{
-            
-            Carrinho carrinho = new Carrinho();
-            carrinho.setStatus(true);
-            carrinho.setUsuario(this.usuario);
-            this.fachada.carrinhoCadastrar(carrinho);
-            
-            
-            //para pegar o carrinho criado
-            carrinho = this.fachada.getCarrinho(this.usuario.getId());
-            carrinho.setUsuario(this.usuario);
-            FormCarrinhoExistente fce = new FormCarrinhoExistente(carrinho, this.usuario);
-            fce.setVisible(true);
-            this.getDesktopPane().add(fce);
-            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
-        
-        
     }//GEN-LAST:event_jButtonComprarActionPerformed
 
     private void jButtonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarActionPerformed
-        if(jTableCarrinho.getSelectedRow() != -1){
             try {
-                Carrinho c = this.lista.get(jTableCarrinho.getSelectedRow());
-                Os os = new Os();
-                os.setCarrinho(c);
-                // SETAR A ENTREGA para o endereco ativo...
-                //os.setEntrega(null);
-                c.setStatus(false);
-                this.fachada.osCadastrar(os); // cascade type all aqui resolve?
-                
-                
-                
+                if(jTableCarrinho.getSelectedRow() != -1){
+                    Carrinho c = this.lista.get(jTableCarrinho.getSelectedRow());
+                    Os os = new Os();
+                    os.setCarrinho(c);
+                    // SETAR A ENTREGA para o endereco ativo...
+                    //os.setEntrega(null);
+                    c.setStatus(false);
+                    this.fachada.osCadastrar(os); // cascade type all aqui resolve?
+                }else{
+                    JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+                }		
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
             }
-        }else{
-            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
-        }		
-        
-       
-            
     }//GEN-LAST:event_jButtonFinalizarActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
@@ -226,8 +224,6 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonSairActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonComprar;
     private javax.swing.JButton jButtonFinalizar;

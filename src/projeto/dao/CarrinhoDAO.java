@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import projeto.interfaces.ICarrinhoDAO;
 import projeto.modelo.Carrinho;
+import projeto.modelo.Produto;
 
 
 /**

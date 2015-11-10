@@ -282,7 +282,7 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
             ff.buscarFuncionario();
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Dados invalidos por favor preencha novamente...");
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_jButtonConfirmarActionPerformed

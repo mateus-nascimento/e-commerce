@@ -34,9 +34,9 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
         buscarProdutos();
     }
     public void buscarProdutos(){
-        Fachada fachada = new Fachada();
-        this.lista = fachada.produtoBuscar();
         try {
+            Fachada fachada = new Fachada();
+            this.lista = fachada.produtoBuscar();
             
             DefaultTableModel modelo = new DefaultTableModel();
             
@@ -53,47 +53,20 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
             }
             jTableProdutos.setModel(modelo);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "metodo buscarProdutos()");
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }
     
     public void listarProdutosAdicionados(){
         Produto p = this.lista.get(jTableProdutos.getSelectedRow());
         
-        int clv = jTableProdutosAdicionados.getRowCount();
-        boolean existe = false;
-        /* EM JAVA 
-        for (int i = 0; i < clv; i++)
-            {
-                if (listViewProdutosAdcionados.Items[i].Text == p.Id.ToString())
-                {
-
-                    int qtd = Int32.Parse(listViewProdutosAdcionados.Items[i].SubItems[5].Text);
-                    qtd++;
-                    listViewProdutosAdcionados.Items[i].SubItems[5].Text = qtd.ToString();
-                    exist = true;
-                    break;
-                }
-            }
-            if (!exist)
-            {
-                int qtd = 1;
-                ListViewItem items = listViewProdutosAdcionados.Items.Add(p.Id.ToString());
-                items.SubItems.Add(p.Nome);
-                items.SubItems.Add(p.Valor.ToString());
-                items.SubItems.Add(p.Categoria.Nome);
-                items.SubItems.Add(p.Descricao);
-                items.SubItems.Add(qtd.ToString());
-            }
-        }
-        */
+        DefaultTableModel modelo = new DefaultTableModel();
         
-        for (int i = 0; i < clv; i++) {
-            if(jTableProdutosAdicionados.getColumnModel().getColumn(i).equals(p.getId())){
-                
-            }
-        }
+        modelo.setColumnIdentifiers(new String[]{"ID", "Nome", "Valor", "Status"});
         
+        modelo.addRow(new String[]{Integer.toString(p.getId()), p.getNome(), Float.toString(p.getValor()), Boolean.toString(p.isStatus())});
+        
+        jTableProdutosAdicionados.setModel(modelo);
     }
     
 

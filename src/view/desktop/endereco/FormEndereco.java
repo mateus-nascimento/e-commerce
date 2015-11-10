@@ -28,15 +28,14 @@ public class FormEndereco extends javax.swing.JInternalFrame {
     
     
 
-    public FormEndereco(Usuario u) throws PropertyVetoException {
-        this.setMaximum(true);
+    public FormEndereco(Usuario u) throws  Exception {
         this.usuario = u;
         initComponents();
         buscarEndereco();
     }
 
     
-    public void buscarEndereco(){
+    public void buscarEndereco()throws Exception{
         Fachada fachada = new Fachada();
         this.lista = fachada.enderecoBuscar(this.usuario.getId());
         try {
@@ -80,11 +79,6 @@ public class FormEndereco extends javax.swing.JInternalFrame {
         jButtonSair = new javax.swing.JButton();
 
         setTitle("Endereço");
-        addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                formFocusGained(evt);
-            }
-        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereços"));
 
@@ -231,38 +225,39 @@ public class FormEndereco extends javax.swing.JInternalFrame {
 
     private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
         // TODO add your handling code here:
-        if(jTable1.getSelectedRow() != -1){
+        try {
+            if(jTable1.getSelectedRow() != -1){
             Endereco e = this.lista.get(jTable1.getSelectedRow());
             Fachada fachada = new Fachada();
             fachada.enderecoRemover(e);
         }else{
             JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
-        }		
+        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+        }
+            		
         
         
     }//GEN-LAST:event_jButtonRemoverActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         // TODO add your handling code here:
-        if(jTable1.getSelectedRow() != -1){
-            try {
+        try {
+                if(jTable1.getSelectedRow() != -1){
                 Endereco e = this.lista.get(jTable1.getSelectedRow());
                 FormSalvarEndereco fse = new FormSalvarEndereco(e, this.usuario);
                 fse.setVisible(true);
                 this.getDesktopPane().add(fse);
                 this.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+                }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
             }
-        }else{
-            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
-        }
         
     }//GEN-LAST:event_jButtonAlterarActionPerformed
-
-    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
-        this.buscarEndereco();
-    }//GEN-LAST:event_formFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

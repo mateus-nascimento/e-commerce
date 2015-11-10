@@ -7,6 +7,7 @@ package view.desktop.carrinho;
 
 import projeto.modelo.Carrinho;
 import View.desktop.carrinho.FormCarrinho;
+import javax.swing.JOptionPane;
 import projeto.modelo.Usuario;
 
 /**
@@ -32,8 +33,6 @@ private Usuario usuario;
     private void listarProdutosCarrinho() {
         
     }
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -160,29 +159,36 @@ private Usuario usuario;
 
     private void jButtonConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConcluirActionPerformed
         // TODO add your handling code here:
-        FormCarrinho fc = new FormCarrinho(this.usuario);
-        fc.setVisible(true);
-        this.getDesktopPane().add(fc);
-        this.dispose();
-        
+        try {
+            FormCarrinho fc = new FormCarrinho(this.usuario);
+            fc.setVisible(true);
+            this.getDesktopPane().add(fc);
+            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonConcluirActionPerformed
 
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
         // TODO add your handling code here:
-        FormAdicionarProdutos fap = new FormAdicionarProdutos(this.carrinho, this.usuario);
-        fap.setVisible(true);
-        this.getDesktopPane().add(fap);
-        this.dispose();
-        
-        
+        try {
+            FormAdicionarProdutos fap = new FormAdicionarProdutos(this.carrinho, this.usuario);
+            fap.setVisible(true);
+            this.getDesktopPane().add(fap);
+            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
 
     private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
         // TODO add your handling code here:
-        
+        try {
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonRemoverActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionar;
     private javax.swing.JButton jButtonConcluir;

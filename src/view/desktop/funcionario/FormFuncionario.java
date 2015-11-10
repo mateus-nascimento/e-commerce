@@ -26,9 +26,9 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
         buscarFuncionario();
     }
     public void buscarFuncionario(){
-        Fachada fachada = new Fachada();
-        this.lista = fachada.funcionarioBuscar();
         try {
+            Fachada fachada = new Fachada();
+            this.lista = fachada.funcionarioBuscar();
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.setColumnIdentifiers(new String[]{"Nome", "Matricula", "Cargo", "Status"});
             if (lista.size() == 0) {
@@ -40,7 +40,7 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
             }
             jTable1.setModel(modelo);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "metodo buscarFuncionario()");
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
         
     }

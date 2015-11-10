@@ -26,11 +26,6 @@ public class FormSalvarUsuario extends javax.swing.JInternalFrame {
     public FormSalvarUsuario(){
         initComponents();
     }
-    
-
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -319,21 +314,18 @@ public class FormSalvarUsuario extends javax.swing.JInternalFrame {
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
-        
         try {
             FormUsuario fu = new FormUsuario();
             fu.setVisible(true);
             this.getDesktopPane().add(fu);
             this.dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
         // TODO add your handling code here:
-        
-        
         try {
             Usuario usuario = new Usuario();
             usuario.setNome(jTextFieldNome.getText());
@@ -367,11 +359,8 @@ public class FormSalvarUsuario extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Usuário e endereço correspondente cadastrado com sucesso!");
 
             this.dispose();
-            
-            
-        
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
         
         

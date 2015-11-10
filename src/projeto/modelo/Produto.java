@@ -44,10 +44,11 @@ public class Produto {
     
     
     //anottations do relacionamento com carrinho (N:N)
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    /*@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "Produto_Carrinho",//nome da tabela que ira ser gerada no banco de dados
                joinColumns = @JoinColumn(name = "idProduto"),//nome da chave primaria da tabela de produto
-               inverseJoinColumns = @JoinColumn(name = "idCarrinho"))//nome da chave estrangeira na tabela carrinho em Produto_Carrinho
+               inverseJoinColumns = @JoinColumn(name = "idCarrinho"))//nome da chave estrangeira na tabela carrinho em Produto_Carrinho*/
+    @ManyToMany(mappedBy = "produtos")
     private Collection<Carrinho> carrinhos;
 
     /**

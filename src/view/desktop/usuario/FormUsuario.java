@@ -26,7 +26,7 @@ public class FormUsuario extends javax.swing.JInternalFrame {
      * Creates new form FormUsuario
      * @throws java.beans.PropertyVetoException
      */
-    public FormUsuario(){
+    public FormUsuario() {
         initComponents();
         buscarUsuarios();
     }
@@ -34,27 +34,26 @@ public class FormUsuario extends javax.swing.JInternalFrame {
     private List<Usuario> lista;
     
     public void buscarUsuarios(){
-        Fachada fachada = new Fachada();
-        this.lista = fachada.usuarioBuscar();
         try {
-            DefaultTableModel modelo = new DefaultTableModel();
-            
-            modelo.setColumnIdentifiers(new String[]{"ID", "Nome", "Email", "CPF", "Status"});
-            
-            if (lista.size() == 0) {
-            
-                JOptionPane.showMessageDialog(null, "Não existem usuários cadastrados.");
-            }
-            for(Usuario u : lista){
-                //System.out.println(p.getNome());
-            
-                modelo.addRow(new String[]{ Integer.toString(u.getId()), u.getNome(), u.getEmail(), u.getCpf(), Boolean.toString(u.isStatus())});
-            }
-            jTable1.setModel(modelo);
+            Fachada fachada = new Fachada();
+            this.lista = fachada.usuarioBuscar();
+                DefaultTableModel modelo = new DefaultTableModel();
+
+                modelo.setColumnIdentifiers(new String[]{"ID", "Nome", "Email", "CPF", "Status"});
+
+                if (lista.size() == 0) {
+
+                    JOptionPane.showMessageDialog(null, "Não existem usuários cadastrados.");
+                }
+                for(Usuario u : lista){
+                    //System.out.println(p.getNome());
+
+                    modelo.addRow(new String[]{ Integer.toString(u.getId()), u.getNome(), u.getEmail(), u.getCpf(), Boolean.toString(u.isStatus())});
+                }
+                jTable1.setModel(modelo);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "metodo buscarUsuario()");
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
-        
     }
 
     /**
@@ -244,7 +243,7 @@ public class FormUsuario extends javax.swing.JInternalFrame {
             this.getDesktopPane().add(fsu);
             this.dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonInserirActionPerformed
 
@@ -262,30 +261,33 @@ public class FormUsuario extends javax.swing.JInternalFrame {
             this.getDesktopPane().add(feu);
             feu.dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
             
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
         // TODO add your handling code here:
-        Usuario u = this.lista.get(jTable1.getSelectedRow());
-        Fachada fachada = new Fachada();
-        fachada.usuarioRemover(u);
-        this.buscarUsuarios();
+        try {
+            Usuario u = this.lista.get(jTable1.getSelectedRow());
+            Fachada fachada = new Fachada();
+            fachada.usuarioRemover(u);
+            this.buscarUsuarios();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonRemoverActionPerformed
 
     private void jButtonEnderecosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnderecosActionPerformed
         // TODO add your handling code here:
         try {
-            
             Usuario u = this.lista.get(jTable1.getSelectedRow());
             FormEndereco fe = new FormEndereco(u);
             fe.setVisible(true);
             this.getDesktopPane().add(fe);
             this.dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonEnderecosActionPerformed
 
@@ -298,7 +300,7 @@ public class FormUsuario extends javax.swing.JInternalFrame {
             this.getDesktopPane().add(fc);
             this.dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonCarrinhoActionPerformed
 

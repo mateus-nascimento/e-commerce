@@ -28,9 +28,9 @@ public class FormProduto extends javax.swing.JInternalFrame {
         buscarProdutos();
     }
     public void buscarProdutos(){
-        Fachada fachada = new Fachada();
-        this.lista = fachada.produtoBuscar();
         try {
+            Fachada fachada = new Fachada();
+            this.lista = fachada.produtoBuscar();
             
             DefaultTableModel modelo = new DefaultTableModel();
             
@@ -47,7 +47,7 @@ public class FormProduto extends javax.swing.JInternalFrame {
             }
             jTable1.setModel(modelo);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "metodo buscarProdutos()");
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -201,32 +201,37 @@ public class FormProduto extends javax.swing.JInternalFrame {
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         // TODO add your handling code here:
-        if (jTable1.getSelectedRow() != -1) {
-            Produto p = this.lista.get(jTable1.getSelectedRow());
-            FormSalvarProduto fsp = new FormSalvarProduto(p);
-            fsp.setVisible(true);
-            this.getDesktopPane().add(fsp);
-            this.dispose();
-        }else{
-            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+        try {
+            if (jTable1.getSelectedRow() != -1) {
+                Produto p = this.lista.get(jTable1.getSelectedRow());
+                FormSalvarProduto fsp = new FormSalvarProduto(p);
+                fsp.setVisible(true);
+                this.getDesktopPane().add(fsp);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
+        
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
         // TODO add your handling code here:
-        if (jTable1.getSelectedRow() != -1) {
-                Produto p = this.lista.get(jTable1.getSelectedRow());
-                Fachada fachada = new Fachada();
-                fachada.produtoRemover(p);
-                JOptionPane.showMessageDialog(null, "Produto removido com sucesso.");
-        }else{
-            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+        try {
+            if (jTable1.getSelectedRow() != -1) {
+                    Produto p = this.lista.get(jTable1.getSelectedRow());
+                    Fachada fachada = new Fachada();
+                    fachada.produtoRemover(p);
+                    JOptionPane.showMessageDialog(null, "Produto removido com sucesso.");
+            }else{
+                JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
-        
-        
     }//GEN-LAST:event_jButtonRemoverActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonInserir;

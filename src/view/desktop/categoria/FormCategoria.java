@@ -27,13 +27,13 @@ public class FormCategoria extends javax.swing.JInternalFrame {
      */
     private List<Categoria> lista;
     
-    public FormCategoria() {
+    public FormCategoria() throws Exception{
         initComponents();
         
         buscarCategorias();
     }
     
-    public void buscarCategorias(){
+    public void buscarCategorias() throws Exception{
         Fachada fachada = new Fachada();
         this.lista = fachada.categoriaBuscar();
         try {
@@ -48,7 +48,7 @@ public class FormCategoria extends javax.swing.JInternalFrame {
             }
             jTable1.setModel(modelo);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "metodo buscarCategoria()");
+            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
         
         
@@ -187,12 +187,11 @@ public class FormCategoria extends javax.swing.JInternalFrame {
             // TODO add your handling code here:
             FormSalvarCategoria fsc = new FormSalvarCategoria();
             fsc.setVisible(true);
-            fsc.setMaximum(true);
             this.getDesktopPane().add(fsc);
             this.dispose();
             //this.buscarCategorias();
-        } catch (PropertyVetoException ex) {
-            ex.getMessage();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_jButtonInserirActionPerformed
@@ -204,29 +203,39 @@ public class FormCategoria extends javax.swing.JInternalFrame {
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         
-        
-        if (jTable1.getSelectedRow() != -1) {
-            Categoria c = this.lista.get(jTable1.getSelectedRow());
-            FormSalvarCategoria fsc = new FormSalvarCategoria(c);
-            fsc.setVisible(true);
-            this.getDesktopPane().add(fsc);
-            this.dispose();
-        }else{
-            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+        try {
+            if (jTable1.getSelectedRow() != -1) {
+                Categoria c = this.lista.get(jTable1.getSelectedRow());
+                FormSalvarCategoria fsc = new FormSalvarCategoria(c);
+                fsc.setVisible(true);
+                this.getDesktopPane().add(fsc);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
         
         
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
-        if(jTable1.getSelectedRow() != -1){
-            Categoria c = this.lista.get(jTable1.getSelectedRow());
-            Fachada fachada = new Fachada();
-            fachada.categoriaRemover(c);
-            this.buscarCategorias();
-        }else{
-            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
-        }
+        
+            try {
+                if(jTable1.getSelectedRow() != -1){
+                    Categoria c = this.lista.get(jTable1.getSelectedRow());
+                    Fachada fachada = new Fachada();
+                    fachada.categoriaRemover(c);
+                    this.buscarCategorias();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        
         
     }//GEN-LAST:event_jButtonRemoverActionPerformed
 

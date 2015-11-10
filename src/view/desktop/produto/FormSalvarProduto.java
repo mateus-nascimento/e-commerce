@@ -26,20 +26,22 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
     }
     
     public void buscarCategorias(){
-        Fachada fachada = new Fachada();
-        List<Categoria> lista = fachada.categoriaBuscar();
-        
-        if (lista.size() > 0) {
-            
-            for (Categoria c : lista) {
-                
-                jComboBoxCategoria.addItem(c.getNome());
-                jComboBoxCategoria.setSelectedIndex(c.getId());
-                
+        try {
+            Fachada fachada = new Fachada();
+            List<Categoria> lista = fachada.categoriaBuscar();
+
+            if (lista.size() > 0) {
+
+                for (Categoria c : lista) {
+
+                    jComboBoxCategoria.addItem(c.getNome());
+                    jComboBoxCategoria.setSelectedIndex(c.getId());
+                }
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }
-
     private int idProduto;
     FormSalvarProduto(Produto p) {
         initComponents();
@@ -219,63 +221,71 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
         // TODO add your handling code here:
-        Produto produto = new Produto();
+        
         //como eu fiz somente um form (salvarProduto) eu coloquei esse id pra diferenciar, quando for para inserir o idProduto é nulo
         //mas quando for alteracao o idProduto FICA COM o id que veio do objeto da tabela BUT....
-        
-        
-        if (idProduto == 0) {
+        try {
             
-            Categoria categoria = new Categoria();
-            categoria.setId(jComboBoxCategoria.getSelectedIndex());
-            produto.setNome(jTextFieldNome.getText());
-            produto.setValor(Float.parseFloat(jFormattedTextFieldValor.getText()));
-            
-            if (jRadioButtonAtivo.isSelected()) {
-                produto.setStatus(true);
+            Produto produto = new Produto();
+            if (idProduto == 0) {
+
+                Categoria categoria = new Categoria();
+                categoria.setId(jComboBoxCategoria.getSelectedIndex());
+                produto.setNome(jTextFieldNome.getText());
+                produto.setValor(Float.parseFloat(jFormattedTextFieldValor.getText()));
+
+                if (jRadioButtonAtivo.isSelected()) {
+                    produto.setStatus(true);
+                }else{
+                    produto.setStatus(false);
+                }
+
+                produto.setDescricao(jTextAreaDescricao.getText());
+
+                produto.setCategoria(categoria);//
+
+                Fachada fachada = new Fachada();
+                fachada.produtoCadastrar(produto);
+
+                JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
+                this.dispose();
             }else{
-                produto.setStatus(false);
+                Categoria categoria = new Categoria();
+                categoria.setId(jComboBoxCategoria.getSelectedIndex());
+                produto.setNome(jTextFieldNome.getText());
+                produto.setValor(Float.parseFloat(jFormattedTextFieldValor.getText()));
+
+                if (jRadioButtonAtivo.isSelected()) {
+                    produto.setStatus(true);
+                }else{
+                    produto.setStatus(false);
+                }
+
+                produto.setDescricao(jTextAreaDescricao.getText());
+
+                produto.setCategoria(categoria);//
+
+                Fachada fachada = new Fachada();
+                fachada.produtoAlterar(produto);
+
+                JOptionPane.showMessageDialog(null, "Produto alterado com sucesso!");
+                this.dispose();
             }
-            
-            produto.setDescricao(jTextAreaDescricao.getText());
-            
-            produto.setCategoria(categoria);//
-            
-            Fachada fachada = new Fachada();
-            fachada.produtoCadastrar(produto);
-            
-            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
-            this.dispose();
-        }else{
-            Categoria categoria = new Categoria();
-            categoria.setId(jComboBoxCategoria.getSelectedIndex());
-            produto.setNome(jTextFieldNome.getText());
-            produto.setValor(Float.parseFloat(jFormattedTextFieldValor.getText()));
-            
-            if (jRadioButtonAtivo.isSelected()) {
-                produto.setStatus(true);
-            }else{
-                produto.setStatus(false);
-            }
-            
-            produto.setDescricao(jTextAreaDescricao.getText());
-            
-            produto.setCategoria(categoria);//
-            
-            Fachada fachada = new Fachada();
-            fachada.produtoAlterar(produto);
-            
-            JOptionPane.showMessageDialog(null, "Produto alterado com sucesso!");
-            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonConfirmarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
-        FormProduto fp = new FormProduto();
-        fp.setVisible(true);
-        this.getDesktopPane().add(fp);
-        this.dispose();
+        try {
+            FormProduto fp = new FormProduto();
+            fp.setVisible(true);
+            this.getDesktopPane().add(fp);
+            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
 

@@ -259,7 +259,7 @@ public class FormEditarUsuario extends javax.swing.JInternalFrame {
                 
 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
             }
     }//GEN-LAST:event_jButtonConfirmarActionPerformed
 
@@ -271,7 +271,7 @@ public class FormEditarUsuario extends javax.swing.JInternalFrame {
             this.getDesktopPane().add(fu);
             this.dispose();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
