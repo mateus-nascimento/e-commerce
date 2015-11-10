@@ -272,7 +272,15 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
 
                 JOptionPane.showMessageDialog(null, "Endereco correspondente ao usuário salvo com sucesso!");
 
+                
+                
+                FormEndereco fe = new FormEndereco(this.usuario);
+                fe.setVisible(true);
+                fe.buscarEndereco();
+                this.getDesktopPane().add(fe);
                 this.dispose();
+                
+                
             } catch (Exception e) {
                 
                 JOptionPane.showMessageDialog(null, "CadastrarEndereco()");
@@ -283,8 +291,15 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
-        
-        this.dispose();
+        try {
+            FormEndereco fe = new FormEndereco(this.usuario);
+            fe.setVisible(true);
+            this.getDesktopPane().add(fe);
+            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
 

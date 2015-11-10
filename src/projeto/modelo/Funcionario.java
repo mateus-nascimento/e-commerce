@@ -17,8 +17,8 @@ import javax.persistence.PrimaryKeyJoinColumn;
  * @author bboyrap
  */
 @Entity
-@NamedQuery(name ="Funcionario.findAll", query = "SELECT f FROM Funcionario f")
-@PrimaryKeyJoinColumn(name="ID")
+@NamedQuery(name ="Funcionario.carregarDados", query = "SELECT F FROM Funcionario F WHERE F.email = ?1")
+@PrimaryKeyJoinColumn(name="id")
 public class Funcionario extends Usuario{
     private int matricula;
     private String cargo;

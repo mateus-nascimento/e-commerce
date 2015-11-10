@@ -14,7 +14,16 @@ import projeto.modelo.Produto;
  * @author aluno
  */
 public class CtrlProduto {
-    public void cadastrar(Produto prod){
+    public void cadastrar(Produto prod) throws Exception{
+        
+        if (prod.getNome() == null){
+            throw new Exception("Favor preencher o campo do nome do usuário.");
+        }else if (prod.getCategoria() == null || prod.getCategoria().equals(prod))  {
+            
+        }
+{
+            
+        }
         DAOFactory.getProdutoDAO().inserir(prod);
     }
     public List<Produto> buscarProduto(){

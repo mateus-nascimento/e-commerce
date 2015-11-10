@@ -28,6 +28,10 @@ public class CtrlUsuario {
     public void remover(Usuario usu){
         DAOFactory.getUsuarioDAO().remover(usu);
     }
+    
+    public boolean usuarioLogin(Usuario usu){
+        return DAOFactory.getUsuarioDAO().usuarioLogin(usu);
+    }
         
     
     

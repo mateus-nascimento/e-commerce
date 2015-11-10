@@ -24,7 +24,15 @@ public class CtrlCarrinho {
         return DAOFactory.getCarrinhoDAO().quantidadeItem(id);
     }
 
-    public int valorTotalCarrinho(int id) {
+    public double valorTotalCarrinho(int id) {
         return DAOFactory.getCarrinhoDAO().valorTotalCarrinho(id);
+    }
+    
+    public boolean carrinhoExiste(int idUsuario){
+        return DAOFactory.getCarrinhoDAO().carrinhoExiste(idUsuario);
+    }
+
+    public Carrinho getCarrinho(int idUsuario){
+        return DAOFactory.getCarrinhoDAO().getCarrinho(idUsuario);
     }
 }

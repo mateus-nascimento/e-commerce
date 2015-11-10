@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package projeto.dao;
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import projeto.interfaces.IUsuarioDAO;
 import projeto.modelo.Usuario;
 
@@ -25,5 +28,24 @@ public class UsuarioDAO extends DAOGeneric<Usuario> implements IUsuarioDAO {
     public UsuarioDAO(EntityManager em){
         super(em);
     }
+    
+    public Boolean usuarioLogin(Usuario usuario){
+        List existe = null;
+        boolean retorno = false;
+        
+        EntityTransaction tx = getEntityManager().getTransaction();
+        tx.begin();
+        Query query = getEntityManager().createNamedQuery("Usuario.login");
+        query.setParameter(1, usuario.getEmail());
+        query.setParameter(2, usuario.getSenha());
+        existe = query.getResultList();
+        tx.commit();
+        
+        if (existe.size() > 0) {
+            retorno = true;
+        }
+        return retorno;
+    }
+    
     
 }

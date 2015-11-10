@@ -79,13 +79,13 @@ public class FormProduto extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "id", "nome", "valor", "status"
+
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -201,16 +201,28 @@ public class FormProduto extends javax.swing.JInternalFrame {
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         // TODO add your handling code here:
-        Produto p = this.lista.get(jTable1.getSelectedRow());
-        FormSalvarProduto fsp = new FormSalvarProduto(p);
-        fsp.setVisible(true);
-        this.getDesktopPane().add(fsp);
-        this.dispose();
+        if (jTable1.getSelectedRow() != -1) {
+            Produto p = this.lista.get(jTable1.getSelectedRow());
+            FormSalvarProduto fsp = new FormSalvarProduto(p);
+            fsp.setVisible(true);
+            this.getDesktopPane().add(fsp);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+        }
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
         // TODO add your handling code here:
-        Produto p = this.lista.get(jTable1.getSelectedRow());
+        if (jTable1.getSelectedRow() != -1) {
+                Produto p = this.lista.get(jTable1.getSelectedRow());
+                Fachada fachada = new Fachada();
+                fachada.produtoRemover(p);
+                JOptionPane.showMessageDialog(null, "Produto removido com sucesso.");
+        }else{
+            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+        }
+        
         
     }//GEN-LAST:event_jButtonRemoverActionPerformed
 

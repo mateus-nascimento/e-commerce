@@ -5,6 +5,9 @@
  */
 package View.desktop.usuario;
 
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import projeto.fachada.Fachada;
 import projeto.modelo.Endereco;
@@ -20,7 +23,7 @@ public class FormSalvarUsuario extends javax.swing.JInternalFrame {
      * Creates new form FormSalvarUsuario
      */
     
-    public FormSalvarUsuario() {
+    public FormSalvarUsuario(){
         initComponents();
     }
     
@@ -316,10 +319,15 @@ public class FormSalvarUsuario extends javax.swing.JInternalFrame {
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
-        FormUsuario fu = new FormUsuario();
-        fu.setVisible(true);
-        this.getDesktopPane().add(fu);
-        this.dispose();
+        
+        try {
+            FormUsuario fu = new FormUsuario();
+            fu.setVisible(true);
+            this.getDesktopPane().add(fu);
+            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
@@ -330,7 +338,7 @@ public class FormSalvarUsuario extends javax.swing.JInternalFrame {
             Usuario usuario = new Usuario();
             usuario.setNome(jTextFieldNome.getText());
             usuario.setEmail(jTextFieldEmail.getText());
-            usuario.setCpf(jFormattedTextFieldCpf.getText().replaceAll(".", "").replace("-", ""));
+            usuario.setCpf(jFormattedTextFieldCpf.getText().replaceAll("\\.", "").replace("-", ""));
             usuario.setSenha(jPasswordFieldSenha.getText());
             usuario.setTelefoneFixo(jFormattedTextFieldTelefoneFixo.getText().replace("(", "").replace(")", "").replace("-", ""));
             usuario.setTelefoneCelular(jFormattedTextFieldTelefoneCelular.getText().replace("(", "").replace(")", "").replace("-", ""));
@@ -363,7 +371,7 @@ public class FormSalvarUsuario extends javax.swing.JInternalFrame {
             
         
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Confirmar cadastro do usuario...");
+            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
         
         

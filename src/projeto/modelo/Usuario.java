@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
@@ -22,7 +23,8 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
-@NamedQuery(name ="Usuario.findAll", query = "SELECT u FROM Usuario u")
+@NamedQueries({@NamedQuery(name ="Usuario.findAll", query = "SELECT U FROM Usuario U"),
+               @NamedQuery(name ="Usuario.login", query = "SELECT U.id, U.email, F.matricula FROM Usuario U, Funcionario F WHERE U.email = ?1 AND U.senha = ?2")})
 public class Usuario implements Serializable{
     @Id
     @GeneratedValue

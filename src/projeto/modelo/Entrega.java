@@ -40,7 +40,7 @@ public class Entrega {
     
     
     //funcionario (N)
-    @OneToOne()
+    @OneToOne
     @JoinColumn(name = "idFuncionario")
     private Funcionario funcionario;
     

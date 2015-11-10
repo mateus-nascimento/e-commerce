@@ -6,7 +6,10 @@
 package View.desktop.categoria;
 
 
+import java.beans.PropertyVetoException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -180,12 +183,17 @@ public class FormCategoria extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirActionPerformed
-        // TODO add your handling code here:
-        FormSalvarCategoria fsc = new FormSalvarCategoria();
-        fsc.setVisible(true);
-        this.getDesktopPane().add(fsc);
-        this.dispose();
-        //this.buscarCategorias();
+        try {
+            // TODO add your handling code here:
+            FormSalvarCategoria fsc = new FormSalvarCategoria();
+            fsc.setVisible(true);
+            fsc.setMaximum(true);
+            this.getDesktopPane().add(fsc);
+            this.dispose();
+            //this.buscarCategorias();
+        } catch (PropertyVetoException ex) {
+            ex.getMessage();
+        }
         
     }//GEN-LAST:event_jButtonInserirActionPerformed
 
@@ -195,20 +203,31 @@ public class FormCategoria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
-        Categoria c = this.lista.get(jTable1.getSelectedRow());
         
-        FormSalvarCategoria fsc = new FormSalvarCategoria(c);
-        fsc.setVisible(true);
-        this.getDesktopPane().add(fsc);
-        this.dispose();
+        
+        if (jTable1.getSelectedRow() != -1) {
+            Categoria c = this.lista.get(jTable1.getSelectedRow());
+            FormSalvarCategoria fsc = new FormSalvarCategoria(c);
+            fsc.setVisible(true);
+            this.getDesktopPane().add(fsc);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+        }
+        
         
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
-        Categoria c = this.lista.get(jTable1.getSelectedRow());
-        Fachada fachada = new Fachada();
-        fachada.categoriaRemover(c);
-        this.buscarCategorias();
+        if(jTable1.getSelectedRow() != -1){
+            Categoria c = this.lista.get(jTable1.getSelectedRow());
+            Fachada fachada = new Fachada();
+            fachada.categoriaRemover(c);
+            this.buscarCategorias();
+        }else{
+            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+        }
+        
     }//GEN-LAST:event_jButtonRemoverActionPerformed
 
 

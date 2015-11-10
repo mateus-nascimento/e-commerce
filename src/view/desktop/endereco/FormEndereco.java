@@ -5,6 +5,8 @@
  */
 package View.desktop.endereco;
 
+import View.desktop.usuario.FormUsuario;
+import java.beans.PropertyVetoException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -24,15 +26,15 @@ public class FormEndereco extends javax.swing.JInternalFrame {
     private List<Endereco> lista;
     private Usuario usuario;
     
-    public FormEndereco(){
-        initComponents();
-    }
+    
 
-    public FormEndereco(Usuario u) {
+    public FormEndereco(Usuario u) throws PropertyVetoException {
+        this.setMaximum(true);
         this.usuario = u;
         initComponents();
         buscarEndereco();
     }
+
     
     public void buscarEndereco(){
         Fachada fachada = new Fachada();
@@ -209,7 +211,7 @@ public class FormEndereco extends javax.swing.JInternalFrame {
             FormSalvarEndereco fse = new FormSalvarEndereco(this.usuario);
             fse.setVisible(true);
             this.getDesktopPane().add(fse);
-            fse.moveToFront();
+            this.dispose();
             
         } catch (Exception e) {
             e.getMessage();
@@ -218,28 +220,44 @@ public class FormEndereco extends javax.swing.JInternalFrame {
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        try {
+            FormUsuario fu = new FormUsuario();
+            fu.setVisible(true);
+            this.getDesktopPane().add(fu);
+            this.dispose();
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
         // TODO add your handling code here:
-        Endereco e = this.lista.get(jTable1.getSelectedRow());
-        Fachada fachada = new Fachada();
-        fachada.enderecoRemover(e);
+        if(jTable1.getSelectedRow() != -1){
+            Endereco e = this.lista.get(jTable1.getSelectedRow());
+            Fachada fachada = new Fachada();
+            fachada.enderecoRemover(e);
+        }else{
+            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
+        }		
+        
+        
     }//GEN-LAST:event_jButtonRemoverActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         // TODO add your handling code here:
-        try {
-            Endereco e = this.lista.get(jTable1.getSelectedRow());
-            FormSalvarEndereco fse = new FormSalvarEndereco(e, this.usuario);
-            fse.setVisible(true);
-            this.getDesktopPane().add(fse);
-            fse.moveToFront();
-            
-        } catch (Exception e) {
-            e.getMessage();
+        if(jTable1.getSelectedRow() != -1){
+            try {
+                Endereco e = this.lista.get(jTable1.getSelectedRow());
+                FormSalvarEndereco fse = new FormSalvarEndereco(e, this.usuario);
+                fse.setVisible(true);
+                this.getDesktopPane().add(fse);
+                this.dispose();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
         }
+        
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained

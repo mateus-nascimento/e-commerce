@@ -9,8 +9,8 @@ import View.desktop.carrinho.FormCarrinho;
 import View.desktop.endereco.FormEndereco;
 import java.beans.PropertyVetoException;
 import java.util.List;
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import projeto.fachada.Fachada;
@@ -24,8 +24,9 @@ public class FormUsuario extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form FormUsuario
+     * @throws java.beans.PropertyVetoException
      */
-    public FormUsuario() {
+    public FormUsuario(){
         initComponents();
         buscarUsuarios();
     }
@@ -82,14 +83,8 @@ public class FormUsuario extends javax.swing.JInternalFrame {
         jSeparator5 = new javax.swing.JToolBar.Separator();
         jButtonSair = new javax.swing.JButton();
 
-        setClosable(true);
-        setIconifiable(true);
         setTitle("Usuário");
-        addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                formFocusGained(evt);
-            }
-        });
+        setVisible(true);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuários"));
 
@@ -124,6 +119,7 @@ public class FormUsuario extends javax.swing.JInternalFrame {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
+        jButtonInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/plus sign1.png"))); // NOI18N
         jButtonInserir.setText("Inserir Novo Usuario");
         jButtonInserir.setFocusable(false);
         jButtonInserir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -136,6 +132,7 @@ public class FormUsuario extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonInserir);
         jToolBar1.add(jSeparator1);
 
+        jButtonAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/exchange1.png"))); // NOI18N
         jButtonAlterar.setText("Alterar Usuario Selecionado");
         jButtonAlterar.setFocusable(false);
         jButtonAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -148,6 +145,7 @@ public class FormUsuario extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonAlterar);
         jToolBar1.add(jSeparator2);
 
+        jButtonRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/delete25.png"))); // NOI18N
         jButtonRemover.setText("Remover Usuario Selecionado");
         jButtonRemover.setFocusable(false);
         jButtonRemover.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -160,6 +158,7 @@ public class FormUsuario extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonRemover);
         jToolBar1.add(jSeparator3);
 
+        jButtonEnderecos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/situation.png"))); // NOI18N
         jButtonEnderecos.setText("Gerenciar Endereços");
         jButtonEnderecos.setFocusable(false);
         jButtonEnderecos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -172,7 +171,9 @@ public class FormUsuario extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonEnderecos);
         jToolBar1.add(jSeparator4);
 
+        jButtonCarrinho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Carrinho.png"))); // NOI18N
         jButtonCarrinho.setText("Gerenciar Carrinhos");
+        jButtonCarrinho.setToolTipText("Irá mostrar a lista de carrinhos do usuário.");
         jButtonCarrinho.setFocusable(false);
         jButtonCarrinho.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonCarrinho.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -184,6 +185,7 @@ public class FormUsuario extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonCarrinho);
         jToolBar1.add(jSeparator5);
 
+        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Logou.png"))); // NOI18N
         jButtonSair.setText("Sair");
         jButtonSair.setFocusable(false);
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -201,22 +203,21 @@ public class FormUsuario extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(229, 229, 229))))
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(271, 271, 271))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(11, 11, 11)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,12 +230,10 @@ public class FormUsuario extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        setBounds(0, 0, 1230, 452);
+        setLocation(new java.awt.Point(0, 0));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirActionPerformed
@@ -242,10 +241,10 @@ public class FormUsuario extends javax.swing.JInternalFrame {
         try {
             FormSalvarUsuario fsu = new FormSalvarUsuario();
             fsu.setVisible(true);
-            fsu.setMaximum(true);
             this.getDesktopPane().add(fsu);
             this.dispose();
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonInserirActionPerformed
 
@@ -261,8 +260,9 @@ public class FormUsuario extends javax.swing.JInternalFrame {
             FormEditarUsuario feu = new FormEditarUsuario(u);
             feu.setVisible(true);
             this.getDesktopPane().add(feu);
-            feu.moveToFront();
+            feu.dispose();
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
             
     }//GEN-LAST:event_jButtonAlterarActionPerformed
@@ -282,11 +282,10 @@ public class FormUsuario extends javax.swing.JInternalFrame {
             Usuario u = this.lista.get(jTable1.getSelectedRow());
             FormEndereco fe = new FormEndereco(u);
             fe.setVisible(true);
-            
             this.getDesktopPane().add(fe);
-            fe.moveToFront();
+            this.dispose();
         } catch (Exception e) {
-            e.getMessage();
+            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonEnderecosActionPerformed
 
@@ -296,16 +295,12 @@ public class FormUsuario extends javax.swing.JInternalFrame {
             Usuario u = this.lista.get(jTable1.getSelectedRow());
             FormCarrinho fc = new FormCarrinho(u);
             fc.setVisible(true);
-            fc.setMaximum(true);
             this.getDesktopPane().add(fc);
             this.dispose();
-        } catch (PropertyVetoException e) {
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonCarrinhoActionPerformed
-
-    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
-        this.buscarUsuarios();
-    }//GEN-LAST:event_formFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

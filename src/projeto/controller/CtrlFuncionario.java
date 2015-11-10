@@ -8,6 +8,7 @@ package projeto.controller;
 import java.util.List;
 import projeto.dao.DAOFactory;
 import projeto.modelo.Funcionario;
+import projeto.modelo.Usuario;
 
 /**
  *
@@ -25,5 +26,9 @@ public class CtrlFuncionario {
     }
     public void remover(Funcionario fun){
         DAOFactory.getFuncionarioDAO().remover(fun);
+    }
+
+    public Funcionario carregarFuncionario(Usuario usuario) {
+        return DAOFactory.getFuncionarioDAO().carregarFuncionario(usuario);
     }
 }

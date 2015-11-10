@@ -99,9 +99,17 @@ public class Fachada {
         return quantidade;
     }
 
-    public int valorTotalCarrinho(int id) {
-        int valor = ctrlCarrinho.valorTotalCarrinho(id);
+    public double valorTotalCarrinho(int id) {
+        double valor = ctrlCarrinho.valorTotalCarrinho(id);
         return valor;
+    }
+    
+    public boolean carrinhoExiste(int idUsuario){
+        return ctrlCarrinho.carrinhoExiste(idUsuario);
+    }
+    
+    public Carrinho getCarrinho(int idUsuario){
+        return ctrlCarrinho.getCarrinho(idUsuario);
     }
     
     
@@ -137,6 +145,10 @@ public class Fachada {
         ctrlFuncionario.remover(fun);
     }
     
+    public Funcionario carregarFuncionario(Usuario usuario) {
+        return ctrlFuncionario.carregarFuncionario(usuario);
+    }
+    
     //os
     public void osCadastrar(Os os){
         
@@ -167,7 +179,11 @@ public class Fachada {
     }
      public void usuarioRemover(Usuario usu){
          ctrlUsuario.remover(usu);
+    }
+     
+     public Boolean usuarioLogin(Usuario usu){
+         return ctrlUsuario.usuarioLogin(usu);
      }
+
     
-            
 }

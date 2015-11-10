@@ -9,10 +9,11 @@ import View.desktop.usuario.*;
 import View.desktop.categoria.*;
 import View.desktop.funcionario.*;
 import View.desktop.produto.*;
-import java.beans.PropertyVetoException;
-
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import projeto.modelo.Funcionario;
 
 /**
  *
@@ -23,11 +24,23 @@ public class FormPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form FormPrincipal
      */
-    public FormPrincipal() {
+
+    private Funcionario funcionario;
+    public FormPrincipal(Funcionario funcionario) {
+        
+        Image image = new ImageIcon(this.getClass().getResource("/material/icone.png")).getImage();
+        this.setIconImage(image);
+        
+        this.funcionario = funcionario;
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
     }
+
+    private FormPrincipal() {
+        JOptionPane.showMessageDialog(null, "construtor vaziosad.sa ");
+    }
+
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,6 +52,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuMenu = new javax.swing.JMenu();
         jMenuItemUsuario = new javax.swing.JMenuItem();
@@ -52,22 +66,28 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1366, 768));
+        setSize(new java.awt.Dimension(0, 0));
 
         jDesktopPane1.setBackground(new java.awt.Color(153, 153, 153));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/MenuPrincipal.png"))); // NOI18N
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jMenuMenu.setText("Menu");
 
+        jMenuItemUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Usuario.png"))); // NOI18N
         jMenuItemUsuario.setText("Usuário");
         jMenuItemUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +96,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         jMenuMenu.add(jMenuItemUsuario);
 
+        jMenuItemFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Funcionario.png"))); // NOI18N
         jMenuItemFuncionario.setText("Funcionário");
         jMenuItemFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +105,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         jMenuMenu.add(jMenuItemFuncionario);
 
+        jMenuItemCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Categoria.png"))); // NOI18N
         jMenuItemCategoria.setText("Categoria");
         jMenuItemCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +114,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         jMenuMenu.add(jMenuItemCategoria);
 
+        jMenuItemProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Produto.png"))); // NOI18N
         jMenuItemProduto.setText("Produto");
         jMenuItemProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,9 +123,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         jMenuMenu.add(jMenuItemProduto);
 
+        jMenuItemOs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Os.png"))); // NOI18N
         jMenuItemOs.setText("Os");
         jMenuMenu.add(jMenuItemOs);
 
+        jMenuItemEntrega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Entrega.png"))); // NOI18N
         jMenuItemEntrega.setText("Entrega");
         jMenuMenu.add(jMenuItemEntrega);
 
@@ -110,6 +135,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         jMenuOpcoes.setText("Opções");
 
+        jMenuItemLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Limpar.png"))); // NOI18N
         jMenuItemLimpar.setText("Limpar Tela");
         jMenuItemLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +144,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         jMenuOpcoes.add(jMenuItemLimpar);
 
+        jMenuItemSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Sair.png"))); // NOI18N
         jMenuItemSair.setText("Sair");
         jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,10 +187,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         try {
             FormProduto fp = new FormProduto();
             this.jDesktopPane1.add(fp);
-            fp.setMaximum(true);
             fp.show();
-        } catch (PropertyVetoException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao colocar o form em tela inteira");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jMenuItemProdutoActionPerformed
 
@@ -173,10 +199,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         try {
             FormCategoria fc = new FormCategoria();
             this.jDesktopPane1.add(fc);
-            fc.setMaximum(true);
             fc.show();
-        } catch (PropertyVetoException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao colocar o form em tela inteira");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_jMenuItemCategoriaActionPerformed
@@ -187,10 +212,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         try {
             FormFuncionario ff = new FormFuncionario();
             this.jDesktopPane1.add(ff);
-            ff.setMaximum(true);
-            ff.show();
-        } catch (PropertyVetoException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao colocar o form em tela inteira");
+            ff.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jMenuItemFuncionarioActionPerformed
 
@@ -198,12 +222,15 @@ public class FormPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         //this.limparTelas();
         try {
+            JOptionPane.showMessageDialog(null, "ai meu caralho1");
             FormUsuario fu = new FormUsuario();
+            JOptionPane.showMessageDialog(null, "ai meu caralho2");
             this.jDesktopPane1.add(fu);
-            fu.setMaximum(true);
-            fu.show();
-        } catch (PropertyVetoException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao colocar o form em tela inteira");
+            JOptionPane.showMessageDialog(null, "ai meu caralho3");
+            fu.setVisible(true);
+            JOptionPane.showMessageDialog(null, "ai meu caralho4");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jMenuItemUsuarioActionPerformed
 
@@ -248,6 +275,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemCategoria;
     private javax.swing.JMenuItem jMenuItemEntrega;

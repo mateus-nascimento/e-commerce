@@ -4,9 +4,14 @@
  * and open the template in the editor.
  */
 package projeto.dao;
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import projeto.interfaces.IFuncionarioDAO;
 import projeto.modelo.Funcionario;
+import projeto.modelo.Usuario;
 
 /**
  *
@@ -24,6 +29,20 @@ public class FuncionarioDAO extends DAOGeneric<Funcionario> implements IFunciona
     
     public FuncionarioDAO(EntityManager em){
         super(em);
+    }
+
+    public Funcionario carregarFuncionario(Usuario usuario) {
+        EntityTransaction tx = getEntityManager().getTransaction();
+        tx.begin();
+        
+        TypedQuery<Funcionario> query = getEntityManager().createNamedQuery("Funcionario.carregarDados", Funcionario.class);
+        query.setParameter(1, usuario.getEmail());
+        
+        Funcionario funcionario = new Funcionario();
+        funcionario = query.getSingleResult();
+        
+        tx.commit();
+        return funcionario;
     }
     
 }
