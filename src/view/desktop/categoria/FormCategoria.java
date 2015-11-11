@@ -103,6 +103,7 @@ public class FormCategoria extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
         jButtonInserir.setText("Inserir Nova Categoria");

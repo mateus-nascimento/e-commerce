@@ -32,6 +32,8 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
         initComponents();
         this.usuario = usuario;
         listarCarrinhos();
+        JOptionPane.showMessageDialog(null, "Entrou no consturtor do carrinho");
+                
     }
     
     public void listarCarrinhos(){

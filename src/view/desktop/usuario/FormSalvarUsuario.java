@@ -269,6 +269,7 @@ public class FormSalvarUsuario extends javax.swing.JInternalFrame {
         jPanel1.add(jPanel3);
         jPanel3.setBounds(310, 10, 280, 280);
 
+        jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
         jButtonConfirmar.setText("Confirmar");
@@ -357,8 +358,12 @@ public class FormSalvarUsuario extends javax.swing.JInternalFrame {
             fachada.enderecoCadastrar(endereco);
 
             JOptionPane.showMessageDialog(null, "Usuário e endereço correspondente cadastrado com sucesso!");
-
-            this.dispose();
+            
+            FormUsuario fu = new FormUsuario();
+            fu.setVisible(true);
+            getDesktopPane().add(fu);
+            dispose();
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }

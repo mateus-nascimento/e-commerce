@@ -5,8 +5,6 @@
  */
 package View.desktop.endereco;
 
-import View.desktop.usuario.FormUsuario;
-import java.util.List;
 import javax.swing.JOptionPane;
 import projeto.fachada.Fachada;
 import projeto.modelo.Endereco;
@@ -193,6 +191,7 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
                     .addComponent(jLabelNomeUsuario)))
         );
 
+        jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
         jButtonConfirmar.setText("Confirmar");
@@ -271,33 +270,24 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
                 }
 
                 JOptionPane.showMessageDialog(null, "Endereco correspondente ao usuário salvo com sucesso!");
-
-                
-                
-                FormEndereco fe = new FormEndereco(this.usuario);
-                fe.setVisible(true);
-                this.getDesktopPane().add(fe);
-                this.dispose();
-                
-                
             } catch (Exception e) {
-                
                 JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
             }
+            
+            FormEndereco fe = new FormEndereco(this.usuario);
+            fe.setVisible(true);
+            getDesktopPane().add(fe);
+            dispose();
         
 
     }//GEN-LAST:event_jButtonConfirmarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
-        try {
             FormEndereco fe = new FormEndereco(this.usuario);
             fe.setVisible(true);
-            this.getDesktopPane().add(fe);
-            this.dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
-        }
+            getDesktopPane().add(fe);
+            dispose();
 
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 

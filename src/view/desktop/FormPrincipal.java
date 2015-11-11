@@ -42,6 +42,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         usuarioMenuItem = new javax.swing.JMenuItem();
         produtoMenuItem = new javax.swing.JMenuItem();
         categoriaAsMenuItem = new javax.swing.JMenuItem();
+        jMenuOpcoes = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +83,26 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         menuBar.add(usuarioMenu);
 
+        jMenuOpcoes.setText("Opções");
+
+        jMenuItem1.setText("Limpar Tela");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenuOpcoes.add(jMenuItem1);
+
+        jMenuItem2.setText("Sair do sistema");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenuOpcoes.add(jMenuItem2);
+
+        menuBar.add(jMenuOpcoes);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -116,6 +139,18 @@ public class FormPrincipal extends javax.swing.JFrame {
         fc.setVisible(true);
         desktopPane.add(fc);
     }//GEN-LAST:event_categoriaAsMenuItemActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        this.removeAll();
+        this.repaint();
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,6 +190,9 @@ public class FormPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem categoriaAsMenuItem;
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenu jMenuOpcoes;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem produtoMenuItem;
     private javax.swing.JMenu usuarioMenu;

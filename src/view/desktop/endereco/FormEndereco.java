@@ -28,17 +28,17 @@ public class FormEndereco extends javax.swing.JInternalFrame {
     
     
 
-    public FormEndereco(Usuario u) throws  Exception {
+    public FormEndereco(Usuario u) {
         this.usuario = u;
         initComponents();
         buscarEndereco();
     }
 
     
-    public void buscarEndereco()throws Exception{
+    public void buscarEndereco(){
         Fachada fachada = new Fachada();
-        this.lista = fachada.enderecoBuscar(this.usuario.getId());
         try {
+            this.lista = fachada.enderecoBuscar(this.usuario.getId());
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.setColumnIdentifiers(new String[]{"ID", "Cep", "Bairro", "Cidade", "Logradouro", "Número", "Status"});
             if (lista.isEmpty()) {
