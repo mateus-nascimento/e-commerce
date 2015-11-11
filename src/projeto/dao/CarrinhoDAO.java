@@ -107,7 +107,6 @@ public class CarrinhoDAO extends DAOGeneric<Carrinho> implements ICarrinhoDAO {
         query.setParameter(1, idCarrinho);
         Carrinho carrinho = query.getSingleResult();
         
-        
         for(Produto p : carrinho.getProdutos()){
             if (p.getId() == idProduto) {
                 quantidadeItem++;

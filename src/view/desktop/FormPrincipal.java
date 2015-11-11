@@ -31,20 +31,13 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     private Funcionario funcionario;
     public FormPrincipal(Funcionario funcionario) {
+        initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.funcionario = funcionario;
         
         Image image = new ImageIcon(this.getClass().getResource("/material/icone.png")).getImage();
         this.setIconImage(image);
-        
-        this.funcionario = funcionario;
-        initComponents();
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
-
-    private FormPrincipal() {
-        JOptionPane.showMessageDialog(null, "construtor vaziosad.sa ");
-    }
-
- 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -88,6 +81,8 @@ public class FormPrincipal extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jMenuBar1.setBorder(new javax.swing.border.MatteBorder(null));
 
         jMenuMenu.setText("Menu");
 
@@ -188,90 +183,40 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void jMenuItemProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoActionPerformed
         // TODO add your handling code here:
         //this.limparTelas();
-        try {
-            FormProduto fp = new FormProduto();
-            this.jDesktopPane1.add(fp);
-            fp.show();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
-        }
+        FormProduto fp = new FormProduto();
+        fp.setVisible(true);
+        this.jDesktopPane1.add(fp);
     }//GEN-LAST:event_jMenuItemProdutoActionPerformed
 
     private void jMenuItemCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCategoriaActionPerformed
         // TODO add your handling code here:
         //this.limparTelas();
-        try {
-            FormCategoria fc = new FormCategoria();
-            this.jDesktopPane1.add(fc);
-            fc.show();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
-        }
-
+        FormCategoria fc = new FormCategoria();
+        fc.setVisible(true);
+        this.jDesktopPane1.add(fc);
     }//GEN-LAST:event_jMenuItemCategoriaActionPerformed
 
     private void jMenuItemFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncionarioActionPerformed
         // TODO add your handling code here:
         //this.limparTelas();
-        try {
-            FormFuncionario ff = new FormFuncionario();
-            this.jDesktopPane1.add(ff);
-            ff.show();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
-        }
+        FormFuncionario ff = new FormFuncionario(this.funcionario);
+        ff.setVisible(true);
+        this.jDesktopPane1.add(ff);
     }//GEN-LAST:event_jMenuItemFuncionarioActionPerformed
 
     private void jMenuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuarioActionPerformed
         // TODO add your handling code here:
         //this.limparTelas();
-        try {
-            FormUsuario fu = new FormUsuario();
-            this.jDesktopPane1.add(fu);
-            fu.show();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
-        }
+        FormUsuario fu = new FormUsuario();
+        fu.setVisible(true);
+        this.jDesktopPane1.add(fu);
     }//GEN-LAST:event_jMenuItemUsuarioActionPerformed
 
     public void limparTelas(){
         this.jDesktopPane1.removeAll();
         this.jDesktopPane1.repaint();
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FormPrincipal().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;

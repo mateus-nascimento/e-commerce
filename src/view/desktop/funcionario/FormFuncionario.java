@@ -21,8 +21,10 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
      * Creates new form FormFuncionario
      */
     private List<Funcionario> lista;
-    public FormFuncionario() {
+    private Funcionario funcionario;
+    public FormFuncionario(Funcionario funcionario) {
         initComponents();
+        this.funcionario = funcionario;
         buscarFuncionario();
     }
     public void buscarFuncionario(){
@@ -34,6 +36,7 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
             if (lista.size() == 0) {
                 JOptionPane.showMessageDialog(null, "Não existem funcionários cadastrados.");
             }
+            modelo.addRow(new String[]{ this.funcionario.getNome(), Integer.toString(this.funcionario.getMatricula()), this.funcionario.getCargo(), Boolean.toString(this.funcionario.isStatus())});
             for (Funcionario f : lista) {
                 //System.out.println(c.getNome());
                 modelo.addRow(new String[]{ f.getNome(), Integer.toString(f.getMatricula()), f.getCargo(), Boolean.toString(f.isStatus())});

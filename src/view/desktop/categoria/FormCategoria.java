@@ -27,13 +27,12 @@ public class FormCategoria extends javax.swing.JInternalFrame {
      */
     private List<Categoria> lista;
     
-    public FormCategoria() throws Exception{
+    public FormCategoria(){
         initComponents();
-        
         buscarCategorias();
     }
     
-    public void buscarCategorias() throws Exception{
+    public void buscarCategorias(){
         Fachada fachada = new Fachada();
         this.lista = fachada.categoriaBuscar();
         try {
