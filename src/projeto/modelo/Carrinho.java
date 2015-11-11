@@ -34,8 +34,8 @@ import org.hibernate.annotations.Cascade;
 @NamedQueries({@NamedQuery(name = "Carrinho.byUser", query = "SELECT C.id FROM Carrinho C WHERE c.usuario.id = ?1 "),
                @NamedQuery(name = "Carrinho.existe", query = "SELECT C.id FROM Carrinho C WHERE c.usuario.id = ?1 AND C.status = TRUE"),
                @NamedQuery(name = "Carrinho.getCarrinho", query = "SELECT C.id, C.status, C.usuario.id FROM Carrinho C where C.usuario.id = ?1 AND C.status = 1"),
-               @NamedQuery(name = "Carrinho.carrinho", query = "SELECT C FROM Carrinho C WHERE C.id = ?1"),
-               @NamedQuery(name = "Carrinho.quantidadeItem", query = "SELECT C FROM Carrinho C WHERE C.id = ?1 AND C.produtos.id = ?2")})
+               @NamedQuery(name = "Carrinho.carrinho", query = "SELECT C FROM Carrinho C WHERE C.id = ?1")})
+               
 public class Carrinho {
     @Id
     @GeneratedValue

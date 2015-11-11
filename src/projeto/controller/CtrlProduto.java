@@ -16,15 +16,15 @@ import projeto.modelo.Produto;
 public class CtrlProduto {
     public void cadastrar(Produto prod) throws Exception{
         
-        if (prod.getNome() == null){
-            throw new Exception("Favor preencher o campo do nome do usuário.");
-        }else if (prod.getCategoria() == null || prod.getCategoria().equals(prod))  {
-            
+        if (prod.getNome().equals("vazio")){
+            throw new Exception("Favor preencher o campo do nome do produto corretamente.");
+        }else if (prod.getValor() == 0)  {
+            throw new Exception("Favor preencher o campo do valor do produto corretamento.");
+        }else{
+            DAOFactory.getProdutoDAO().inserir(prod);
         }
-{
             
-        }
-        DAOFactory.getProdutoDAO().inserir(prod);
+        
     }
     public List<Produto> buscarProduto(){
         return DAOFactory.getProdutoDAO().buscarTudo();

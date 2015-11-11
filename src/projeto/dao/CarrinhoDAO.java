@@ -83,35 +83,37 @@ public class CarrinhoDAO extends DAOGeneric<Carrinho> implements ICarrinhoDAO {
         return quantidade;
     }
     
-    private int quantidadeItem = 0;
-    public int quantidadeItemCarrinho(int idCarrinho, int idProduto){
-        
-        EntityTransaction tx = getEntityManager().getTransaction();
-        tx.begin();
-        TypedQuery<Carrinho> query = getEntityManager().createNamedQuery("Carrinho.quantidadeItem", Carrinho.class);
-        query.setParameter(1, idCarrinho);
-        query.setParameter(2, idProduto);
-        Carrinho carrinho = query.getSingleResult();
-        
-        for(Produto p : carrinho.getProdutos()){
-            this.quantidadeItem++;
-        }
-        tx.commit();
-        return this.quantidadeItem;
-    }
-    
+    //valor total
     public double valorTotalCarrinho(int idCarrinho){
         double valor = 0;
         EntityTransaction tx = getEntityManager().getTransaction();
         tx.begin();
-        TypedQuery<Carrinho> query = getEntityManager().createNamedQuery("Carrinho.quantidadeValor", Carrinho.class);
+        TypedQuery<Carrinho> query = getEntityManager().createNamedQuery("Carrinho.carrinho", Carrinho.class);
         query.setParameter(1, idCarrinho);
         Carrinho carrinho = query.getSingleResult();
         
         for(Produto p : carrinho.getProdutos()){
-           valor += p.getValor() * this.quantidadeItem;
+           valor += p.getValor() * quantidadeItemCarrinho(idCarrinho, p.getId());
         }
         tx.commit();
         return valor;
+    }
+    
+    public int quantidadeItemCarrinho(int idCarrinho, int idProduto){
+         int quantidadeItem = 0;
+        EntityTransaction tx = getEntityManager().getTransaction();
+        tx.begin();
+        TypedQuery<Carrinho> query = getEntityManager().createNamedQuery("Carrinho.carrinho", Carrinho.class);
+        query.setParameter(1, idCarrinho);
+        Carrinho carrinho = query.getSingleResult();
+        
+        
+        for(Produto p : carrinho.getProdutos()){
+            if (p.getId() == idProduto) {
+                quantidadeItem++;
+            }
+        }
+        tx.commit();
+        return quantidadeItem;
     }
 }
