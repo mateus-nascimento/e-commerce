@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//teste
 package projeto.dao;
 
 import javax.persistence.EntityManager;
