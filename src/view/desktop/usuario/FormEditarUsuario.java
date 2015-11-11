@@ -268,14 +268,10 @@ public class FormEditarUsuario extends javax.swing.JInternalFrame {
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
-        try{
             FormUsuario fu = new FormUsuario();
             fu.setVisible(true);
             this.getDesktopPane().add(fu);
             this.dispose();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
-        }
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
 
