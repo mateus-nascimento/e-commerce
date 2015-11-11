@@ -309,7 +309,7 @@ public class FormSalvarUsuario extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 615, 372);
+        setBounds(0, 0, 1200, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
@@ -328,8 +328,8 @@ public class FormSalvarUsuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             Usuario usuario = new Usuario();
-            usuario.setNome(jTextFieldNome.getText());
-            usuario.setEmail(jTextFieldEmail.getText());
+            usuario.setNome(jTextFieldNome.getText().toUpperCase());
+            usuario.setEmail(jTextFieldEmail.getText().toUpperCase());
             usuario.setCpf(jFormattedTextFieldCpf.getText().replaceAll("\\.", "").replace("-", ""));
             usuario.setSenha(jPasswordFieldSenha.getText());
             usuario.setTelefoneFixo(jFormattedTextFieldTelefoneFixo.getText().replace("(", "").replace(")", "").replace("-", ""));
@@ -342,13 +342,13 @@ public class FormSalvarUsuario extends javax.swing.JInternalFrame {
                 }
 
             Endereco endereco = new Endereco();
-            endereco.setLogradouro(jTextFieldLogradouro.getText());
+            endereco.setLogradouro(jTextFieldLogradouro.getText().toUpperCase());
             endereco.setCep(jFormattedTextFieldCep.getText().replace("-", ""));
-            endereco.setBairro(jTextFieldBairro.getText());
-            endereco.setCidade(jTextFieldCidade.getText());
-            endereco.setEstado(jComboBoxEstado.getSelectedItem().toString());
+            endereco.setBairro(jTextFieldBairro.getText().toUpperCase());
+            endereco.setCidade(jTextFieldCidade.getText().toUpperCase());
+            endereco.setEstado(jComboBoxEstado.getSelectedItem().toString().toUpperCase());
             endereco.setNumero(Integer.parseInt(jTextFieldNumero.getText()));
-            endereco.setComplemento(jTextFieldComplemento.getText());
+            endereco.setComplemento(jTextFieldComplemento.getText().toUpperCase());
             endereco.setStatus(true);
 
             endereco.setUsuario(usuario);

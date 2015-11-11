@@ -25,7 +25,6 @@ public class FormUsuario extends javax.swing.JInternalFrame {
     public FormUsuario() {
         initComponents();
         buscarUsuarios();
-        JOptionPane.showMessageDialog(null, "Teoricamente já entrou no formUsuario e listou tds usuarios;");
     }
     
     private List<Usuario> lista;

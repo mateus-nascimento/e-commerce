@@ -57,6 +57,8 @@ public class FormSalvarCategoria extends javax.swing.JInternalFrame {
         jButtonConfirmar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
 
+        getContentPane().setLayout(null);
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Categoria"));
 
         jLabel1.setText("nome");
@@ -102,9 +104,9 @@ public class FormSalvarCategoria extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jRadioButtonInativo)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonConfirmar)
-                    .addComponent(jButtonCancelar))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -125,24 +127,10 @@ public class FormSalvarCategoria extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(10, 10, 305, 109);
 
-        pack();
+        setBounds(0, 0, 1200, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
@@ -150,7 +138,7 @@ public class FormSalvarCategoria extends javax.swing.JInternalFrame {
         try {
             Categoria categoria = new Categoria();
             if (this.idCategoria == 0) {
-                categoria.setNome(jTextFieldNome.getText());
+                categoria.setNome(jTextFieldNome.getText().toUpperCase());
 
                 if(jRadioButtonAtivo.isSelected()){
                     categoria.setStatus(true);
@@ -162,13 +150,15 @@ public class FormSalvarCategoria extends javax.swing.JInternalFrame {
                 fachada.categoriaCadastrar(categoria);
 
                 JOptionPane.showMessageDialog(null, "Categoria cadastrada com sucesso!");
-                this.dispose();
+                
 
                 FormCategoria fc = new FormCategoria();
-                fc.buscarCategorias();
+                fc.setVisible(true);
+                getDesktopPane().add(fc);
+                dispose();
             }else{
                 categoria.setId(this.idCategoria);
-                categoria.setNome(jTextFieldNome.getText());
+                categoria.setNome(jTextFieldNome.getText().toUpperCase());
 
                 if(jRadioButtonAtivo.isSelected()){
                     categoria.setStatus(true);
@@ -180,10 +170,12 @@ public class FormSalvarCategoria extends javax.swing.JInternalFrame {
                 fachada.categoriaAlterar(categoria);
 
                 JOptionPane.showMessageDialog(null, "Categoria editada com sucesso!");
-                this.dispose();
+                
 
                 FormCategoria fc = new FormCategoria();
-                fc.buscarCategorias();
+                fc.setVisible(true);
+                this.getDesktopPane().add(fc);
+                this.dispose();
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);

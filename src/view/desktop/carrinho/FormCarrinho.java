@@ -77,6 +77,7 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
         jTableCarrinho = new javax.swing.JTable();
 
         setTitle("Carrinho");
+        setPreferredSize(new java.awt.Dimension(1200, 650));
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -153,7 +154,7 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
                 .addGap(7, 7, 7))
         );
 
-        pack();
+        setBounds(0, 0, 1200, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComprarActionPerformed
@@ -169,8 +170,8 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
                     carrinho.setUsuario(this.usuario);
                     FormCarrinhoExistente fce = new FormCarrinhoExistente(carrinho, this.usuario);
                     fce.setVisible(true);
-                    this.getDesktopPane().add(fce);
-                    this.dispose();
+                    getDesktopPane().add(fce);
+                    dispose();
                 }
             }else{
                 
@@ -185,8 +186,8 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
                 carrinho.setUsuario(this.usuario);
                 FormCarrinhoExistente fce = new FormCarrinhoExistente(carrinho, this.usuario);
                 fce.setVisible(true);
-                this.getDesktopPane().add(fce);
-                this.dispose();
+                getDesktopPane().add(fce);
+                dispose();
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);

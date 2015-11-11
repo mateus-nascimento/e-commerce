@@ -45,10 +45,7 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
-        
     }
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -177,7 +174,7 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
                 .addGap(39, 39, 39))
         );
 
-        setBounds(0, 0, 500, 481);
+        setBounds(0, 0, 1200, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirActionPerformed
@@ -186,7 +183,6 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
         fsf.setVisible(true);
         this.getDesktopPane().add(fsf);
         this.dispose();
-        
     }//GEN-LAST:event_jButtonInserirActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
@@ -201,7 +197,6 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
         fef.setVisible(true);
         this.getDesktopPane().add(fef);
         this.dispose();
-        
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
 

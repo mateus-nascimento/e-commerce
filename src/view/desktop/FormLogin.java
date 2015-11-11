@@ -8,7 +8,6 @@ package view.desktop;
 import javax.swing.JOptionPane;
 import projeto.fachada.Fachada;
 import projeto.modelo.Funcionario;
-import View.desktop.FormPrincipal;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 //import java.awt.Image;
@@ -185,24 +184,17 @@ public class FormLogin extends javax.swing.JFrame {
             
             if (new Fachada().usuarioLogin(func)) {
                 
-                Funcionario funcionario = new Fachada().carregarFuncionario(func);//erro ao carregar os dados do funcionario
-                //JOptionPane.showMessageDialog(null, "Funcionaro "+ funcionario.getMatricula());
-                FormPrincipal fp = new FormPrincipal(funcionario);
+                //Funcionario funcionario = new Fachada().carregarFuncionario(func);//erro ao carregar os dados do funcionario
+                FormPrincipal fp = new FormPrincipal();
                 this.setVisible(false);
                 fp.setVisible(true);
                 //this.dispose();
             }else{
                 JOptionPane.showMessageDialog(null, "Dados incoretos, tente novamente\\.");
             }
-                
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Erro ao entrar no sistema", JOptionPane.ERROR_MESSAGE);
         }
-        
-        
-        
-        
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

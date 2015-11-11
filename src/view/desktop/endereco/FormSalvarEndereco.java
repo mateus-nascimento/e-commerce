@@ -242,7 +242,7 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pack();
+        setBounds(0, 0, 1200, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
@@ -252,13 +252,13 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
 
                 //atribuir esse endereco para esse usuario buscado
                 Endereco end = new Endereco();
-                end.setLogradouro(jTextFieldLogradouro.getText());
+                end.setLogradouro(jTextFieldLogradouro.getText().toUpperCase());
                 end.setCep(jFormattedTextFieldCep.getText().replace("-", ""));
-                end.setBairro(jTextFieldBairro.getText());
-                end.setCidade(jTextFieldCidade.getText());
-                end.setEstado(jComboBoxEstado.getSelectedItem().toString());
+                end.setBairro(jTextFieldBairro.getText().toUpperCase());
+                end.setCidade(jTextFieldCidade.getText().toUpperCase());
+                end.setEstado(jComboBoxEstado.getSelectedItem().toString().toUpperCase());
                 end.setNumero(Integer.parseInt(jTextFieldNumero.getText()));
-                end.setComplemento(jTextFieldComplemento.getText());
+                end.setComplemento(jTextFieldComplemento.getText().toUpperCase());
 
                 end.setUsuario(this.usuario);
 
@@ -276,7 +276,6 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
                 
                 FormEndereco fe = new FormEndereco(this.usuario);
                 fe.setVisible(true);
-                fe.buscarEndereco();
                 this.getDesktopPane().add(fe);
                 this.dispose();
                 

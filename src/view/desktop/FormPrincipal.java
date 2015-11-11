@@ -3,21 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.desktop;
+package view.desktop;
 
-import View.desktop.usuario.*;
-import View.desktop.categoria.*;
-import View.desktop.funcionario.*;
-import View.desktop.produto.*;
+import View.desktop.categoria.FormCategoria;
+import View.desktop.produto.FormProduto;
+import View.desktop.usuario.FormUsuario;
 import java.awt.Image;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import projeto.fachada.Fachada;
-import projeto.modelo.Carrinho;
-import projeto.modelo.Funcionario;
 
 /**
  *
@@ -28,17 +20,13 @@ public class FormPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form FormPrincipal
      */
-
-    private Funcionario funcionario;
-    public FormPrincipal(Funcionario funcionario) {
+    
+    public FormPrincipal() {
         initComponents();
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.funcionario = funcionario;
         
         Image image = new ImageIcon(this.getClass().getResource("/material/icone.png")).getImage();
         this.setIconImage(image);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,189 +36,126 @@ public class FormPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        jLabel1 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenuMenu = new javax.swing.JMenu();
-        jMenuItemUsuario = new javax.swing.JMenuItem();
-        jMenuItemFuncionario = new javax.swing.JMenuItem();
-        jMenuItemCategoria = new javax.swing.JMenuItem();
-        jMenuItemProduto = new javax.swing.JMenuItem();
-        jMenuItemOs = new javax.swing.JMenuItem();
-        jMenuItemEntrega = new javax.swing.JMenuItem();
-        jMenuOpcoes = new javax.swing.JMenu();
-        jMenuItemLimpar = new javax.swing.JMenuItem();
-        jMenuItemSair = new javax.swing.JMenuItem();
+        desktopPane = new javax.swing.JDesktopPane();
+        menuBar = new javax.swing.JMenuBar();
+        usuarioMenu = new javax.swing.JMenu();
+        usuarioMenuItem = new javax.swing.JMenuItem();
+        produtoMenuItem = new javax.swing.JMenuItem();
+        categoriaAsMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
-        setSize(new java.awt.Dimension(0, 0));
 
-        jDesktopPane1.setBackground(new java.awt.Color(153, 153, 153));
+        usuarioMenu.setMnemonic('f');
+        usuarioMenu.setText("Menu");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/MenuPrincipal.png"))); // NOI18N
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        jMenuBar1.setBorder(new javax.swing.border.MatteBorder(null));
-
-        jMenuMenu.setText("Menu");
-
-        jMenuItemUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Usuario.png"))); // NOI18N
-        jMenuItemUsuario.setText("Usuário");
-        jMenuItemUsuario.addActionListener(new java.awt.event.ActionListener() {
+        usuarioMenuItem.setMnemonic('o');
+        usuarioMenuItem.setText("Usuário");
+        usuarioMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemUsuarioActionPerformed(evt);
+                usuarioMenuItemActionPerformed(evt);
             }
         });
-        jMenuMenu.add(jMenuItemUsuario);
+        usuarioMenu.add(usuarioMenuItem);
 
-        jMenuItemFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Funcionario.png"))); // NOI18N
-        jMenuItemFuncionario.setText("Funcionário");
-        jMenuItemFuncionario.addActionListener(new java.awt.event.ActionListener() {
+        produtoMenuItem.setMnemonic('s');
+        produtoMenuItem.setText("Produto");
+        produtoMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemFuncionarioActionPerformed(evt);
+                produtoMenuItemActionPerformed(evt);
             }
         });
-        jMenuMenu.add(jMenuItemFuncionario);
+        usuarioMenu.add(produtoMenuItem);
 
-        jMenuItemCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Categoria.png"))); // NOI18N
-        jMenuItemCategoria.setText("Categoria");
-        jMenuItemCategoria.addActionListener(new java.awt.event.ActionListener() {
+        categoriaAsMenuItem.setMnemonic('a');
+        categoriaAsMenuItem.setText("Categorias");
+        categoriaAsMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemCategoriaActionPerformed(evt);
+                categoriaAsMenuItemActionPerformed(evt);
             }
         });
-        jMenuMenu.add(jMenuItemCategoria);
+        usuarioMenu.add(categoriaAsMenuItem);
 
-        jMenuItemProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Produto.png"))); // NOI18N
-        jMenuItemProduto.setText("Produto");
-        jMenuItemProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemProdutoActionPerformed(evt);
-            }
-        });
-        jMenuMenu.add(jMenuItemProduto);
+        menuBar.add(usuarioMenu);
 
-        jMenuItemOs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Os.png"))); // NOI18N
-        jMenuItemOs.setText("Os");
-        jMenuMenu.add(jMenuItemOs);
-
-        jMenuItemEntrega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Entrega.png"))); // NOI18N
-        jMenuItemEntrega.setText("Entrega");
-        jMenuMenu.add(jMenuItemEntrega);
-
-        jMenuBar1.add(jMenuMenu);
-
-        jMenuOpcoes.setText("Opções");
-
-        jMenuItemLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Limpar.png"))); // NOI18N
-        jMenuItemLimpar.setText("Limpar Tela");
-        jMenuItemLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemLimparActionPerformed(evt);
-            }
-        });
-        jMenuOpcoes.add(jMenuItemLimpar);
-
-        jMenuItemSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Sair.png"))); // NOI18N
-        jMenuItemSair.setText("Sair");
-        jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemSairActionPerformed(evt);
-            }
-        });
-        jMenuOpcoes.add(jMenuItemSair);
-
-        jMenuBar1.add(jMenuOpcoes);
-
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1200, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLimparActionPerformed
+    private void usuarioMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioMenuItemActionPerformed
         // TODO add your handling code here:
-        this.limparTelas();
-    }//GEN-LAST:event_jMenuItemLimparActionPerformed
-
-    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItemSairActionPerformed
-
-    private void jMenuItemProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoActionPerformed
-        // TODO add your handling code here:
-        //this.limparTelas();
-        FormProduto fp = new FormProduto();
-        fp.setVisible(true);
-        this.jDesktopPane1.add(fp);
-    }//GEN-LAST:event_jMenuItemProdutoActionPerformed
-
-    private void jMenuItemCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCategoriaActionPerformed
-        // TODO add your handling code here:
-        //this.limparTelas();
-        FormCategoria fc = new FormCategoria();
-        fc.setVisible(true);
-        this.jDesktopPane1.add(fc);
-    }//GEN-LAST:event_jMenuItemCategoriaActionPerformed
-
-    private void jMenuItemFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncionarioActionPerformed
-        // TODO add your handling code here:
-        //this.limparTelas();
-        FormFuncionario ff = new FormFuncionario(this.funcionario);
-        ff.setVisible(true);
-        this.jDesktopPane1.add(ff);
-    }//GEN-LAST:event_jMenuItemFuncionarioActionPerformed
-
-    private void jMenuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuarioActionPerformed
-        // TODO add your handling code here:
-        //this.limparTelas();
         FormUsuario fu = new FormUsuario();
         fu.setVisible(true);
-        this.jDesktopPane1.add(fu);
-    }//GEN-LAST:event_jMenuItemUsuarioActionPerformed
+        desktopPane.add(fu);
+    }//GEN-LAST:event_usuarioMenuItemActionPerformed
 
-    public void limparTelas(){
-        this.jDesktopPane1.removeAll();
-        this.jDesktopPane1.repaint();
+    private void produtoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtoMenuItemActionPerformed
+        // TODO add your handling code here:
+        FormProduto fp = new FormProduto();
+        fp.setVisible(true);
+        desktopPane.add(fp);
+    }//GEN-LAST:event_produtoMenuItemActionPerformed
+
+    private void categoriaAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriaAsMenuItemActionPerformed
+        // TODO add your handling code here:
+        FormCategoria fc = new FormCategoria();
+        fc.setVisible(true);
+        desktopPane.add(fc);
+    }//GEN-LAST:event_categoriaAsMenuItemActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FormPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FormPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FormPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FormPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FormPrincipal().setVisible(true);
+            }
+        });
     }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItemCategoria;
-    private javax.swing.JMenuItem jMenuItemEntrega;
-    private javax.swing.JMenuItem jMenuItemFuncionario;
-    private javax.swing.JMenuItem jMenuItemLimpar;
-    private javax.swing.JMenuItem jMenuItemOs;
-    private javax.swing.JMenuItem jMenuItemProduto;
-    private javax.swing.JMenuItem jMenuItemSair;
-    private javax.swing.JMenuItem jMenuItemUsuario;
-    private javax.swing.JMenu jMenuMenu;
-    private javax.swing.JMenu jMenuOpcoes;
+    private javax.swing.JMenuItem categoriaAsMenuItem;
+    private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem produtoMenuItem;
+    private javax.swing.JMenu usuarioMenu;
+    private javax.swing.JMenuItem usuarioMenuItem;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -78,6 +78,7 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
         jButtonConfirmar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
 
+        setEnabled(false);
         getContentPane().setLayout(null);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
@@ -251,30 +252,30 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
         getContentPane().add(jToolBar1);
         jToolBar1.setBounds(10, 408, 579, 23);
 
-        pack();
+        setBounds(0, 0, 1200, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
         // TODO add your handling code here:
         try {
-            Funcionario funcionario = new Funcionario();
-            funcionario.setId(this.funcionario.getId());
-            funcionario.setNome(jTextFieldNome.getText());
-            funcionario.setEmail(jTextFieldEmail.getText());
-            funcionario.setCpf(jFormattedTextFieldCpf.getText().replaceAll(".", "").replace("-", ""));
-            funcionario.setSenha(jPasswordFieldSenha.getText());
-            funcionario.setTelefoneFixo(jFormattedTextFieldTelefoneFixo.getText().replace("(", "").replace(")", "").replace("-", ""));
-            funcionario.setTelefoneCelular(jFormattedTextFieldTelefoneCelular.getText().replace("(", "").replace(")", "").replace("-", ""));
-            funcionario.setCargo(jTextFieldCargo.getText());
-            funcionario.setSetor(jTextFieldSetor.getText());
+            Funcionario func = new Funcionario();
+            func.setId(this.funcionario.getId());
+            func.setNome(jTextFieldNome.getText().toUpperCase());
+            func.setEmail(jTextFieldEmail.getText().toUpperCase());
+            func.setCpf(jFormattedTextFieldCpf.getText().replaceAll("\\.", "").replace("-", ""));
+            func.setSenha(jPasswordFieldSenha.getText());
+            func.setTelefoneFixo(jFormattedTextFieldTelefoneFixo.getText().replace("(", "").replace(")", "").replace("-", ""));
+            func.setTelefoneCelular(jFormattedTextFieldTelefoneCelular.getText().replace("(", "").replace(")", "").replace("-", ""));
+            func.setCargo(jTextFieldCargo.getText().toUpperCase());
+            func.setSetor(jTextFieldSetor.getText().toUpperCase());
             if (jRadioButtonAtivo.isSelected()){
-                funcionario.setStatus(true);
+                func.setStatus(true);
             }else{
-                funcionario.setStatus(false);
+                func.setStatus(false);
             }
             
             Fachada fachada = new Fachada();
-            fachada.funcionarioAlterar(funcionario);
+            fachada.funcionarioAlterar(func);
             JOptionPane.showMessageDialog(null, "Funcionario alterado com sucesso!");
             
             

@@ -5,7 +5,6 @@
  */
 package view.desktop.carrinho;
 
-import java.awt.Dimension;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -44,7 +43,8 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
             
             if (lista.size() == 0) {
             
-                JOptionPane.showMessageDialog(null, "Não existem produtos cadastrados.");
+                JOptionPane.showMessageDialog(null, "Não existem produtos cadastrados, favor inserir produtos primeiro.");
+                dispose();
             }
             for(Produto p : lista){
                 //System.out.println(p.getNome());
@@ -88,6 +88,8 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
         jButtonAdicionar = new javax.swing.JButton();
         jButtonRemover = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
+
+        setPreferredSize(new java.awt.Dimension(1200, 650));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Produtos"));
 
@@ -200,15 +202,15 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pack();
+        setBounds(0, 0, 1200, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
         FormCarrinhoExistente fce = new FormCarrinhoExistente(this.carrinho, this.usuario);
         fce.setVisible(true);
-        this.getDesktopPane().add(fce);
-        this.dispose();
+        getDesktopPane().add(fce);
+        dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed

@@ -75,6 +75,8 @@ public class FormProduto extends javax.swing.JInternalFrame {
 
         setTitle("Produto");
 
+        jPanel1.setLayout(null);
+
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Produtos"));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -101,6 +103,10 @@ public class FormProduto extends javax.swing.JInternalFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
         );
 
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(10, 11, 464, 271);
+
+        jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
         jButtonInserir.setText("Inserir Novo Produto");
@@ -150,25 +156,8 @@ public class FormProduto extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(jButtonSair);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-        );
+        jPanel1.add(jToolBar1);
+        jToolBar1.setBounds(10, 288, 464, 44);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,15 +172,15 @@ public class FormProduto extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        pack();
+        setBounds(0, 0, 1200, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirActionPerformed
         // TODO add your handling code here:
         FormSalvarProduto fsp = new FormSalvarProduto();
         fsp.setVisible(true);
-        this.getDesktopPane().add(fsp);
-        this.dispose();
+        getDesktopPane().add(fsp);
+        dispose();
     }//GEN-LAST:event_jButtonInserirActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
@@ -206,8 +195,8 @@ public class FormProduto extends javax.swing.JInternalFrame {
                 Produto p = this.lista.get(jTable1.getSelectedRow());
                 FormSalvarProduto fsp = new FormSalvarProduto(p);
                 fsp.setVisible(true);
-                this.getDesktopPane().add(fsp);
-                this.dispose();
+                getDesktopPane().add(fsp);
+                dispose();
             }else{
                 JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
             }

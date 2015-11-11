@@ -6,10 +6,7 @@
 package View.desktop.categoria;
 
 
-import java.beans.PropertyVetoException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -178,26 +175,24 @@ public class FormCategoria extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        pack();
+        setBounds(0, 0, 1200, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirActionPerformed
-        try {
+        
             // TODO add your handling code here:
             FormSalvarCategoria fsc = new FormSalvarCategoria();
             fsc.setVisible(true);
-            this.getDesktopPane().add(fsc);
-            this.dispose();
+            getDesktopPane().add(fsc);
+            dispose();
             //this.buscarCategorias();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
-        }
+        
         
     }//GEN-LAST:event_jButtonInserirActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
@@ -207,8 +202,8 @@ public class FormCategoria extends javax.swing.JInternalFrame {
                 Categoria c = this.lista.get(jTable1.getSelectedRow());
                 FormSalvarCategoria fsc = new FormSalvarCategoria(c);
                 fsc.setVisible(true);
-                this.getDesktopPane().add(fsc);
-                this.dispose();
+                getDesktopPane().add(fsc);
+                dispose();
             }else{
                 JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
             }

@@ -154,7 +154,7 @@ private Usuario usuario;
                 .addContainerGap())
         );
 
-        pack();
+        setBounds(0, 0, 1200, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConcluirActionPerformed
@@ -162,8 +162,8 @@ private Usuario usuario;
         try {
             FormCarrinho fc = new FormCarrinho(this.usuario);
             fc.setVisible(true);
-            this.getDesktopPane().add(fc);
-            this.dispose();
+            getDesktopPane().add(fc);
+            dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
@@ -174,8 +174,8 @@ private Usuario usuario;
         try {
             FormAdicionarProdutos fap = new FormAdicionarProdutos(this.carrinho, this.usuario);
             fap.setVisible(true);
-            this.getDesktopPane().add(fap);
-            this.dispose();
+            getDesktopPane().add(fap);
+            dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }

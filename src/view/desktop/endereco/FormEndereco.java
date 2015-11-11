@@ -40,14 +40,12 @@ public class FormEndereco extends javax.swing.JInternalFrame {
         this.lista = fachada.enderecoBuscar(this.usuario.getId());
         try {
             DefaultTableModel modelo = new DefaultTableModel();
-            //modelo.setColumnIdentifiers(new String[]{"ID", "Cep", "Bairro", "Cidade", "Logradouro", "Número", "Status"});
-            modelo.setColumnIdentifiers(new String[]{"Logradouro"});
+            modelo.setColumnIdentifiers(new String[]{"ID", "Cep", "Bairro", "Cidade", "Logradouro", "Número", "Status"});
             if (lista.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Usuário não possui endereços associados");
             }
             for (Endereco e : lista) {
-                //modelo.addRow(new String[]{Integer.toString(e.getId()), e.getCep(), e.getBairro(), e.getCidade(), e.getLogradouro(), Integer.toString(e.getNumero()), Boolean.toString(e.isStatus())});
-                modelo.addRow(new String[]{e.getLogradouro()});
+                modelo.addRow(new String[]{Integer.toString(e.getId()), e.getCep(), e.getBairro(), e.getCidade(), e.getLogradouro(), Integer.toString(e.getNumero()), Boolean.toString(e.isStatus())});
             }
             jTable1.setModel(modelo);
         } catch (Exception e) {
@@ -196,7 +194,7 @@ public class FormEndereco extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        pack();
+        setBounds(0, 0, 1200, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirActionPerformed
@@ -204,8 +202,8 @@ public class FormEndereco extends javax.swing.JInternalFrame {
         try {
             FormSalvarEndereco fse = new FormSalvarEndereco(this.usuario);
             fse.setVisible(true);
-            this.getDesktopPane().add(fse);
-            this.dispose();
+            getDesktopPane().add(fse);
+            dispose();
             
         } catch (Exception e) {
             e.getMessage();
@@ -217,8 +215,8 @@ public class FormEndereco extends javax.swing.JInternalFrame {
         try {
             FormUsuario fu = new FormUsuario();
             fu.setVisible(true);
-            this.getDesktopPane().add(fu);
-            this.dispose();
+            getDesktopPane().add(fu);
+            dispose();
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jButtonSairActionPerformed

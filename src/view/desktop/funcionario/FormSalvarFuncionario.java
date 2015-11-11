@@ -347,18 +347,18 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        setBounds(0, 0, 615, 449);
+        setBounds(0, 0, 1200, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
         // TODO add your handling code here:
         Usuario usuario = new Usuario();
-        usuario.setNome(jTextFieldNome.getText());
-        usuario.setEmail(jTextFieldEmail.getText());
+        usuario.setNome(jTextFieldNome.getText().toUpperCase());
+        usuario.setEmail(jTextFieldEmail.getText().toUpperCase());
         usuario.setCpf(jFormattedTextFieldCpf.getText().replaceAll("\\.", "").replace("-", ""));
         usuario.setSenha(jPasswordFieldSenha.getText());
         usuario.setTelefoneFixo(jFormattedTextFieldTelefoneFixo.getText().replace("(", "").replace(")", "").replace("-", ""));
@@ -366,13 +366,13 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
         
         
         Endereco endereco = new Endereco();
-        endereco.setLogradouro(jTextFieldLogradouro.getText());
+        endereco.setLogradouro(jTextFieldLogradouro.getText().toUpperCase());
         endereco.setCep(jFormattedTextFieldCep.getText().replace("-", ""));
-        endereco.setBairro(jTextFieldBairro.getText());
-        endereco.setCidade(jTextFieldCidade.getText());
-        endereco.setEstado(jComboBoxEstado.getSelectedItem().toString());
+        endereco.setBairro(jTextFieldBairro.getText().toUpperCase());
+        endereco.setCidade(jTextFieldCidade.getText().toUpperCase());
+        endereco.setEstado(jComboBoxEstado.getSelectedItem().toString().toUpperCase());
         endereco.setNumero(Integer.parseInt(jTextFieldNumero.getText()));
-        endereco.setComplemento(jTextFieldComplemento.getText());
+        endereco.setComplemento(jTextFieldComplemento.getText().toUpperCase());
         endereco.setStatus(true);
         endereco.setUsuario(usuario);
         
@@ -383,8 +383,8 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
             funcionario.setStatus(false);
         }
         
-        funcionario.setSetor(jTextFieldSetor.getText());
-        funcionario.setCargo(jTextFieldCargo.getText());
+        funcionario.setSetor(jTextFieldSetor.getText().toUpperCase());
+        funcionario.setCargo(jTextFieldCargo.getText().toUpperCase());
         // qual cascata usar para inserir um usuario, endereco, e funcionario td junto.
         
         JOptionPane.showMessageDialog(null, "Implementar o tipo de cascata\n"

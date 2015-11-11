@@ -223,7 +223,7 @@ public class FormEditarUsuario extends javax.swing.JInternalFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        pack();
+        setBounds(0, 0, 1200, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
@@ -231,8 +231,8 @@ public class FormEditarUsuario extends javax.swing.JInternalFrame {
             try {
                 
                 Usuario usuario = new Usuario();
-                usuario.setNome(jTextFieldNome.getText());
-                usuario.setEmail(jTextFieldEmail.getText());
+                usuario.setNome(jTextFieldNome.getText().toUpperCase());
+                usuario.setEmail(jTextFieldEmail.getText().toUpperCase());
                 usuario.setCpf(jFormattedTextFieldCpf.getText().replaceAll("\\.", "").replace("-", ""));
                 usuario.setSenha(jPasswordFieldSenha.getText());
                 usuario.setTelefoneFixo(jFormattedTextFieldTelefoneFixo.getText().replace("(", "").replace(")", "").replace("-", ""));

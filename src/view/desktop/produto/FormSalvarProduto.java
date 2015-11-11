@@ -5,6 +5,7 @@
  */
 package View.desktop.produto;
 
+import View.desktop.categoria.FormCategoria;
 import java.util.List;
 import javax.swing.JOptionPane;
 import projeto.fachada.Fachada;
@@ -29,6 +30,11 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
         try {
             Fachada fachada = new Fachada();
             List<Categoria> lista = fachada.categoriaBuscar();
+            
+            if (lista.size() == 0) {
+                    JOptionPane.showMessageDialog(null, "Favor criar uma categoria para organizar os produtos.", "Não existem categorias cadastradas", JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+            }
 
             if (lista.size() > 0) {
 
@@ -42,7 +48,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }
-    private int idProduto;
+    private int idProduto = 0;
     FormSalvarProduto(Produto p) {
         initComponents();
         
@@ -103,7 +109,11 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
         jTextAreaDescricao.setRows(5);
         jScrollPane1.setViewportView(jTextAreaDescricao);
 
-        jFormattedTextFieldValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        try {
+            jFormattedTextFieldValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         buttonGroup1.add(jRadioButtonAtivo);
         jRadioButtonAtivo.setSelected(true);
@@ -216,7 +226,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setBounds(0, 0, 299, 350);
+        setBounds(0, 0, 1200, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
@@ -231,8 +241,8 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
 
                 Categoria categoria = new Categoria();
                 categoria.setId(jComboBoxCategoria.getSelectedIndex());
-                produto.setNome(jTextFieldNome.getText());
-                produto.setValor(Float.parseFloat(jFormattedTextFieldValor.getText()));
+                produto.setNome(jTextFieldNome.getText().toUpperCase());
+                produto.setValor(Float.parseFloat(jFormattedTextFieldValor.getText().replace("\\.", "")));
 
                 if (jRadioButtonAtivo.isSelected()) {
                     produto.setStatus(true);
@@ -240,7 +250,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                     produto.setStatus(false);
                 }
 
-                produto.setDescricao(jTextAreaDescricao.getText());
+                produto.setDescricao(jTextAreaDescricao.getText().toUpperCase());
 
                 produto.setCategoria(categoria);//
 
@@ -248,11 +258,15 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 fachada.produtoCadastrar(produto);
 
                 JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
-                this.dispose();
+                
+                FormProduto fp = new FormProduto();
+                fp.setVisible(true);
+                getDesktopPane().add(fp);
+                dispose();
             }else{
                 Categoria categoria = new Categoria();
                 categoria.setId(jComboBoxCategoria.getSelectedIndex());
-                produto.setNome(jTextFieldNome.getText());
+                produto.setNome(jTextFieldNome.getText().toUpperCase());
                 produto.setValor(Float.parseFloat(jFormattedTextFieldValor.getText()));
 
                 if (jRadioButtonAtivo.isSelected()) {
@@ -261,7 +275,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                     produto.setStatus(false);
                 }
 
-                produto.setDescricao(jTextAreaDescricao.getText());
+                produto.setDescricao(jTextAreaDescricao.getText().toUpperCase());
 
                 produto.setCategoria(categoria);//
 
@@ -269,7 +283,12 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 fachada.produtoAlterar(produto);
 
                 JOptionPane.showMessageDialog(null, "Produto alterado com sucesso!");
-                this.dispose();
+                
+                FormProduto fp = new FormProduto();
+                fp.setVisible(true);
+                getDesktopPane().add(fp);
+                dispose();
+                
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
@@ -278,14 +297,11 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
-        try {
-            FormProduto fp = new FormProduto();
-            fp.setVisible(true);
-            this.getDesktopPane().add(fp);
-            this.dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
-        }
+        
+        FormProduto fp = new FormProduto();
+        fp.setVisible(true);
+        this.getDesktopPane().add(fp);
+        this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
 

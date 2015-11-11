@@ -38,17 +38,17 @@ public class Produto {
     }
     
     //anottations do relacionamento com categoria (N:1)
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idCategoria")//coluna estrangeira que vai ser criada aqui (idCategoria em produto)
     private Categoria categoria;
     
     
     //anottations do relacionamento com carrinho (N:N)
-    /*@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    //@ManyToMany(mappedBy = "produtos")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "Produto_Carrinho",//nome da tabela que ira ser gerada no banco de dados
                joinColumns = @JoinColumn(name = "idProduto"),//nome da chave primaria da tabela de produto
-               inverseJoinColumns = @JoinColumn(name = "idCarrinho"))//nome da chave estrangeira na tabela carrinho em Produto_Carrinho*/
-    @ManyToMany(mappedBy = "produtos")
+               inverseJoinColumns = @JoinColumn(name = "idCarrinho"))//nome da chave estrangeira na tabela carrinho em Produto_Carrinho
     private Collection<Carrinho> carrinhos;
 
     /**
