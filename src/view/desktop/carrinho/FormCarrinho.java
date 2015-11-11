@@ -7,8 +7,6 @@ package View.desktop.carrinho;
 
 import View.desktop.usuario.FormUsuario;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import projeto.fachada.Fachada;
@@ -30,13 +28,13 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
     private List<Carrinho> lista;
     Fachada fachada = new Fachada();
     
-    public FormCarrinho(Usuario usuario) throws Exception {
+    public FormCarrinho(Usuario usuario) {
         initComponents();
         this.usuario = usuario;
         listarCarrinhos();
     }
     
-    public void listarCarrinhos() throws Exception{
+    public void listarCarrinhos(){
         
         try {
             this.lista = this.fachada.carrinhoListar(this.usuario.getId());
@@ -51,7 +49,7 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
                 }
             }
             for (Carrinho c : lista) {
-                modelo.addRow(new String[]{Integer.toString(c.getId()), Integer.toString(this.fachada.quantidadeItem(c.getId())), Double.toString(this.fachada.valorTotalCarrinho(c.getId())), Boolean.toString(c.isStatus())});
+                modelo.addRow(new String[]{Integer.toString(c.getId()), Integer.toString(this.fachada.quantidadeItemTotal(c.getId())), Double.toString(this.fachada.valorTotalCarrinho(c.getId())), Boolean.toString(c.isStatus())});
             }
             jTableCarrinho.setModel(modelo);
         } catch (Exception e) {

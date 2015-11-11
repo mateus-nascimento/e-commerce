@@ -92,7 +92,7 @@ public class Fachada {
         List<Carrinho> lista = ctrlCarrinho.carrinhoListar(idUsuario);
         return lista;
     }
-    public int quantidadeItem(int id) throws Exception{
+    public int quantidadeItemTotal(int id) throws Exception{
         int quantidade = ctrlCarrinho.quantidadeItem(id);
         return quantidade;
     }

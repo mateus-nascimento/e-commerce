@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
 import projeto.fachada.Fachada;
 import projeto.modelo.Funcionario;
 import View.desktop.FormPrincipal;
-import projeto.modelo.Usuario;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 //import java.awt.Image;
 //import javax.swing.ImageIcon;
 
@@ -25,8 +26,8 @@ public class FormLogin extends javax.swing.JFrame {
     public FormLogin() {
         initComponents();
         
-        //Image image = new ImageIcon(this.getClass().getResource("/material/icone.png")).getImage();
-        //this.setIconImage(image);
+        Image image = new ImageIcon(this.getClass().getResource("/material/icone.png")).getImage();
+        this.setIconImage(image);
     }
 
     /**

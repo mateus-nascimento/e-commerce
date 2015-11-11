@@ -10,9 +10,13 @@ import View.desktop.categoria.*;
 import View.desktop.funcionario.*;
 import View.desktop.produto.*;
 import java.awt.Image;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import projeto.fachada.Fachada;
+import projeto.modelo.Carrinho;
 import projeto.modelo.Funcionario;
 
 /**
@@ -212,7 +216,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         try {
             FormFuncionario ff = new FormFuncionario();
             this.jDesktopPane1.add(ff);
-            ff.setVisible(true);
+            ff.show();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
@@ -222,13 +226,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         //this.limparTelas();
         try {
-            JOptionPane.showMessageDialog(null, "ai meu caralho1");
             FormUsuario fu = new FormUsuario();
-            JOptionPane.showMessageDialog(null, "ai meu caralho2");
             this.jDesktopPane1.add(fu);
-            JOptionPane.showMessageDialog(null, "ai meu caralho3");
-            fu.setVisible(true);
-            JOptionPane.showMessageDialog(null, "ai meu caralho4");
+            fu.show();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }

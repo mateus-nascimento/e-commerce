@@ -56,38 +56,61 @@ public class CarrinhoDAO extends DAOGeneric<Carrinho> implements ICarrinhoDAO {
     public boolean carrinhoExiste(int idUsuario){
         List carrinho = null;
         boolean retorno = false;
-        
         EntityTransaction tx = getEntityManager().getTransaction();
         tx.begin();
         Query query = getEntityManager().createNamedQuery("Carrinho.existe");
         query.setParameter(1, idUsuario);
         carrinho = query.getResultList();
         tx.commit();
-        
         if(carrinho.size() > 0){
             retorno = true;
         }
         return retorno;
     }
-    
-    public int quantidadeItem(int idCarrinho){
+ 
+    public int quantidadeItemTotal(int idCarrinho){
         int quantidade = 0;
         EntityTransaction tx = getEntityManager().getTransaction();
         tx.begin();
-        TypedQuery<Integer> query = getEntityManager().createNamedQuery("Carrinho.quantidade", Integer.class);
+        TypedQuery<Carrinho> query = getEntityManager().createNamedQuery("Carrinho.carrinho", Carrinho.class);
         query.setParameter(1, idCarrinho);
-        quantidade = query.getSingleResult();//testar diferenca entre first e max result
+        Carrinho carrinho = query.getSingleResult();
+        
+        for(Produto p : carrinho.getProdutos()){
+            quantidade++;
+        }
         tx.commit();
         return quantidade;
+    }
+    
+    private int quantidadeItem = 0;
+    public int quantidadeItemCarrinho(int idCarrinho, int idProduto){
+        
+        EntityTransaction tx = getEntityManager().getTransaction();
+        tx.begin();
+        TypedQuery<Carrinho> query = getEntityManager().createNamedQuery("Carrinho.quantidadeItem", Carrinho.class);
+        query.setParameter(1, idCarrinho);
+        query.setParameter(2, idProduto);
+        Carrinho carrinho = query.getSingleResult();
+        
+        for(Produto p : carrinho.getProdutos()){
+            this.quantidadeItem++;
+        }
+        tx.commit();
+        return this.quantidadeItem;
     }
     
     public double valorTotalCarrinho(int idCarrinho){
         double valor = 0;
         EntityTransaction tx = getEntityManager().getTransaction();
         tx.begin();
-        TypedQuery<Double> query = getEntityManager().createNamedQuery("Carrinho.valorTotal", Double.class);
+        TypedQuery<Carrinho> query = getEntityManager().createNamedQuery("Carrinho.quantidadeValor", Carrinho.class);
         query.setParameter(1, idCarrinho);
-        valor = query.getMaxResults();
+        Carrinho carrinho = query.getSingleResult();
+        
+        for(Produto p : carrinho.getProdutos()){
+           valor += p.getValor() * this.quantidadeItem;
+        }
         tx.commit();
         return valor;
     }

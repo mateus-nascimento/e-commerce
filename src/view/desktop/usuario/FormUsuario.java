@@ -7,10 +7,7 @@ package View.desktop.usuario;
 
 import View.desktop.carrinho.FormCarrinho;
 import View.desktop.endereco.FormEndereco;
-import java.beans.PropertyVetoException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import projeto.fachada.Fachada;
@@ -24,7 +21,6 @@ public class FormUsuario extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form FormUsuario
-     * @throws java.beans.PropertyVetoException
      */
     public FormUsuario() {
         initComponents();
