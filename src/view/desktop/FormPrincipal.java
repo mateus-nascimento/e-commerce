@@ -48,6 +48,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         usuarioMenu.setMnemonic('f');
         usuarioMenu.setText("Menu");
 
+        usuarioMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Usuario.png"))); // NOI18N
         usuarioMenuItem.setMnemonic('o');
         usuarioMenuItem.setText("Usuário");
         usuarioMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -57,6 +58,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         usuarioMenu.add(usuarioMenuItem);
 
+        produtoMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Produto.png"))); // NOI18N
         produtoMenuItem.setMnemonic('s');
         produtoMenuItem.setText("Produto");
         produtoMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +68,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         usuarioMenu.add(produtoMenuItem);
 
+        categoriaAsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Categoria.png"))); // NOI18N
         categoriaAsMenuItem.setMnemonic('a');
         categoriaAsMenuItem.setText("Categorias");
         categoriaAsMenuItem.addActionListener(new java.awt.event.ActionListener() {

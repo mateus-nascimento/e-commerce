@@ -12,6 +12,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="usuarioMenuItem">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/material/Usuario.png"/>
+                </Property>
                 <Property name="mnemonic" type="int" value="111"/>
                 <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
               </Properties>
@@ -21,6 +24,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="produtoMenuItem">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/material/Produto.png"/>
+                </Property>
                 <Property name="mnemonic" type="int" value="115"/>
                 <Property name="text" type="java.lang.String" value="Produto"/>
               </Properties>
@@ -30,6 +36,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="categoriaAsMenuItem">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/material/Categoria.png"/>
+                </Property>
                 <Property name="mnemonic" type="int" value="97"/>
                 <Property name="text" type="java.lang.String" value="Categorias"/>
               </Properties>
