@@ -33,9 +33,9 @@ public class FormCategoria extends javax.swing.JInternalFrame {
     }
     
     public void buscarCategorias(){
-        Fachada fachada = new Fachada();
-        this.lista = fachada.categoriaBuscar();
         try {
+            Fachada fachada = new Fachada();
+            this.lista = fachada.categoriaBuscar();
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.setColumnIdentifiers(new String[]{"ID", "Nome", "Status"});
             if (lista.size() == 0) {

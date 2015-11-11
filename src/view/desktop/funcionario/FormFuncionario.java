@@ -182,7 +182,7 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
 
     private void jButtonInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirActionPerformed
         // TODO add your handling code here:
-        FormSalvarFuncionario fsf = new FormSalvarFuncionario();
+        FormSalvarFuncionario fsf = new FormSalvarFuncionario(this.funcionario);
         fsf.setVisible(true);
         this.getDesktopPane().add(fsf);
         this.dispose();

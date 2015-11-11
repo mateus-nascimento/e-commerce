@@ -19,14 +19,14 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
     /**
      * Creates new form FormEditarFuncionario
      */
-    private int idFuncionario;
+    
     public FormEditarFuncionario() {
         initComponents();
     }
-
+    private Funcionario funcionario;
     FormEditarFuncionario(Funcionario f) {
         initComponents();
-        this.idFuncionario = f.getId();
+        this.funcionario = f;
         jTextFieldNome.setText(f.getNome());
         jTextFieldEmail.setText(f.getEmail());
         jFormattedTextFieldCpf.setText(f.getCpf());
@@ -258,7 +258,7 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             Funcionario funcionario = new Funcionario();
-            funcionario.setId(this.idFuncionario);
+            funcionario.setId(this.funcionario.getId());
             funcionario.setNome(jTextFieldNome.getText());
             funcionario.setEmail(jTextFieldEmail.getText());
             funcionario.setCpf(jFormattedTextFieldCpf.getText().replaceAll(".", "").replace("-", ""));
@@ -276,10 +276,12 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
             Fachada fachada = new Fachada();
             fachada.funcionarioAlterar(funcionario);
             JOptionPane.showMessageDialog(null, "Funcionario alterado com sucesso!");
-            this.dispose();
             
-            FormFuncionario ff = new FormFuncionario();
+            
+            FormFuncionario ff = new FormFuncionario(this.funcionario);
             ff.buscarFuncionario();
+            
+            this.dispose();
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
@@ -289,7 +291,7 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
-        FormFuncionario fu = new FormFuncionario();
+        FormFuncionario fu = new FormFuncionario(this.funcionario);
         fu.setVisible(true);
         this.getDesktopPane().add(fu);
         this.dispose();

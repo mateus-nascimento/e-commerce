@@ -20,8 +20,10 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
     /**
      * Creates new form FormSalvarFuncionario
      */
-    public FormSalvarFuncionario() {
+    private Funcionario funcionario;
+    public FormSalvarFuncionario(Funcionario func) {
         initComponents();
+        this.funcionario = func;
     }
 
     /**
@@ -357,7 +359,7 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
         Usuario usuario = new Usuario();
         usuario.setNome(jTextFieldNome.getText());
         usuario.setEmail(jTextFieldEmail.getText());
-        usuario.setCpf(jFormattedTextFieldCpf.getText().replaceAll(".", "").replace("-", ""));
+        usuario.setCpf(jFormattedTextFieldCpf.getText().replaceAll("\\.", "").replace("-", ""));
         usuario.setSenha(jPasswordFieldSenha.getText());
         usuario.setTelefoneFixo(jFormattedTextFieldTelefoneFixo.getText().replace("(", "").replace(")", "").replace("-", ""));
         usuario.setTelefoneCelular(jFormattedTextFieldTelefoneCelular.getText().replace("(", "").replace(")", "").replace("-", ""));
@@ -396,7 +398,7 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
         try {
-            FormFuncionario fu = new FormFuncionario();
+            FormFuncionario fu = new FormFuncionario(this.funcionario);
             fu.setVisible(true);
             this.getDesktopPane().add(fu);
             this.dispose();
