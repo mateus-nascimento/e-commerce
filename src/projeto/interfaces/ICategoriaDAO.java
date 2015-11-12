@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package projeto.interfaces;
+import projeto.dao.DAOFactory;
 
 /**
  *
  * @author bboyrap
  */
-public interface ICategoriaDAO {
+public interface ICategoriaDAO {//implements DAOFactory
+    
     
 }
