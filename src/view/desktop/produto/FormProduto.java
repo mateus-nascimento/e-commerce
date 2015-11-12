@@ -214,6 +214,7 @@ public class FormProduto extends javax.swing.JInternalFrame {
                     Fachada fachada = new Fachada();
                     fachada.produtoRemover(p);
                     JOptionPane.showMessageDialog(null, "Produto removido com sucesso.");
+                    buscarProdutos();
             }else{
                 JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
             }
