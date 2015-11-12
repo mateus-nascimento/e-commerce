@@ -110,6 +110,9 @@ public class Fachada {
         return ctrlCarrinho.getCarrinho(idUsuario);
     }
     
+    public void carrinhoAlterar(Carrinho c) throws Exception{
+        ctrlCarrinho.alterar(c);
+    }
     
     //entrega
     public void entregaCadastrar(Entrega ent)throws Exception{
@@ -182,6 +185,4 @@ public class Fachada {
      public Boolean usuarioLogin(Usuario usu)throws Exception{
          return ctrlUsuario.usuarioLogin(usu);
      }
-
-    
 }

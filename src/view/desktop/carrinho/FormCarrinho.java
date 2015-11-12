@@ -14,6 +14,7 @@ import projeto.modelo.Carrinho;
 import projeto.modelo.Os;
 import projeto.modelo.Usuario;
 import view.desktop.carrinho.FormCarrinhoExistente;
+import view.desktop.os.FormOs;
 
 /**
  *
@@ -32,8 +33,6 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
         initComponents();
         this.usuario = usuario;
         listarCarrinhos();
-        JOptionPane.showMessageDialog(null, "Entrou no consturtor do carrinho");
-                
     }
     
     public void listarCarrinhos(){
@@ -45,10 +44,7 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
             
             if (lista.isEmpty()) {
                 //JOptionPane.showMessageDialog(null, "Usuário não possui carrinho.");
-                int confirm = JOptionPane.showConfirmDialog(null, "Usuário não possui nenhum carrinho, deseja criar um novo?");
-                if (confirm == 0) {
-                    jButtonComprarActionPerformed(null);
-                }
+                JOptionPane.showMessageDialog(null, "Usuário não possui carrinho, favor pressionar o botão [realizar compra] para prosseguir.");
             }
             for (Carrinho c : lista) {
                 modelo.addRow(new String[]{Integer.toString(c.getId()), Integer.toString(this.fachada.quantidadeItemTotal(c.getId())), Double.toString(this.fachada.valorTotalCarrinho(c.getId())), Boolean.toString(c.isStatus())});
@@ -200,12 +196,14 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
             try {
                 if(jTableCarrinho.getSelectedRow() != -1){
                     Carrinho c = this.lista.get(jTableCarrinho.getSelectedRow());
-                    Os os = new Os();
-                    os.setCarrinho(c);
-                    // SETAR A ENTREGA para o endereco ativo...
-                    //os.setEntrega(null);
+                    JOptionPane.showMessageDialog(null, c.getId());
                     c.setStatus(false);
-                    this.fachada.osCadastrar(os); // cascade type all aqui resolve?
+                    this.fachada.carrinhoAlterar(c);
+                    
+                    FormOs fo = new FormOs(c);
+                    fo.setVisible(true);
+                    getDesktopPane().add(fo);
+                    dispose();
                 }else{
                     JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
                 }		

@@ -48,6 +48,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        usuarioMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/data-storage4.png"))); // NOI18N
         usuarioMenu.setMnemonic('f');
         usuarioMenu.setText("Menu");
 

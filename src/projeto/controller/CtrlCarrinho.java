@@ -35,4 +35,8 @@ public class CtrlCarrinho {
     public Carrinho getCarrinho(int idUsuario){
         return DAOFactory.getCarrinhoDAO().getCarrinho(idUsuario);
     }
+    
+    public void alterar(Carrinho car){
+        DAOFactory.getCarrinhoDAO().alterar(car);
+    }
 }
