@@ -5,6 +5,7 @@
  */
 package view.desktop.os;
 
+import Outras.GerarPdf;
 import java.util.List;
 import javax.swing.JOptionPane;
 import projeto.fachada.Fachada;
@@ -199,6 +200,11 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
             this.fachada.osCadastrar(os);
             
             JOptionPane.showMessageDialog(null, "Ordem de serviço cadastrada no sistema.");
+            
+            //gerar pdf da ordem
+            GerarPdf pdf = new GerarPdf(os);
+            
+            
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
