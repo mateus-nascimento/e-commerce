@@ -24,10 +24,8 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
      */
     private List<Produto> lista;
     private Carrinho carrinho;
-    private Usuario usuario;
 
-    FormAdicionarProdutos(Carrinho carrinho, Usuario usuario) {
-        this.usuario = usuario;
+    FormAdicionarProdutos(Carrinho carrinho) {
         this.carrinho = carrinho;
         initComponents();
         buscarProdutos();
@@ -207,7 +205,7 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
-        FormCarrinhoExistente fce = new FormCarrinhoExistente(this.carrinho, this.usuario);
+        FormCarrinhoExistente fce = new FormCarrinhoExistente(this.carrinho);
         fce.setVisible(true);
         getDesktopPane().add(fce);
         dispose();
