@@ -20,10 +20,8 @@ public class FormCarrinhoExistente extends javax.swing.JInternalFrame {
      * Creates new form FormNovoCarrinho
      */
 private Carrinho carrinho;
-private Usuario usuario;
-    public FormCarrinhoExistente(Carrinho carrinho, Usuario usuario) {
+    public FormCarrinhoExistente(Carrinho carrinho) {
         this.carrinho = carrinho;
-        this.usuario = usuario;
         jLabelUsuario.setText(this.carrinho.getUsuario().getNome());
         initComponents();
         listarProdutosCarrinho();
@@ -159,20 +157,16 @@ private Usuario usuario;
 
     private void jButtonConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConcluirActionPerformed
         // TODO add your handling code here:
-        try {
-            FormCarrinho fc = new FormCarrinho(this.usuario);
+            FormCarrinho fc = new FormCarrinho(this.carrinho.getUsuario());
             fc.setVisible(true);
             getDesktopPane().add(fc);
             dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
-        }
     }//GEN-LAST:event_jButtonConcluirActionPerformed
 
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
         // TODO add your handling code here:
         try {
-            FormAdicionarProdutos fap = new FormAdicionarProdutos(this.carrinho, this.usuario);
+            FormAdicionarProdutos fap = new FormAdicionarProdutos(this.carrinho);
             fap.setVisible(true);
             getDesktopPane().add(fap);
             dispose();
