@@ -19,7 +19,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
  */
 @Entity
 @NamedQueries({@NamedQuery(name ="Funcionario.carregarDados", query = "SELECT F FROM Funcionario F WHERE F.email = ?1"),
-               @NamedQuery(name ="Funcionario.entregador", query = "SELECT F FROM Funcionario F WHERE F.cargo LIKE 'entregador' or 'ENTREGADOR'")})
+               @NamedQuery(name ="Funcionario.entregador", query = "SELECT F FROM Funcionario F WHERE F.cargo LIKE 'entregador' or F.cargo LIKE 'ENTREGADOR'")})
 
 @PrimaryKeyJoinColumn(name="id")
 public class Funcionario extends Usuario{
