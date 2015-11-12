@@ -38,11 +38,11 @@ public class Usuario implements Serializable{
     private boolean status;
      
     ////relacionamento com endereço
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "usuario")
     private Collection<Endereco> enderecos;
     
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "usuario")
     private Collection<Carrinho> carrinhos;
     
     public Usuario(){

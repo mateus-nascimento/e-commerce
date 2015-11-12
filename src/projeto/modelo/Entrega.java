@@ -33,7 +33,7 @@ public class Entrega {
     
     
     //endereco
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "idEndereco")
     private Endereco endereco;
     

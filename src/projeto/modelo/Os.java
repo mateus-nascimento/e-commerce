@@ -36,7 +36,7 @@ public class Os {
     
     //entrega
     @OneToOne(mappedBy = "os")
-    @Cascade(CascadeType.ALL)
+    @Cascade(CascadeType.PERSIST)
     private Entrega entrega;
     
     

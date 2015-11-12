@@ -44,7 +44,7 @@ public class Endereco {
     
     //endereco-entrega
     @OneToOne(mappedBy = "endereco")
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @Cascade(org.hibernate.annotations.CascadeType.PERSIST)
     private Entrega entrega;
     
     //to usuario

@@ -43,7 +43,7 @@ public class Carrinho {
     private boolean status;
     
     //anottations do relacionamento com produto (N:N)
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinTable(name = "Produto_Carrinho",//nome da tabela que vai ser gerada no banco
                joinColumns = {@JoinColumn(name = "idCarrinho")},//nome da chave primaria da tabela carrinho
                inverseJoinColumns = {@JoinColumn(name = "idProduto")})//nome da chave estrangeira na tabela produto em Produto_Carrinho
@@ -58,7 +58,7 @@ public class Carrinho {
     //anottations do relacionamento com os (1:1)
     
     @OneToOne(mappedBy = "carrinho")
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @Cascade(org.hibernate.annotations.CascadeType.PERSIST)
     private Os os;
     
     

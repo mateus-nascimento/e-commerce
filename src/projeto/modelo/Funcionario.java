@@ -28,7 +28,7 @@ public class Funcionario extends Usuario{
     private String setor;
     
     //entrega(1:N)
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.PERSIST)
     private Collection<Entrega> entregas;
     
     public Funcionario(){

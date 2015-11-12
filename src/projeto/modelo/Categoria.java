@@ -32,7 +32,7 @@ public class Categoria {
     }
     
     //anottations do relacionamento com produto (1:N)
-    @OneToMany(cascade=CascadeType.ALL, mappedBy = "categoria")
+    @OneToMany(cascade=CascadeType.PERSIST, mappedBy = "categoria")
     private Collection<Produto> produtos;
 
     /**
