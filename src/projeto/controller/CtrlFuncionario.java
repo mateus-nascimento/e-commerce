@@ -21,13 +21,15 @@ public class CtrlFuncionario {
     public List<Funcionario> buscarFuncionario(){
         return DAOFactory.getFuncionarioDAO().buscarTudo();
     }
+    public List<Funcionario> funcionarioEntregador(){
+        return DAOFactory.getFuncionarioDAO().funcionarioEntregador();
+    }
     public void alterar(Funcionario fun){
         DAOFactory.getFuncionarioDAO().alterar(fun);
     }
     public void remover(Funcionario fun){
         DAOFactory.getFuncionarioDAO().remover(fun);
     }
-
     public Funcionario carregarFuncionario(Usuario usuario) {
         return DAOFactory.getFuncionarioDAO().carregarFuncionario(usuario);
     }

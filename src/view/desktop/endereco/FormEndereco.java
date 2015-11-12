@@ -6,7 +6,6 @@
 package View.desktop.endereco;
 
 import View.desktop.usuario.FormUsuario;
-import java.beans.PropertyVetoException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

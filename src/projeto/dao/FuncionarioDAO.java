@@ -44,5 +44,15 @@ public class FuncionarioDAO extends DAOGeneric<Funcionario> implements IFunciona
         tx.commit();
         return funcionario;
     }
+
+    public List<Funcionario> funcionarioEntregador() {
+        List retorno = null;
+        EntityTransaction tx = getEntityManager().getTransaction();
+        tx.begin();
+        Query query = getEntityManager().createNamedQuery("Funcionario.entregador");
+        retorno = query.getResultList();
+        tx.commit();
+        return retorno;
+    }
     
 }

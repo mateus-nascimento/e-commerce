@@ -14,7 +14,7 @@ import projeto.modelo.Carrinho;
 import projeto.modelo.Os;
 import projeto.modelo.Usuario;
 import view.desktop.carrinho.FormCarrinhoExistente;
-import view.desktop.os.FormOs;
+import view.desktop.os.FormAdicionarOs;
 
 /**
  *
@@ -200,7 +200,7 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
                     c.setStatus(false);
                     this.fachada.carrinhoAlterar(c);
                     
-                    FormOs fo = new FormOs(c);
+                    FormAdicionarOs fo = new FormAdicionarOs(c);
                     fo.setVisible(true);
                     getDesktopPane().add(fo);
                     dispose();

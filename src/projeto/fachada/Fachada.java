@@ -139,6 +139,11 @@ public class Fachada {
         List<Funcionario> lista = ctrlFuncionario.buscarFuncionario();
         return lista;
     }
+    public List<Funcionario> funcionarioEntregador() throws Exception{
+        List<Funcionario> lista = ctrlFuncionario.funcionarioEntregador();
+        return lista;
+    }
+    
     public void funcionarioAlterar(Funcionario fun)throws Exception{
         ctrlFuncionario.alterar(fun);
     }

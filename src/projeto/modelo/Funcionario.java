@@ -8,6 +8,7 @@ package projeto.modelo;
 import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -17,7 +18,9 @@ import javax.persistence.PrimaryKeyJoinColumn;
  * @author bboyrap
  */
 @Entity
-@NamedQuery(name ="Funcionario.carregarDados", query = "SELECT F FROM Funcionario F WHERE F.email = ?1")
+@NamedQueries({@NamedQuery(name ="Funcionario.carregarDados", query = "SELECT F FROM Funcionario F WHERE F.email = ?1"),
+               @NamedQuery(name ="Funcionario.entregador", query = "SELECT F FROM Funcionario F WHERE F.cargo LIKE 'entregador' or 'ENTREGADOR'")})
+
 @PrimaryKeyJoinColumn(name="id")
 public class Funcionario extends Usuario{
     private int matricula;
