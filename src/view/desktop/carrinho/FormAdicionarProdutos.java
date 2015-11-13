@@ -29,6 +29,7 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
         this.carrinho = carrinho;
         initComponents();
         buscarProdutos();
+        JOptionPane.showMessageDialog(null, "Entrou no construtor");
     }
     public void buscarProdutos(){
         try {
@@ -53,6 +54,7 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
+        JOptionPane.showMessageDialog(null, "Buscou os produtos");
     }
     
     public void listarProdutosAdicionados(){
