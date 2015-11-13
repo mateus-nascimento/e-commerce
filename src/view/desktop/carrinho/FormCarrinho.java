@@ -30,7 +30,6 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
     Fachada fachada = new Fachada();
     
     public FormCarrinho(Usuario usuario) {
-        JOptionPane.showMessageDialog(null, "entroui no construtor");
         initComponents();
         this.usuario = usuario;
         listarCarrinhos();
@@ -38,7 +37,6 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
     
     public void listarCarrinhos(){
         try {
-            JOptionPane.showMessageDialog(null, "entrou no listar carrinho");
             this.lista = this.fachada.carrinhoListar(this.usuario.getId());
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.setColumnIdentifiers(new String[]{"ID", "Quantidade de Itens", "Valor Total", "Status"});
@@ -75,11 +73,12 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
         jButtonFinalizar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jButtonSair = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         jTableCarrinho = new javax.swing.JTable();
 
         setTitle("Carrinho");
         setPreferredSize(new java.awt.Dimension(1200, 650));
+        getContentPane().setLayout(null);
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -119,7 +118,9 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(jButtonSair);
 
-        jTableCarrinho.setBorder(javax.swing.BorderFactory.createTitledBorder("Carrinhos do cliente"));
+        getContentPane().add(jToolBar1);
+        jToolBar1.setBounds(380, 460, 350, 25);
+
         jTableCarrinho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -131,31 +132,10 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTableCarrinho);
+        jScrollPane2.setViewportView(jTableCarrinho);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(359, 359, 359)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(386, 386, 386)
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(390, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(154, Short.MAX_VALUE))
-        );
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(240, 40, 452, 402);
 
         setBounds(0, 0, 1200, 650);
     }// </editor-fold>//GEN-END:initComponents
@@ -168,17 +148,13 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
             if (this.fachada.carrinhoExiste(this.usuario.getId())) {
                 //confirm dialog pls
                 
-                    JOptionPane.showMessageDialog(null, "Existe um carrinho em andamento.");
-                    Carrinho carrinho = this.fachada.getCarrinho(this.usuario.getId());
-                    JOptionPane.showMessageDialog(null, "ai meu caralho2");
+                    Carrinho carrinho = this.fachada.getCarrinho(this.usuario.getId());//com erro
                     carrinho.setUsuario(this.usuario);
-                    JOptionPane.showMessageDialog(null, "ai meu caralho3");
                     FormCarrinhoExistente fce = new FormCarrinhoExistente(carrinho);
-                    JOptionPane.showMessageDialog(null, "ai meu caralho4");
                     fce.setVisible(true);
-                    JOptionPane.showMessageDialog(null, "ai meu caralho5");
+                    JOptionPane.showMessageDialog(null, "ai meu caralho1");
                     getDesktopPane().add(fce);
-                    JOptionPane.showMessageDialog(null, "ai meu caralho6");
+                    JOptionPane.showMessageDialog(null, "ai meu caralho2");
                     dispose();
             }else{
                 JOptionPane.showMessageDialog(null, "Não Existe um carrinho em andamento.");
@@ -236,7 +212,7 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonComprar;
     private javax.swing.JButton jButtonFinalizar;
     private javax.swing.JButton jButtonSair;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JTable jTableCarrinho;

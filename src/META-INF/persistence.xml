@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-  <persistence-unit name="projetoecommerce" transaction-type="RESOURCE_LOCAL">
+  <!--<persistence-unit name="projetoecommerce" transaction-type="RESOURCE_LOCAL">-->
+  <persistence-unit name="testeprojeto" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>projeto.modelo.Carrinho</class>
     <class>projeto.modelo.Categoria</class>
@@ -15,9 +16,12 @@
       <property name="hibernate.hbm2ddl.auto" value="update"/>
       <property name="hibernate.show_sql" value="true"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.user" value="projetoecommerce"/>
-      <property name="javax.persistence.jdbc.password" value="ec0174!"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://db4free.net:3306/projetoecommerce"/>
+      <!--<property name="javax.persistence.jdbc.user" value="projetoecommerce"/>-->
+      <!--<property name="javax.persistence.jdbc.password" value="ec0174!"/>-->
+      <!--<property name="javax.persistence.jdbc.url" value="jdbc:mysql://db4free.net:3306/projetoecommerce"/>-->
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/testeProjeto"/>
     </properties>
   </persistence-unit>
 </persistence>

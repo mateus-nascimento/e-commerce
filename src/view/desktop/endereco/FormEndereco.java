@@ -81,13 +81,13 @@ public class FormEndereco extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "id", "cep", "bairro", "cidade", "logradouro", "numero", "status"
+
             }
         ));
         jScrollPane1.setViewportView(jTable1);

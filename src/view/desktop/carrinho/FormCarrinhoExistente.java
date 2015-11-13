@@ -21,12 +21,11 @@ public class FormCarrinhoExistente extends javax.swing.JInternalFrame {
      */
 private Carrinho carrinho;
     public FormCarrinhoExistente(Carrinho carrinho) {
-        JOptionPane.showMessageDialog(null, "Entrou no construtor do carrinhjo eistente.");
         this.carrinho = carrinho;
-        jLabelUsuario.setText(this.carrinho.getUsuario().getNome());
+        jLabelUsuario.setText(carrinho.getUsuario().getNome());
         initComponents();
         listarProdutosCarrinho();
-        //this.setMaximum(true); testar breve em ALL
+        JOptionPane.showMessageDialog(null, "Saiu do construtor do form Carrinho Existente");
     }
     
     private void listarProdutosCarrinho() {

@@ -22,8 +22,10 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
     /**
      * Creates new form FormAdicionarProdutos
      */
-    private List<Produto> lista;
+    private List<Produto> listaProdutos;
+    private List<Produto> listaProdutosAdicionados;
     private Carrinho carrinho;
+    Fachada fachada = new Fachada();
 
     FormAdicionarProdutos(Carrinho carrinho) {
         this.carrinho = carrinho;
@@ -33,19 +35,19 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
     }
     public void buscarProdutos(){
         try {
-            Fachada fachada = new Fachada();
-            this.lista = fachada.produtoBuscar();
+            
+            this.listaProdutos = this.fachada.produtoBuscar();
             
             DefaultTableModel modelo = new DefaultTableModel();
             
             modelo.setColumnIdentifiers(new String[]{"ID", "Nome", "Valor", "Status"});
             
-            if (lista.size() == 0) {
+            if (listaProdutos.size() == 0) {
             
                 JOptionPane.showMessageDialog(null, "Não existem produtos cadastrados, favor inserir produtos primeiro.");
                 dispose();
             }
-            for(Produto p : lista){
+            for(Produto p : listaProdutos){
                 //System.out.println(p.getNome());
             
                 modelo.addRow(new String[]{ Integer.toString(p.getId()), p.getNome(), Float.toString(p.getValor()), Boolean.toString(p.isStatus())});
@@ -58,7 +60,7 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
     }
     
     public void listarProdutosAdicionados(){
-        Produto p = this.lista.get(jTableProdutos.getSelectedRow());
+        Produto p = this.listaProdutos.get(jTableProdutos.getSelectedRow());
         
         DefaultTableModel modelo = new DefaultTableModel();
         
@@ -88,6 +90,7 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
         jButtonAdicionar = new javax.swing.JButton();
         jButtonRemover = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
+        jButtonConcluir = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1200, 650));
 
@@ -168,6 +171,13 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
             }
         });
 
+        jButtonConcluir.setText("Concluir");
+        jButtonConcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -179,10 +189,11 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonAdicionar)
                     .addComponent(jButtonRemover)
-                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonConcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,6 +208,8 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
                             .addGap(32, 32, 32)
                             .addComponent(jButtonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonConcluir)
+                            .addGap(18, 18, 18)
                             .addComponent(jButtonCancelar))
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -247,10 +260,27 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
         */
     }//GEN-LAST:event_jButtonRemoverActionPerformed
 
+    private void jButtonConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConcluirActionPerformed
+        // TODO add your handling code here:
+        //ler todas as linhas da jtable > adicionados e para cada linha inserir no produto.carrrinhos
+        for (int i = 0; i < jTableProdutosAdicionados.getRowCount(); i++) {
+            Object o = jTableProdutosAdicionados.getValueAt(i, 0);
+            
+            Produto produto = new Produto();
+            produto.setId(Integer.parseInt(o.toString()));
+            
+            
+            
+        }
+        
+        
+    }//GEN-LAST:event_jButtonConcluirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionar;
     private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonConcluir;
     private javax.swing.JButton jButtonRemover;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
