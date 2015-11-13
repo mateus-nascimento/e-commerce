@@ -30,24 +30,28 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
     Fachada fachada = new Fachada();
     
     public FormCarrinho(Usuario usuario) {
+        JOptionPane.showMessageDialog(null, "entroui no construtor");
         initComponents();
         this.usuario = usuario;
         listarCarrinhos();
     }
     
     public void listarCarrinhos(){
-        
         try {
+            JOptionPane.showMessageDialog(null, "entrou no listar carrinho");
             this.lista = this.fachada.carrinhoListar(this.usuario.getId());
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.setColumnIdentifiers(new String[]{"ID", "Quantidade de Itens", "Valor Total", "Status"});
-            
             if (lista.isEmpty()) {
                 //JOptionPane.showMessageDialog(null, "Usuário não possui carrinho.");
                 JOptionPane.showMessageDialog(null, "Usuário não possui carrinho, favor pressionar o botão [realizar compra] para prosseguir.");
             }
             for (Carrinho c : lista) {
-                modelo.addRow(new String[]{Integer.toString(c.getId()), Integer.toString(this.fachada.quantidadeItemTotal(c.getId())), Double.toString(this.fachada.valorTotalCarrinho(c.getId())), Boolean.toString(c.isStatus())});
+                modelo.addRow(new String[]{Integer.toString(c.getId()), 
+                        //Integer.toString(this.fachada.quantidadeItemTotal(c.getId())), 
+                        Integer.toString(c.getProdutos().size()), 
+                        Double.toString(this.fachada.valorTotalCarrinho(c.getId())), 
+                        Boolean.toString(c.isStatus())});
             }
             jTableCarrinho.setModel(modelo);
         } catch (Exception e) {
@@ -134,22 +138,23 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(359, 359, 359)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(386, 386, 386)
+                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(390, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(28, 28, 28)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 1200, 650);

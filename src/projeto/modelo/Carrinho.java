@@ -31,7 +31,7 @@ import org.hibernate.annotations.Cascade;
 //Select A From Amigo A join A.usuarios U where U.idUsuario=:idUsuario // SELECT DISTINCT p FROM Professor p WHERE p.disciplinas.id = :disciplinaParam 
 //SELECT COUNT(P.id) FROM Produto P JOIN P.carrinhos.produtos C WHERE C.produtos.id = ?1//SELECT COUNT(P.id) FROM Produto P JOIN C.produtos C WHERE C.id = ?1
 //SELECT COUNT(P.id) FROM Produto P JOIN P.carrinhos C WHERE C.id = ?1//SELECT COUNT(P.id) FROM Produto P WHERE P.carrinhos.id = ?1
-@NamedQueries({@NamedQuery(name = "Carrinho.byUser", query = "SELECT C.id FROM Carrinho C WHERE c.usuario.id = ?1 "),
+@NamedQueries({@NamedQuery(name = "Carrinho.byUser", query = "SELECT C FROM Carrinho C WHERE c.usuario.id = ?1 "),
                @NamedQuery(name = "Carrinho.existe", query = "SELECT C.id FROM Carrinho C WHERE c.usuario.id = ?1 AND C.status = TRUE"),
                @NamedQuery(name = "Carrinho.getCarrinho", query = "SELECT C.id, C.status, C.usuario.id FROM Carrinho C where C.usuario.id = ?1 AND C.status = 1"),
                @NamedQuery(name = "Carrinho.carrinho", query = "SELECT C FROM Carrinho C WHERE C.id = ?1")})

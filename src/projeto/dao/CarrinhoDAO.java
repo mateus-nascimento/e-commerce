@@ -28,13 +28,13 @@ public class CarrinhoDAO extends DAOGeneric<Carrinho> implements ICarrinhoDAO {
     
     public List<Carrinho> carrinhoListar(int idUsuario){
 
-        List retorno = null;
         EntityTransaction tx = getEntityManager().getTransaction();
         tx.begin();
         Query query = getEntityManager().createNamedQuery("Carrinho.byUser");
         query.setParameter(1, idUsuario);
-        retorno = query.getResultList();
+        List<Carrinho> retorno = query.getResultList();
         tx.commit();
+        
         return retorno;
                 
     }
