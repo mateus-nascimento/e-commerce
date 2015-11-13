@@ -21,10 +21,10 @@ public class FormEditarUsuario extends javax.swing.JInternalFrame {
     public FormEditarUsuario() {
         initComponents();
     }
-    private int idUsuario;
+    private Usuario usuario;
     FormEditarUsuario(Usuario u) {
         initComponents();
-        this.idUsuario= u.getId();
+        this.usuario= u;
         jTextFieldNome.setText(u.getNome());
         jTextFieldEmail.setText(u.getEmail());
         jFormattedTextFieldCpf.setText(u.getCpf());
@@ -246,21 +246,17 @@ public class FormEditarUsuario extends javax.swing.JInternalFrame {
                     usuario.setStatus(false);
                 }
                 
-                //
-                usuario.setId(this.idUsuario);
+                usuario.setId(this.usuario.getId());
 
                 Fachada fachada = new Fachada();
                 fachada.usuarioAlterar(usuario);
 
                 JOptionPane.showMessageDialog(null, "Usuário alterado com sucesso!");
 
-                this.dispose();
-                
                 FormUsuario fu = new FormUsuario();
-                fu.buscarUsuarios();
-                
-                
-
+                fu.setVisible(true);
+                getDesktopPane().add(fu);
+                dispose();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
             }

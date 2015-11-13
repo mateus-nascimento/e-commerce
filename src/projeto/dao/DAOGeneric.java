@@ -41,14 +41,18 @@ public class DAOGeneric<Entidade> {
     public Entidade alterar(Entidade objeto) {
         
         EntityTransaction tx = getEntityManager().getTransaction();
-        
-        tx.begin();
+        try {
+            tx.begin();
 
-        objeto = getEntityManager().merge(objeto);
+            objeto = getEntityManager().merge(objeto);
 
-        tx.commit();
+            //tx.commit();
 
-        return objeto;
+            return objeto;
+            
+        }finally{
+            tx.commit();
+        }
             
             
         
@@ -65,10 +69,12 @@ public class DAOGeneric<Entidade> {
         try {
             tx.begin();
             getEntityManager().persist(objeto);
-            tx.commit();
+            //tx.commit();
             System.out.println(classePersistente.getSimpleName() + " salvo com sucesso");
         } catch (PersistenceException e) {
             tx.rollback();
+        }finally{
+            tx.commit();
         }
     }
 
@@ -79,20 +85,23 @@ public class DAOGeneric<Entidade> {
     *            a ser salvo
     */
     public final void inserirColecao(Collection<Entidade> colecao) {
-        try {
             EntityTransaction tx = getEntityManager().getTransaction();
+        try {
             tx.begin();
 
             for (Entidade entidade : colecao) {
                     getEntityManager().persist(entidade);	
             }
 
-            tx.commit();
+            //tx.commit();
 
             System.out.println(classePersistente.getSimpleName() + " salvos com sucesso: " + colecao.size());
         } catch (PersistenceException e) {
             e.printStackTrace();
+        }finally{
+            tx.commit();
         }
+        
     }
 
    /**
@@ -103,16 +112,21 @@ public class DAOGeneric<Entidade> {
     */
     public final void remover(Entidade objeto) {
         EntityTransaction tx = getEntityManager().getTransaction();
-        tx.begin();
+        try {
+            tx.begin();
 
-       // Este merge foi incluido para permitir a exclusao de objetos no estado Detached
-       objeto = getEntityManager().merge(objeto);
+            // Este merge foi incluido para permitir a exclusao de objetos no estado Detached
+            objeto = getEntityManager().merge(objeto);
 
-       getEntityManager().remove(objeto);
+            getEntityManager().remove(objeto);
 
-       tx.commit();
+            //tx.commit();
 
-       System.out.println(classePersistente.getSimpleName() + " removido com sucesso");		
+            System.out.println(classePersistente.getSimpleName() + " removido com sucesso");		
+        }finally{
+            tx.commit();
+        }
+        
     }
 
 
@@ -155,6 +169,7 @@ public class DAOGeneric<Entidade> {
         }
         
         return retorno;
+        
         
         
     }

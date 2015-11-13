@@ -223,13 +223,14 @@ public class FormEndereco extends javax.swing.JInternalFrame {
     private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
         // TODO add your handling code here:
         try {
-            if(jTable1.getSelectedRow() != -1){
-            Endereco e = this.lista.get(jTable1.getSelectedRow());
-            Fachada fachada = new Fachada();
-            fachada.enderecoRemover(e);
-        }else{
-            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
-        }
+            if(jTable1.getSelectedRow() == -1){
+                JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
+            }else{
+                Endereco e = this.lista.get(jTable1.getSelectedRow());
+                Fachada fachada = new Fachada();
+                fachada.enderecoRemover(e);
+                buscarEndereco();
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
@@ -243,7 +244,7 @@ public class FormEndereco extends javax.swing.JInternalFrame {
         try {
                 if(jTable1.getSelectedRow() != -1){
                 Endereco e = this.lista.get(jTable1.getSelectedRow());
-                FormSalvarEndereco fse = new FormSalvarEndereco(e, this.usuario);
+                FormSalvarEndereco fse = new FormSalvarEndereco(e);
                 fse.setVisible(true);
                 this.getDesktopPane().add(fse);
                 this.dispose();

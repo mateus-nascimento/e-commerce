@@ -30,21 +30,25 @@ public class UsuarioDAO extends DAOGeneric<Usuario> implements IUsuarioDAO {
     }
     
     public Boolean usuarioLogin(Usuario usuario){
-        List existe = null;
-        boolean retorno = false;
         
         EntityTransaction tx = getEntityManager().getTransaction();
-        tx.begin();
-        Query query = getEntityManager().createNamedQuery("Usuario.login");
-        query.setParameter(1, usuario.getEmail());
-        query.setParameter(2, usuario.getSenha());
-        existe = query.getResultList();
-        tx.commit();
-        
-        if (existe.size() > 0) {
-            retorno = true;
+        try {
+            List existe = null;
+            boolean retorno = false;
+            tx.begin();
+            Query query = getEntityManager().createNamedQuery("Usuario.login");
+            query.setParameter(1, usuario.getEmail());
+            query.setParameter(2, usuario.getSenha());
+            existe = query.getResultList();
+            //tx.commit();
+            if (existe.size() > 0) {
+                retorno = true;
+            }
+            return retorno;
+            
+        }finally{
+            tx.commit();
         }
-        return retorno;
     }
     
     

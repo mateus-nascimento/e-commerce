@@ -191,14 +191,14 @@ public class FormProduto extends javax.swing.JInternalFrame {
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         // TODO add your handling code here:
         try {
-            if (jTable1.getSelectedRow() != -1) {
+            if (jTable1.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+            }else{
                 Produto p = this.lista.get(jTable1.getSelectedRow());
                 FormSalvarProduto fsp = new FormSalvarProduto(p);
                 fsp.setVisible(true);
                 getDesktopPane().add(fsp);
                 dispose();
-            }else{
-                JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
@@ -209,14 +209,14 @@ public class FormProduto extends javax.swing.JInternalFrame {
     private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
         // TODO add your handling code here:
         try {
-            if (jTable1.getSelectedRow() != -1) {
-                    Produto p = this.lista.get(jTable1.getSelectedRow());
-                    Fachada fachada = new Fachada();
-                    fachada.produtoRemover(p);
-                    JOptionPane.showMessageDialog(null, "Produto removido com sucesso.");
-                    buscarProdutos();
-            }else{
+            if (jTable1.getSelectedRow() == -1) {
                 JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+            }else{
+                Produto p = this.lista.get(jTable1.getSelectedRow());
+                Fachada fachada = new Fachada();
+                fachada.produtoRemover(p);
+                JOptionPane.showMessageDialog(null, "Produto removido com sucesso.");
+                buscarProdutos();
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);

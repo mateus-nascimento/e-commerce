@@ -31,14 +31,19 @@ public class EnderecoDAO extends DAOGeneric<Endereco> implements IEnderecoDAO {
     }
     
     public List buscarEndereco(int idUsuario){
-        List retorno = null;
         EntityTransaction tx = getEntityManager().getTransaction();
-        tx.begin();
-        Query query = getEntityManager().createNamedQuery("Endereco.byUser");
-        query.setParameter(1, idUsuario);
-        retorno = query.getResultList();
-        tx.commit();
-        return retorno;
+        try {
+            List retorno = null;
+            tx.begin();
+            Query query = getEntityManager().createNamedQuery("Endereco.byUser");
+            query.setParameter(1, idUsuario);
+            retorno = query.getResultList();
+            //tx.commit();
+            return retorno;
+            
+        }finally{
+            tx.commit();
+        }
     }
     
     

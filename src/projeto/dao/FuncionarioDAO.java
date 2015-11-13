@@ -33,26 +33,34 @@ public class FuncionarioDAO extends DAOGeneric<Funcionario> implements IFunciona
 
     public Funcionario carregarFuncionario(Usuario usuario) {
         EntityTransaction tx = getEntityManager().getTransaction();
-        tx.begin();
-        
-        TypedQuery<Funcionario> query = getEntityManager().createNamedQuery("Funcionario.carregarDados", Funcionario.class);
-        query.setParameter(1, usuario.getEmail());
-        
-        Funcionario funcionario = new Funcionario();
-        funcionario = query.getSingleResult();
-        
-        tx.commit();
-        return funcionario;
+        try {
+            tx.begin();
+
+            TypedQuery<Funcionario> query = getEntityManager().createNamedQuery("Funcionario.carregarDados", Funcionario.class);
+            query.setParameter(1, usuario.getEmail());
+
+            Funcionario funcionario = new Funcionario();
+            funcionario = query.getSingleResult();
+
+            //tx.commit();
+            return funcionario;
+        }finally{
+            tx.commit();
+        }
     }
 
     public List<Funcionario> funcionarioEntregador() {
-        List retorno = null;
         EntityTransaction tx = getEntityManager().getTransaction();
-        tx.begin();
-        Query query = getEntityManager().createNamedQuery("Funcionario.entregador");
-        retorno = query.getResultList();
-        tx.commit();
-        return retorno;
+        try {
+            List retorno = null;
+            tx.begin();
+            Query query = getEntityManager().createNamedQuery("Funcionario.entregador");
+            retorno = query.getResultList();
+            //tx.commit();
+            return retorno;
+        }finally{
+            tx.commit();
+        }
     }
     
 }

@@ -252,22 +252,31 @@ public class FormUsuario extends javax.swing.JInternalFrame {
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         // TODO add your handling code here:
+        if (jTable1.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+        }else{
             Usuario u = this.lista.get(jTable1.getSelectedRow());
             FormEditarUsuario feu = new FormEditarUsuario(u);
             feu.setVisible(true);
             getDesktopPane().add(feu);
             dispose();
+        }
 
             
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
         // TODO add your handling code here:
+        
         try {
-            Usuario u = this.lista.get(jTable1.getSelectedRow());
-            Fachada fachada = new Fachada();
-            fachada.usuarioRemover(u);
-            buscarUsuarios();
+            if (jTable1.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+            }else{
+                Usuario u = this.lista.get(jTable1.getSelectedRow());
+                Fachada fachada = new Fachada();
+                fachada.usuarioRemover(u);
+                buscarUsuarios();
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
@@ -275,20 +284,28 @@ public class FormUsuario extends javax.swing.JInternalFrame {
 
     private void jButtonEnderecosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnderecosActionPerformed
         // TODO add your handling code here:
-            Usuario u = this.lista.get(jTable1.getSelectedRow());
-            FormEndereco fe = new FormEndereco(u);
-            fe.setVisible(true);
-            this.getDesktopPane().add(fe);
-            this.dispose();
+        if(jTable1.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+        }else{
+                Usuario u = this.lista.get(jTable1.getSelectedRow());
+                FormEndereco fe = new FormEndereco(u);
+                fe.setVisible(true);
+                this.getDesktopPane().add(fe);
+                this.dispose();
+        }
     }//GEN-LAST:event_jButtonEnderecosActionPerformed
 
     private void jButtonCarrinhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCarrinhoActionPerformed
         // TODO add your handling code here:
+        if(jTable1.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+        }else{    
             Usuario u = this.lista.get(jTable1.getSelectedRow());
             FormCarrinho fc = new FormCarrinho(u);
             fc.setVisible(true);
             this.getDesktopPane().add(fc);
             this.dispose();
+        }
     }//GEN-LAST:event_jButtonCarrinhoActionPerformed
 
 

@@ -31,12 +31,11 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
         jLabelNomeUsuario.setText(usuario.getNome());
     }
     
-    FormSalvarEndereco(Endereco e, Usuario u) {
+    FormSalvarEndereco(Endereco e) {
         initComponents();
-        this.usuario = u;
         this.endereco = e;
         
-        jLabelNomeUsuario.setText(usuario.getNome() + String.valueOf(this.endereco.getId()));
+        jLabelNomeUsuario.setText(e.getUsuario().getNome() + String.valueOf(this.endereco.getId()));
         
         jTextFieldLogradouro.setText(this.endereco.getLogradouro());
         jFormattedTextFieldCep.setText(this.endereco.getCep());
@@ -258,6 +257,7 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
                 end.setEstado(jComboBoxEstado.getSelectedItem().toString().toUpperCase());
                 end.setNumero(Integer.parseInt(jTextFieldNumero.getText()));
                 end.setComplemento(jTextFieldComplemento.getText().toUpperCase());
+                end.setStatus(true);
 
                 end.setUsuario(this.usuario);
 
@@ -270,14 +270,15 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
                 }
 
                 JOptionPane.showMessageDialog(null, "Endereco correspondente ao usuário salvo com sucesso!");
+
+                FormEndereco fe = new FormEndereco(this.usuario);
+                fe.setVisible(true);
+                getDesktopPane().add(fe);
+                dispose();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
             }
             
-            FormEndereco fe = new FormEndereco(this.usuario);
-            fe.setVisible(true);
-            getDesktopPane().add(fe);
-            dispose();
         
 
     }//GEN-LAST:event_jButtonConfirmarActionPerformed

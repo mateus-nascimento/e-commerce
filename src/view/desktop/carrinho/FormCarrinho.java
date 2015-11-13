@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import projeto.fachada.Fachada;
 import projeto.modelo.Carrinho;
-import projeto.modelo.Os;
 import projeto.modelo.Usuario;
 import view.desktop.carrinho.FormCarrinhoExistente;
 import view.desktop.os.FormAdicionarOs;
@@ -42,7 +41,7 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
             modelo.setColumnIdentifiers(new String[]{"ID", "Quantidade de Itens", "Valor Total", "Status"});
             if (lista.isEmpty()) {
                 //JOptionPane.showMessageDialog(null, "Usuário não possui carrinho.");
-                JOptionPane.showMessageDialog(null, "Usuário não possui carrinho, favor pressionar o botão [realizar compra] para prosseguir.");
+                JOptionPane.showMessageDialog(null, "Usuário não possui carrinho.");
             }
             for (Carrinho c : lista) {
                 modelo.addRow(new String[]{Integer.toString(c.getId()), 

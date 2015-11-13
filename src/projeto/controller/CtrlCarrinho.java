@@ -14,8 +14,12 @@ import projeto.modelo.Carrinho;
  * @author aluno
  */
 public class CtrlCarrinho {
-    public void cadastrar(Carrinho car){
-        DAOFactory.getCarrinhoDAO().inserir(car);
+    public void cadastrar(Carrinho car) throws Exception{
+        if(car.getUsuario() == null){
+            throw new Exception("Favor selecionar um usuário");
+        }else{
+            DAOFactory.getCarrinhoDAO().inserir(car);
+        }
     }
     public List<Carrinho> carrinhoListar(int idUsuario){
         return DAOFactory.getCarrinhoDAO().carrinhoListar(idUsuario);

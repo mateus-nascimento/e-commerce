@@ -263,14 +263,17 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
     private void jButtonConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConcluirActionPerformed
         // TODO add your handling code here:
         //ler todas as linhas da jtable > adicionados e para cada linha inserir no produto.carrrinhos
-        for (int i = 0; i < jTableProdutosAdicionados.getRowCount(); i++) {
-            Object o = jTableProdutosAdicionados.getValueAt(i, 0);
-            
+        try{
             Produto produto = new Produto();
-            produto.setId(Integer.parseInt(o.toString()));
-            
-            
-            
+            for (int i = 0; i < jTableProdutosAdicionados.getRowCount(); i++) {
+                Object o = jTableProdutosAdicionados.getValueAt(i, 0);
+                produto.setId(Integer.parseInt(o.toString()));
+                this.listaProdutosAdicionados.add(produto);
+            }
+            this.carrinho.setProdutos(listaProdutosAdicionados);
+            this.fachada.carrinhoCadastrar(this.carrinho);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
         
         
