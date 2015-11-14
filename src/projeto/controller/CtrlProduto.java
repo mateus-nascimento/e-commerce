@@ -26,7 +26,7 @@ public class CtrlProduto {
             throw new Exception("Favor selecionar a categoria do produto corretamente");
         }
         else{
-            DAOFactory.getProdutoDAO().inserir(prod);
+            DAOFactory.getProdutoDAO().inserir(prod);//erro aqui
         }
     }
     public List<Produto> buscarProduto(){

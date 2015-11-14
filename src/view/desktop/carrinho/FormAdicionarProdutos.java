@@ -31,7 +31,6 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
         this.carrinho = carrinho;
         initComponents();
         buscarProdutos();
-        JOptionPane.showMessageDialog(null, "Entrou no construtor");
     }
     public void buscarProdutos(){
         try {
@@ -56,13 +55,12 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
-        JOptionPane.showMessageDialog(null, "Buscou os produtos");
     }
     
     public void listarProdutosAdicionados(){
         Produto p = this.listaProdutos.get(jTableProdutos.getSelectedRow());
         
-        DefaultTableModel modelo = new DefaultTableModel();
+        DefaultTableModel modelo = (DefaultTableModel) jTableProdutosAdicionados.getModel();
         
         modelo.setColumnIdentifiers(new String[]{"ID", "Nome", "Valor", "Status"});
         
@@ -124,10 +122,7 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
 
         jTableProdutosAdicionados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
 

@@ -109,11 +109,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
         jTextAreaDescricao.setRows(5);
         jScrollPane1.setViewportView(jTextAreaDescricao);
 
-        try {
-            jFormattedTextFieldValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        jFormattedTextFieldValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,00"))));
 
         buttonGroup1.add(jRadioButtonAtivo);
         jRadioButtonAtivo.setSelected(true);
@@ -126,6 +122,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
 
         jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione uma categoria..." }));
 
+        jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
         jButtonConfirmar.setText("Comfirmar");
@@ -243,6 +240,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 categoria.setId(jComboBoxCategoria.getSelectedIndex());
                 produto.setNome(jTextFieldNome.getText().toUpperCase());
                 produto.setValor(Float.parseFloat(jFormattedTextFieldValor.getText().replace("\\.", "")));
+                JOptionPane.showMessageDialog(null, categoria.getId());
 
                 if (jRadioButtonAtivo.isSelected()) {
                     produto.setStatus(true);
@@ -255,8 +253,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 produto.setCategoria(categoria);//
 
                 Fachada fachada = new Fachada();
-                fachada.produtoCadastrar(produto);
-
+                fachada.produtoCadastrar(produto);//erro aqui
                 JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
                 
                 FormProduto fp = new FormProduto();
@@ -291,6 +288,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 
             }
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Capturado");
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonConfirmarActionPerformed

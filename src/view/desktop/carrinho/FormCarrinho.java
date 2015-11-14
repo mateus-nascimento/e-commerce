@@ -151,9 +151,7 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
                     carrinho.setUsuario(this.usuario);
                     FormCarrinhoExistente fce = new FormCarrinhoExistente(carrinho);
                     fce.setVisible(true);
-                    JOptionPane.showMessageDialog(null, "ai meu caralho1");
                     getDesktopPane().add(fce);
-                    JOptionPane.showMessageDialog(null, "ai meu caralho2");
                     dispose();
             }else{
                 JOptionPane.showMessageDialog(null, "Não Existe um carrinho em andamento.");
@@ -165,7 +163,7 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
                 
                 //para pegar o carrinho criado
                 carrinho = this.fachada.getCarrinho(this.usuario.getId());
-                carrinho.setUsuario(this.usuario);
+                //passou
                 FormCarrinhoExistente fce = new FormCarrinhoExistente(carrinho);
                 fce.setVisible(true);
                 getDesktopPane().add(fce);

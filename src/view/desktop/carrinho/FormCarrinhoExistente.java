@@ -20,12 +20,11 @@ public class FormCarrinhoExistente extends javax.swing.JInternalFrame {
      * Creates new form FormNovoCarrinho
      */
 private Carrinho carrinho;
-    public FormCarrinhoExistente(Carrinho carrinho) {
-        this.carrinho = carrinho;
-        jLabelUsuario.setText(carrinho.getUsuario().getNome());
+    public FormCarrinhoExistente(Carrinho car) {
+        this.carrinho = car;
         initComponents();
+        jLabelFulano.setText(car.getUsuario().getNome());//nao to conseguindo colocar o nome do individuo na porra do label. wtf
         listarProdutosCarrinho();
-        JOptionPane.showMessageDialog(null, "Saiu do construtor do form Carrinho Existente");
     }
     
     private void listarProdutosCarrinho() {
@@ -42,7 +41,6 @@ private Carrinho carrinho;
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabelUsuario = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jToolBar1 = new javax.swing.JToolBar();
@@ -51,10 +49,10 @@ private Carrinho carrinho;
         jButtonRemover = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jButtonConcluir = new javax.swing.JButton();
+        jLabelFulano = new javax.swing.JLabel();
 
-        jLabel1.setText("usuário");
-
-        jLabelUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("usuário:");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -69,6 +67,7 @@ private Carrinho carrinho;
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
         jButtonAdicionar.setText("Adicionar Produtos");
@@ -106,6 +105,9 @@ private Carrinho carrinho;
         });
         jToolBar1.add(jButtonConcluir);
 
+        jLabelFulano.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabelFulano.setText("fulano");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -116,10 +118,10 @@ private Carrinho carrinho;
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabelFulano, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jScrollPane1)
                     .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(702, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,12 +129,12 @@ private Carrinho carrinho;
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelFulano))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -188,7 +190,7 @@ private Carrinho carrinho;
     private javax.swing.JButton jButtonConcluir;
     private javax.swing.JButton jButtonRemover;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabelUsuario;
+    private javax.swing.JLabel jLabelFulano;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;

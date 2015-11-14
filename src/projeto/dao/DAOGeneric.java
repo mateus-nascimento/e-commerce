@@ -69,7 +69,7 @@ public class DAOGeneric<Entidade> {
         try {
             tx.begin();
             getEntityManager().persist(objeto);
-            //tx.commit();
+//            tx.commit();
             System.out.println(classePersistente.getSimpleName() + " salvo com sucesso");
         } catch (PersistenceException e) {
             tx.rollback();

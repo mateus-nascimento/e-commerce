@@ -21,6 +21,7 @@ public abstract class DAOFactory {
 
     static {
         factory = Persistence.createEntityManagerFactory("testeprojeto");
+//        factory = Persistence.createEntityManagerFactory("projetoecommerce");
         if (manager == null || !manager.isOpen()) {
             manager = factory.createEntityManager();
         }
