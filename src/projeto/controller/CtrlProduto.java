@@ -26,7 +26,9 @@ public class CtrlProduto {
             throw new Exception("Favor selecionar a categoria do produto corretamente");
         }
         else{
+            System.out.println("passou por todas as verificações e entrou no metodo de inserir NO DAO");
             DAOFactory.getProdutoDAO().inserir(prod);//erro aqui
+            System.out.println("saiu do metodo de inserir DO DAO");
         }
     }
     public List<Produto> buscarProduto(){

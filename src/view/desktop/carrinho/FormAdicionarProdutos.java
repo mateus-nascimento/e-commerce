@@ -259,14 +259,28 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         //ler todas as linhas da jtable > adicionados e para cada linha inserir no produto.carrrinhos
         try{
-            Produto produto = new Produto();
-            for (int i = 0; i < jTableProdutosAdicionados.getRowCount(); i++) {
-                Object o = jTableProdutosAdicionados.getValueAt(i, 0);
-                produto.setId(Integer.parseInt(o.toString()));
-                this.listaProdutosAdicionados.add(produto);
+            JOptionPane.showMessageDialog(null, "Ai meu corolho 1");
+            if (jTableProdutosAdicionados.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(null, "Favor Selecionar Produtos para adicionar.");
+            }else{
+                Produto produto = new Produto();
+                JOptionPane.showMessageDialog(null, "Ai meu corolho 2");
+                for (int i = 0; i < jTableProdutosAdicionados.getRowCount(); i++) {
+                    Object o = jTableProdutosAdicionados.getValueAt(i, 0);
+                    produto.setId(Integer.parseInt(o.toString()));
+                    this.listaProdutosAdicionados.add(produto);
+                }
+                JOptionPane.showMessageDialog(null, "Ai meu corolho 3");
+                this.carrinho.setProdutos(listaProdutosAdicionados);
+                JOptionPane.showMessageDialog(null, "Ai meu corolho 4");
+                this.fachada.carrinhoCadastrar(this.carrinho);
+                JOptionPane.showMessageDialog(null, "Ai meu corolho 5");
+            
+                FormCarrinhoExistente fce = new FormCarrinhoExistente(this.carrinho);
+                fce.setVisible(true);
+                getDesktopPane().add(fce);
+                dispose();
             }
-            this.carrinho.setProdutos(listaProdutosAdicionados);
-            this.fachada.carrinhoCadastrar(this.carrinho);
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }

@@ -233,27 +233,28 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
         //mas quando for alteracao o idProduto FICA COM o id que veio do objeto da tabela BUT....
         try {
             
-            Produto produto = new Produto();
+            
             if (idProduto == 0) {
-
+                Produto novoProd = new Produto();
                 Categoria categoria = new Categoria();
                 categoria.setId(jComboBoxCategoria.getSelectedIndex());
-                produto.setNome(jTextFieldNome.getText().toUpperCase());
-                produto.setValor(Float.parseFloat(jFormattedTextFieldValor.getText().replace("\\.", "")));
+                novoProd.setNome(jTextFieldNome.getText().toUpperCase());
+                novoProd.setValor(Float.parseFloat(jFormattedTextFieldValor.getText().replace("\\.", "")));
                 JOptionPane.showMessageDialog(null, categoria.getId());
 
                 if (jRadioButtonAtivo.isSelected()) {
-                    produto.setStatus(true);
+                    novoProd.setStatus(true);
                 }else{
-                    produto.setStatus(false);
+                    novoProd.setStatus(false);
                 }
 
-                produto.setDescricao(jTextAreaDescricao.getText().toUpperCase());
+                novoProd.setDescricao(jTextAreaDescricao.getText().toUpperCase());
 
-                produto.setCategoria(categoria);//
+                novoProd.setCategoria(categoria);//
 
                 Fachada fachada = new Fachada();
-                fachada.produtoCadastrar(produto);//erro aqui
+                fachada.produtoCadastrar(novoProd);//erro aqui <==================
+                
                 JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
                 
                 FormProduto fp = new FormProduto();
@@ -261,23 +262,24 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 getDesktopPane().add(fp);
                 dispose();
             }else{
+                Produto editarProd = new Produto();
                 Categoria categoria = new Categoria();
                 categoria.setId(jComboBoxCategoria.getSelectedIndex());
-                produto.setNome(jTextFieldNome.getText().toUpperCase());
-                produto.setValor(Float.parseFloat(jFormattedTextFieldValor.getText()));
+                editarProd.setNome(jTextFieldNome.getText().toUpperCase());
+                editarProd.setValor(Float.parseFloat(jFormattedTextFieldValor.getText()));
 
                 if (jRadioButtonAtivo.isSelected()) {
-                    produto.setStatus(true);
+                    editarProd.setStatus(true);
                 }else{
-                    produto.setStatus(false);
+                    editarProd.setStatus(false);
                 }
 
-                produto.setDescricao(jTextAreaDescricao.getText().toUpperCase());
+                editarProd.setDescricao(jTextAreaDescricao.getText().toUpperCase());
 
-                produto.setCategoria(categoria);//
+                editarProd.setCategoria(categoria);//
 
                 Fachada fachada = new Fachada();
-                fachada.produtoAlterar(produto);
+                fachada.produtoAlterar(editarProd);
 
                 JOptionPane.showMessageDialog(null, "Produto alterado com sucesso!");
                 
@@ -288,7 +290,6 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Capturado");
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonConfirmarActionPerformed

@@ -5,6 +5,7 @@
  */
 package projeto.modelo;
 
+import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -23,7 +24,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name ="Produto.findAll", query = "SELECT p FROM Produto p")
-public class Produto {
+public class Produto implements Serializable {
     @Id 
     @GeneratedValue
     private int id;

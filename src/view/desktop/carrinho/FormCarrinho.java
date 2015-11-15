@@ -178,7 +178,6 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
             try {
                 if(jTableCarrinho.getSelectedRow() != -1){
                     Carrinho c = this.lista.get(jTableCarrinho.getSelectedRow());
-                    JOptionPane.showMessageDialog(null, c.getId());
                     c.setStatus(false);
                     this.fachada.carrinhoAlterar(c);
                     
