@@ -10,6 +10,7 @@ import View.desktop.produto.FormProduto;
 import View.desktop.usuario.FormUsuario;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,74 +38,88 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
-        menuBar = new javax.swing.JMenuBar();
-        usuarioMenu = new javax.swing.JMenu();
-        usuarioMenuItem = new javax.swing.JMenuItem();
-        produtoMenuItem = new javax.swing.JMenuItem();
-        categoriaAsMenuItem = new javax.swing.JMenuItem();
-        jMenuOpcoes = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jToolBar1 = new javax.swing.JToolBar();
+        jButtonCategorias = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
+        jButtonProdutos = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
+        jButtonUsuarios = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JToolBar.Separator();
+        jButtonLimpar = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JToolBar.Separator();
+        jButtonSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        usuarioMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/data-storage4.png"))); // NOI18N
-        usuarioMenu.setMnemonic('f');
-        usuarioMenu.setText("Menu");
+        jToolBar1.setFloatable(false);
+        jToolBar1.setRollover(true);
 
-        usuarioMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Usuario.png"))); // NOI18N
-        usuarioMenuItem.setMnemonic('o');
-        usuarioMenuItem.setText("Usuário");
-        usuarioMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/categoria32p.png"))); // NOI18N
+        jButtonCategorias.setText("Categorias");
+        jButtonCategorias.setFocusable(false);
+        jButtonCategorias.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonCategorias.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonCategorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuarioMenuItemActionPerformed(evt);
+                jButtonCategoriasActionPerformed(evt);
             }
         });
-        usuarioMenu.add(usuarioMenuItem);
+        jToolBar1.add(jButtonCategorias);
+        jToolBar1.add(jSeparator1);
 
-        produtoMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Produto.png"))); // NOI18N
-        produtoMenuItem.setMnemonic('s');
-        produtoMenuItem.setText("Produto");
-        produtoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        jButtonProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/produto32p.png"))); // NOI18N
+        jButtonProdutos.setText("Produtos");
+        jButtonProdutos.setFocusable(false);
+        jButtonProdutos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonProdutos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                produtoMenuItemActionPerformed(evt);
+                jButtonProdutosActionPerformed(evt);
             }
         });
-        usuarioMenu.add(produtoMenuItem);
+        jToolBar1.add(jButtonProdutos);
+        jToolBar1.add(jSeparator2);
 
-        categoriaAsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/Categoria.png"))); // NOI18N
-        categoriaAsMenuItem.setMnemonic('a');
-        categoriaAsMenuItem.setText("Categorias");
-        categoriaAsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        jButtonUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/usuario32p.png"))); // NOI18N
+        jButtonUsuarios.setText("Usuários");
+        jButtonUsuarios.setFocusable(false);
+        jButtonUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonUsuarios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categoriaAsMenuItemActionPerformed(evt);
+                jButtonUsuariosActionPerformed(evt);
             }
         });
-        usuarioMenu.add(categoriaAsMenuItem);
+        jToolBar1.add(jButtonUsuarios);
+        jToolBar1.add(jSeparator3);
 
-        menuBar.add(usuarioMenu);
-
-        jMenuOpcoes.setText("Opções");
-
-        jMenuItem1.setText("Limpar Tela");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/limpar32p.png"))); // NOI18N
+        jButtonLimpar.setText("Limpar Tela");
+        jButtonLimpar.setFocusable(false);
+        jButtonLimpar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonLimpar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jButtonLimparActionPerformed(evt);
             }
         });
-        jMenuOpcoes.add(jMenuItem1);
+        jToolBar1.add(jButtonLimpar);
+        jToolBar1.add(jSeparator4);
 
-        jMenuItem2.setText("Sair do sistema");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/sair32p.png"))); // NOI18N
+        jButtonSair.setText("Sair");
+        jButtonSair.setFocusable(false);
+        jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jButtonSairActionPerformed(evt);
             }
         });
-        jMenuOpcoes.add(jMenuItem2);
+        jToolBar1.add(jButtonSair);
 
-        menuBar.add(jMenuOpcoes);
-
-        setJMenuBar(menuBar);
+        desktopPane.add(jToolBar1);
+        jToolBar1.setBounds(0, 0, 1200, 60);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,38 +135,37 @@ public class FormPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usuarioMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioMenuItemActionPerformed
+    private void jButtonCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCategoriasActionPerformed
         // TODO add your handling code here:
-        FormUsuario fu = new FormUsuario();
-        fu.setVisible(true);
-        desktopPane.add(fu);
-    }//GEN-LAST:event_usuarioMenuItemActionPerformed
+        FormCategoria form = new FormCategoria();
+        form.setVisible(true);
+        desktopPane.add(form);
+    }//GEN-LAST:event_jButtonCategoriasActionPerformed
 
-    private void produtoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtoMenuItemActionPerformed
-        // TODO add your handling code here:
-        FormProduto fp = new FormProduto();
-        fp.setVisible(true);
-        desktopPane.add(fp);
-    }//GEN-LAST:event_produtoMenuItemActionPerformed
-
-    private void categoriaAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriaAsMenuItemActionPerformed
-        // TODO add your handling code here:
-        FormCategoria fc = new FormCategoria();
-        fc.setVisible(true);
-        desktopPane.add(fc);
-    }//GEN-LAST:event_categoriaAsMenuItemActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jButtonSairActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
         // TODO add your handling code here:
         this.removeAll();
         this.repaint();
-        
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jButtonProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProdutosActionPerformed
+        // TODO add your handling code here:
+        FormProduto form = new FormProduto();
+        form.setVisible(true);
+        desktopPane.add(form);
+    }//GEN-LAST:event_jButtonProdutosActionPerformed
+
+    private void jButtonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuariosActionPerformed
+        // TODO add your handling code here:
+        FormUsuario form = new FormUsuario();
+        form.setVisible(true);
+        desktopPane.add(form);
+    }//GEN-LAST:event_jButtonUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,15 +203,17 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem categoriaAsMenuItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenu jMenuOpcoes;
-    private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem produtoMenuItem;
-    private javax.swing.JMenu usuarioMenu;
-    private javax.swing.JMenuItem usuarioMenuItem;
+    private javax.swing.JButton jButtonCategorias;
+    private javax.swing.JButton jButtonLimpar;
+    private javax.swing.JButton jButtonProdutos;
+    private javax.swing.JButton jButtonSair;
+    private javax.swing.JButton jButtonUsuarios;
+    private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator2;
+    private javax.swing.JToolBar.Separator jSeparator3;
+    private javax.swing.JToolBar.Separator jSeparator4;
+    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 
 }
