@@ -259,22 +259,21 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         //ler todas as linhas da jtable > adicionados e para cada linha inserir no produto.carrrinhos
         try{
-            JOptionPane.showMessageDialog(null, "Ai meu corolho 1");
             if (jTableProdutosAdicionados.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(null, "Favor Selecionar Produtos para adicionar.");
             }else{
                 Produto produto = new Produto();
-                JOptionPane.showMessageDialog(null, "Ai meu corolho 2");
                 for (int i = 0; i < jTableProdutosAdicionados.getRowCount(); i++) {
+                    JOptionPane.showMessageDialog(null, "entrou 01");
                     Object o = jTableProdutosAdicionados.getValueAt(i, 0);
+                    JOptionPane.showMessageDialog(null, "entrou 02");
                     produto.setId(Integer.parseInt(o.toString()));
+                    JOptionPane.showMessageDialog(null, "entrou 03");
                     this.listaProdutosAdicionados.add(produto);
+                    JOptionPane.showMessageDialog(null, "entrou 04");
                 }
-                JOptionPane.showMessageDialog(null, "Ai meu corolho 3");
                 this.carrinho.setProdutos(listaProdutosAdicionados);
-                JOptionPane.showMessageDialog(null, "Ai meu corolho 4");
                 this.fachada.carrinhoCadastrar(this.carrinho);
-                JOptionPane.showMessageDialog(null, "Ai meu corolho 5");
             
                 FormCarrinhoExistente fce = new FormCarrinhoExistente(this.carrinho);
                 fce.setVisible(true);
