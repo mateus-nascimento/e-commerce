@@ -34,8 +34,8 @@ public class CtrlEndereco {
             throw new Exception("Favor preencher o campo do nome do usuário corretamente.");
         }else if (end.getUsuario().getCpf().length() != 11 || end.getUsuario().getCpf().trim().equalsIgnoreCase("")){
             throw new Exception("Favor preencher o campo do cpf do usuário corretamente.");
-        }else if(!end.getUsuario().getEmail().contains("@") || !end.getUsuario().getEmail().contains("\\.")){
-           throw new Exception("Favor preencher o campo do email do usuário corretamente.");
+        //}else if(!end.getUsuario().getEmail().contains("@") || !end.getUsuario().getEmail().contains("\\.")){
+        //   throw new Exception("Favor preencher o campo do email do usuário corretamente.");
         }else if (end.getUsuario().getSenha().trim().length() < 6) {
             throw new Exception("Favor preencher o campo da senha do usuário corretamente, com no mínimo 6 digitos.");
         }else if(end.getUsuario().getTelefoneCelular().trim().length() < 11){

@@ -21,8 +21,8 @@ public class CtrlUsuario {
             throw new Exception("Favor preencher o campo do nome do usuário corretamente.");
         }else if (usu.getCpf().length() != 11 || usu.getCpf().trim().equalsIgnoreCase("")){
             throw new Exception("Favor preencher o campo do cpf do usuário corretamente.");
-        }else if(!usu.getEmail().contains("@") && !usu.getEmail().contains("\\.")){
-            throw new Exception("Favor preencher o campo do email do usuário corretamente.");
+        //}else if(!usu.getEmail().contains("@") && !usu.getEmail().contains("\\.")){
+        //    throw new Exception("Favor preencher o campo do email do usuário corretamente.");
         }
         else if (usu.getSenha().trim().length() < 6) {
             throw new Exception("Favor preencher o campo da senha do usuário corretamente, com no mínimo 6 digitos.");
@@ -44,8 +44,8 @@ public class CtrlUsuario {
             throw new Exception("Favor preencher o campo do nome do usuário corretamente.");
         }else if (usu.getCpf().length() != 11 || usu.getCpf().trim().equalsIgnoreCase("")){
             throw new Exception("Favor preencher o campo do cpf do usuário corretamente.");
-        }else if(!usu.getEmail().contains("@") && !usu.getEmail().contains("\\.")){
-            throw new Exception("Favor preencher o campo do email do usuário corretamente.");
+        //}else if(!usu.getEmail().contains("@") && !usu.getEmail().contains("\\.")){
+        //    throw new Exception("Favor preencher o campo do email do usuário corretamente.");
         }
         else if (usu.getSenha().trim().length() < 6) {
             throw new Exception("Favor preencher o campo da senha do usuário corretamente, com no mínimo 6 digitos.");

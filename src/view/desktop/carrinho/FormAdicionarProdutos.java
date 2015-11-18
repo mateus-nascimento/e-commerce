@@ -264,10 +264,10 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Favor Selecionar Produtos para adicionar.");
             }else{
                 Produto produto = new Produto();
-                for (int i = 0; i < jTableProdutosAdicionados.getRowCount(); i++) {
+                for (int i = 0; i < jTableProdutosAdicionados.getRowCount(); i++) {//Fixado
                     Object o = jTableProdutosAdicionados.getValueAt(i, 0);
                     produto.setId(Integer.parseInt(o.toString()));
-                    this.listaProdutosAdicionados.add(produto);//erro aqui
+                    this.listaProdutosAdicionados.add(produto);//fixado
                     //this.listaProdutosAdicionados.set(i, produto);
                 }
                 

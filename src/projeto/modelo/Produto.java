@@ -24,7 +24,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name ="Produto.findAll", query = "SELECT p FROM Produto p")
-public class Produto implements Serializable {
+public class Produto{
     @Id 
     @GeneratedValue
     private int id;
@@ -39,7 +39,7 @@ public class Produto implements Serializable {
     }
     
     //anottations do relacionamento com categoria (N:1)
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idCategoria")//coluna estrangeira que vai ser criada aqui (idCategoria em produto)
     private Categoria categoria;
     

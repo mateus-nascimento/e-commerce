@@ -68,10 +68,14 @@ public class DAOGeneric<Entidade> {
         EntityTransaction tx = getEntityManager().getTransaction();		
         try {
             tx.begin();
-            getEntityManager().persist(objeto);
+
+            getEntityManager().persist(objeto);//erro aqui!!! <<=================================
+            
+            System.out.println(classePersistente.getSimpleName() + " persistiu o objeto");
 //            tx.commit();
             System.out.println(classePersistente.getSimpleName() + " salvo com sucesso");
         } catch (PersistenceException e) {
+            
             tx.rollback();
         }finally{
             tx.commit();
