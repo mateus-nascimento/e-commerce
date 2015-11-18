@@ -118,7 +118,7 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonSair);
 
         getContentPane().add(jToolBar1);
-        jToolBar1.setBounds(380, 460, 350, 25);
+        jToolBar1.setBounds(350, 450, 350, 25);
 
         jTableCarrinho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

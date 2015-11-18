@@ -5,6 +5,7 @@
  */
 package view.desktop.carrinho;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -23,7 +24,7 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
      * Creates new form FormAdicionarProdutos
      */
     private List<Produto> listaProdutos;
-    private List<Produto> listaProdutosAdicionados;
+    private List<Produto> listaProdutosAdicionados = new ArrayList<>();
     private Carrinho carrinho;
     Fachada fachada = new Fachada();
 
@@ -264,16 +265,18 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
             }else{
                 Produto produto = new Produto();
                 for (int i = 0; i < jTableProdutosAdicionados.getRowCount(); i++) {
-                    JOptionPane.showMessageDialog(null, "entrou 01");
                     Object o = jTableProdutosAdicionados.getValueAt(i, 0);
-                    JOptionPane.showMessageDialog(null, "entrou 02");
                     produto.setId(Integer.parseInt(o.toString()));
-                    JOptionPane.showMessageDialog(null, "entrou 03");
-                    this.listaProdutosAdicionados.add(produto);
-                    JOptionPane.showMessageDialog(null, "entrou 04");
+                    this.listaProdutosAdicionados.add(produto);//erro aqui
+                    //this.listaProdutosAdicionados.set(i, produto);
                 }
+                
                 this.carrinho.setProdutos(listaProdutosAdicionados);
+                JOptionPane.showMessageDialog(null, "Adicionou os produtos ao carrinho");
+                //setou os produtos da lista 
                 this.fachada.carrinhoCadastrar(this.carrinho);
+                JOptionPane.showMessageDialog(null, "Cadastrou os produtos ao carrinho");
+//                cadastrou o carrinho
             
                 FormCarrinhoExistente fce = new FormCarrinhoExistente(this.carrinho);
                 fce.setVisible(true);

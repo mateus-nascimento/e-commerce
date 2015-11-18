@@ -38,7 +38,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
-        jToolBar1 = new javax.swing.JToolBar();
+        jToolBarPrincipal = new javax.swing.JToolBar();
         jButtonCategorias = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         jButtonProdutos = new javax.swing.JButton();
@@ -51,8 +51,17 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jToolBar1.setFloatable(false);
-        jToolBar1.setRollover(true);
+        desktopPane.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                desktopPaneFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                desktopPaneFocusLost(evt);
+            }
+        });
+
+        jToolBarPrincipal.setFloatable(false);
+        jToolBarPrincipal.setRollover(true);
 
         jButtonCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/categoria32p.png"))); // NOI18N
         jButtonCategorias.setText("Categorias");
@@ -64,8 +73,8 @@ public class FormPrincipal extends javax.swing.JFrame {
                 jButtonCategoriasActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButtonCategorias);
-        jToolBar1.add(jSeparator1);
+        jToolBarPrincipal.add(jButtonCategorias);
+        jToolBarPrincipal.add(jSeparator1);
 
         jButtonProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/produto32p.png"))); // NOI18N
         jButtonProdutos.setText("Produtos");
@@ -77,8 +86,8 @@ public class FormPrincipal extends javax.swing.JFrame {
                 jButtonProdutosActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButtonProdutos);
-        jToolBar1.add(jSeparator2);
+        jToolBarPrincipal.add(jButtonProdutos);
+        jToolBarPrincipal.add(jSeparator2);
 
         jButtonUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/usuario32p.png"))); // NOI18N
         jButtonUsuarios.setText("Usuários");
@@ -90,8 +99,8 @@ public class FormPrincipal extends javax.swing.JFrame {
                 jButtonUsuariosActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButtonUsuarios);
-        jToolBar1.add(jSeparator3);
+        jToolBarPrincipal.add(jButtonUsuarios);
+        jToolBarPrincipal.add(jSeparator3);
 
         jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/limpar32p.png"))); // NOI18N
         jButtonLimpar.setText("Limpar Tela");
@@ -103,8 +112,8 @@ public class FormPrincipal extends javax.swing.JFrame {
                 jButtonLimparActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButtonLimpar);
-        jToolBar1.add(jSeparator4);
+        jToolBarPrincipal.add(jButtonLimpar);
+        jToolBarPrincipal.add(jSeparator4);
 
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/sair32p.png"))); // NOI18N
         jButtonSair.setText("Sair");
@@ -116,10 +125,10 @@ public class FormPrincipal extends javax.swing.JFrame {
                 jButtonSairActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButtonSair);
+        jToolBarPrincipal.add(jButtonSair);
 
-        desktopPane.add(jToolBar1);
-        jToolBar1.setBounds(0, 0, 1200, 60);
+        desktopPane.add(jToolBarPrincipal);
+        jToolBarPrincipal.setBounds(0, 0, 1200, 60);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,6 +176,16 @@ public class FormPrincipal extends javax.swing.JFrame {
         desktopPane.add(form);
     }//GEN-LAST:event_jButtonUsuariosActionPerformed
 
+    private void desktopPaneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_desktopPaneFocusLost
+        // TODO add your handling code here:
+        jToolBarPrincipal.hide();
+    }//GEN-LAST:event_desktopPaneFocusLost
+
+    private void desktopPaneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_desktopPaneFocusGained
+        // TODO add your handling code here:
+        jToolBarPrincipal.setVisible(true);
+    }//GEN-LAST:event_desktopPaneFocusGained
+
     /**
      * @param args the command line arguments
      */
@@ -213,7 +232,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
-    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBarPrincipal;
     // End of variables declaration//GEN-END:variables
 
 }
