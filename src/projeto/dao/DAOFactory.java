@@ -6,6 +6,8 @@
 //teste
 package projeto.dao;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -24,6 +26,11 @@ public abstract class DAOFactory {
 //        factory = Persistence.createEntityManagerFactory("projetoecommerce");
         if (manager == null || !manager.isOpen()) {
             manager = factory.createEntityManager();
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(DAOFactory.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 

@@ -274,7 +274,7 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
                 this.carrinho.setProdutos(listaProdutosAdicionados);
                 JOptionPane.showMessageDialog(null, "Adicionou os produtos ao carrinho");
                 //setou os produtos da lista 
-                this.fachada.carrinhoCadastrar(this.carrinho);
+                this.fachada.carrinhoAlterar(this.carrinho);
                 JOptionPane.showMessageDialog(null, "Cadastrou os produtos ao carrinho");
 //                cadastrou o carrinho
             

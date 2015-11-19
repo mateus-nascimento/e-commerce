@@ -23,7 +23,9 @@ public class FormPrincipal extends javax.swing.JFrame {
      */
     
     public FormPrincipal() {
+        setExtendedState(MAXIMIZED_BOTH);
         initComponents();
+        
         
         Image image = new ImageIcon(this.getClass().getResource("/material/icone.png")).getImage();
         this.setIconImage(image);
@@ -144,13 +146,6 @@ public class FormPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCategoriasActionPerformed
-        // TODO add your handling code here:
-        FormCategoria form = new FormCategoria();
-        form.setVisible(true);
-        desktopPane.add(form);
-    }//GEN-LAST:event_jButtonCategoriasActionPerformed
-
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         // TODO add your handling code here:
         System.exit(0);
@@ -162,6 +157,13 @@ public class FormPrincipal extends javax.swing.JFrame {
         this.repaint();
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
+    private void jButtonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuariosActionPerformed
+        // TODO add your handling code here:
+        FormUsuario form = new FormUsuario();
+        form.setVisible(true);
+        desktopPane.add(form);
+    }//GEN-LAST:event_jButtonUsuariosActionPerformed
+
     private void jButtonProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProdutosActionPerformed
         // TODO add your handling code here:
         FormProduto form = new FormProduto();
@@ -169,12 +171,12 @@ public class FormPrincipal extends javax.swing.JFrame {
         desktopPane.add(form);
     }//GEN-LAST:event_jButtonProdutosActionPerformed
 
-    private void jButtonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuariosActionPerformed
+    private void jButtonCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCategoriasActionPerformed
         // TODO add your handling code here:
-        FormUsuario form = new FormUsuario();
+        FormCategoria form = new FormCategoria();
         form.setVisible(true);
         desktopPane.add(form);
-    }//GEN-LAST:event_jButtonUsuariosActionPerformed
+    }//GEN-LAST:event_jButtonCategoriasActionPerformed
 
     private void desktopPaneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_desktopPaneFocusLost
         // TODO add your handling code here:

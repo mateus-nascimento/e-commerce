@@ -21,39 +21,20 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
     /**
      * Creates new form FormSalvarProduto
      */
+    private List<Categoria> listaCategorias;
+    private Categoria categoriaExistente;
+    private Produto produto;
+    
     public FormSalvarProduto() {
         initComponents();
         buscarCategorias();
     }
     
-    public void buscarCategorias(){
-        try {
-            Fachada fachada = new Fachada();
-            List<Categoria> lista = fachada.categoriaBuscar();
-            
-            if (lista.size() == 0) {
-                    JOptionPane.showMessageDialog(null, "Favor criar uma categoria para organizar os produtos.", "Não existem categorias cadastradas", JOptionPane.INFORMATION_MESSAGE);
-                    dispose();
-            }
-
-            if (lista.size() > 0) {
-
-                for (Categoria c : lista) {
-
-                    jComboBoxCategoria.addItem(c.getNome());
-                    jComboBoxCategoria.setSelectedIndex(c.getId());
-                }
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    private int idProduto = 0;
     FormSalvarProduto(Produto p) {
         initComponents();
-        
-        this.idProduto=p.getId();
-        
+        buscarCategorias();
+        this.categoriaExistente = p.getCategoria();
+        this.produto = p;
         jTextFieldNome.setText(p.getNome());
         jFormattedTextFieldValor.setText(String.valueOf(p.getValor()));
         if(p.isStatus() == true){
@@ -61,11 +42,33 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
         }else{
             jRadioButtonInativo.isSelected();
         }
-        jComboBoxCategoria.addItem(p.getCategoria().getNome());
-        jComboBoxCategoria.setSelectedIndex(p.getCategoria().getId());
+        
+        jComboBoxCategoria.setSelectedItem(p.getCategoria().getNome());
+        
         jTextAreaDescricao.setText(p.getDescricao());
     }
     
+    public void buscarCategorias(){
+        try {
+            Fachada fachada = new Fachada();
+            this.listaCategorias = fachada.categoriaBuscar();
+            
+            if (this.listaCategorias.size() == 0) {
+                    JOptionPane.showMessageDialog(null, "Favor criar uma categoria para organizar os produtos.", "Não existem categorias cadastradas", JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+            }
+
+            if (this.listaCategorias.size() > 0) {
+
+                for (Categoria c : this.listaCategorias) {
+
+                    jComboBoxCategoria.addItem(c.getNome());
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+        }
+    }    
     
 
     /**
@@ -233,15 +236,17 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
         //mas quando for alteracao o idProduto FICA COM o id que veio do objeto da tabela BUT....
         try {
             
+            if (jComboBoxCategoria.getSelectedIndex() == 0){
+                throw new Exception("Selecione uma categoria!");
+            }
             
-            if (idProduto == 0) {
+            if (this.produto.getId() == 0) {
                 Produto novoProd = new Produto();
-                Categoria categoria = new Categoria();
-                categoria.setId(jComboBoxCategoria.getSelectedIndex());
+                Categoria categoria = this.listaCategorias.get(jComboBoxCategoria.getSelectedIndex() - 1);
                 novoProd.setNome(jTextFieldNome.getText().toUpperCase());
                 novoProd.setValor(Float.parseFloat(jFormattedTextFieldValor.getText().replace("\\.", "")));
-                JOptionPane.showMessageDialog(null, categoria.getId());
-
+                JOptionPane.showMessageDialog(null, categoria.getNome());
+                
                 if (jRadioButtonAtivo.isSelected()) {
                     novoProd.setStatus(true);
                 }else{
@@ -253,7 +258,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 novoProd.setCategoria(categoria);//
 
                 Fachada fachada = new Fachada();
-                fachada.produtoAlterar(novoProd);//erro aqui <====================================================================================
+                fachada.produtoCadastrar(novoProd);//erro aqui <====================================================================================
                 
                 JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
                 
@@ -263,6 +268,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 dispose();
             }else{
                 Produto editarProd = new Produto();
+                editarProd.setId(this.produto.getId());
                 Categoria categoria = new Categoria();
                 categoria.setId(jComboBoxCategoria.getSelectedIndex());
                 editarProd.setNome(jTextFieldNome.getText().toUpperCase());
