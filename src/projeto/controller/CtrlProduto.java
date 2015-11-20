@@ -51,4 +51,8 @@ public class CtrlProduto {
     public void remover(Produto prod){
         DAOFactory.getProdutoDAO().remover(prod);
     }
+    
+    public List<Produto> produtosCarrinho(int idCarrinho) {
+        return DAOFactory.getProdutoDAO().produtosCarrinho(idCarrinho);
+    }
 }

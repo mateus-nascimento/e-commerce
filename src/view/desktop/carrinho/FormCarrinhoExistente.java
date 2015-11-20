@@ -11,7 +11,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import projeto.fachada.Fachada;
-import projeto.modelo.Usuario;
+import projeto.modelo.Produto;
 
 /**
  *
@@ -23,7 +23,7 @@ public class FormCarrinhoExistente extends javax.swing.JInternalFrame {
      * Creates new form FormNovoCarrinho
      */
 private Carrinho carrinho;
-private List listaProdutos;
+private List<Produto> listaProdutos;
 Fachada fachada = new Fachada();
     public FormCarrinhoExistente(Carrinho car) {
         this.carrinho = car;
@@ -41,12 +41,9 @@ Fachada fachada = new Fachada();
                 //JOptionPane.showMessageDialog(null, "Usuário não possui carrinho.");
                 JOptionPane.showMessageDialog(null, "Usuário não possui carrinho.");
             }
-            for (Carrinho c : listaProdutos) {
-                modelo.addRow(new String[]{Integer.toString(c.getId()), 
-                        //Integer.toString(this.fachada.quantidadeItemTotal(c.getId())), 
-                        Integer.toString(c.getProdutos().size()), 
-                        Double.toString(this.fachada.valorTotalCarrinho(c.getId())), 
-                        Boolean.toString(c.isStatus())});
+            for (Produto p : listaProdutos) {
+                modelo.addRow(new String[]{p.getNome(), 
+                        Double.toString(p.getValor())});
             }
             jTableProdutosCarrinho.setModel(modelo);
             
@@ -197,7 +194,7 @@ Fachada fachada = new Fachada();
             getDesktopPane().add(fap);
             dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
 
@@ -206,7 +203,7 @@ Fachada fachada = new Fachada();
         try {
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonRemoverActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables

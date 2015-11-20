@@ -65,6 +65,11 @@ public class Fachada {
         ctrlProduto.remover(prod);
     }
     
+    public List<Produto> produtosCarrinho(int idCarrinho) throws Exception {
+        List<Produto> lista = ctrlProduto.produtosCarrinho(idCarrinho);
+        return lista;
+    }
+    
     //categoria
     public void categoriaCadastrar(Categoria cat)throws Exception{
         ctrlCategoria.cadastrar(cat);
@@ -191,7 +196,5 @@ public class Fachada {
          return ctrlUsuario.usuarioLogin(usu);
      }
 
-    public List produtosCarrinho(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }

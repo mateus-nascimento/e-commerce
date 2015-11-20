@@ -107,5 +107,6 @@ public class CarrinhoDAO extends DAOGeneric<Carrinho> implements ICarrinhoDAO {
             tx.commit();
         }
     }
+
     
 }

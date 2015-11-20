@@ -8,6 +8,7 @@ package projeto.controller;
 import java.util.List;
 import projeto.dao.DAOFactory;
 import projeto.modelo.Carrinho;
+import projeto.modelo.Produto;
 
 /**
  *
@@ -43,4 +44,6 @@ public class CtrlCarrinho {
     public void alterar(Carrinho car){
         DAOFactory.getCarrinhoDAO().alterar(car);
     }
+
+    
 }
