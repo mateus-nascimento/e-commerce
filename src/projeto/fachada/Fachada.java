@@ -190,4 +190,8 @@ public class Fachada {
      public Boolean usuarioLogin(Usuario usu)throws Exception{
          return ctrlUsuario.usuarioLogin(usu);
      }
+
+    public List produtosCarrinho(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

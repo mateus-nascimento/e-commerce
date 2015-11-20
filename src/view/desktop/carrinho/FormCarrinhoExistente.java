@@ -7,7 +7,10 @@ package view.desktop.carrinho;
 
 import projeto.modelo.Carrinho;
 import View.desktop.carrinho.FormCarrinho;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import projeto.fachada.Fachada;
 import projeto.modelo.Usuario;
 
 /**
@@ -20,6 +23,8 @@ public class FormCarrinhoExistente extends javax.swing.JInternalFrame {
      * Creates new form FormNovoCarrinho
      */
 private Carrinho carrinho;
+private List listaProdutos;
+Fachada fachada = new Fachada();
     public FormCarrinhoExistente(Carrinho car) {
         this.carrinho = car;
         initComponents();
@@ -28,7 +33,26 @@ private Carrinho carrinho;
     }
     
     private void listarProdutosCarrinho() {
-        
+        try {
+            this.listaProdutos = this.fachada.produtosCarrinho(this.carrinho.getId());
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.setColumnIdentifiers(new String[]{"Produto, Valor"});
+            if (listaProdutos.isEmpty()) {
+                //JOptionPane.showMessageDialog(null, "Usuário não possui carrinho.");
+                JOptionPane.showMessageDialog(null, "Usuário não possui carrinho.");
+            }
+            for (Carrinho c : listaProdutos) {
+                modelo.addRow(new String[]{Integer.toString(c.getId()), 
+                        //Integer.toString(this.fachada.quantidadeItemTotal(c.getId())), 
+                        Integer.toString(c.getProdutos().size()), 
+                        Double.toString(this.fachada.valorTotalCarrinho(c.getId())), 
+                        Boolean.toString(c.isStatus())});
+            }
+            jTableProdutosCarrinho.setModel(modelo);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,7 +66,7 @@ private Carrinho carrinho;
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableProdutosCarrinho = new javax.swing.JTable();
         jToolBar1 = new javax.swing.JToolBar();
         jButtonAdicionar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
@@ -54,7 +78,7 @@ private Carrinho carrinho;
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("usuário:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableProdutosCarrinho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -65,7 +89,7 @@ private Carrinho carrinho;
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableProdutosCarrinho);
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -195,7 +219,7 @@ private Carrinho carrinho;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableProdutosCarrinho;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 

@@ -78,7 +78,10 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
         jLabelNomeUsuario = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         jButtonConfirmar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         jButtonCancelar = new javax.swing.JButton();
+
+        getContentPane().setLayout(null);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
 
@@ -163,6 +166,9 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
                 .addGap(6, 6, 6))
         );
 
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(250, 160, 280, 270);
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuário"));
 
         jLabel1.setText("nome");
@@ -190,6 +196,9 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
                     .addComponent(jLabelNomeUsuario)))
         );
 
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(250, 90, 280, 63);
+
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
@@ -203,6 +212,7 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
             }
         });
         jToolBar1.add(jButtonConfirmar);
+        jToolBar1.add(jSeparator1);
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.setFocusable(false);
@@ -215,32 +225,10 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(jButtonCancelar);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(jToolBar1);
+        jToolBar1.setBounds(260, 440, 270, 23);
 
-        setBounds(0, 0, 1200, 650);
+        setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
@@ -309,6 +297,7 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelNomeUsuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldCidade;
     private javax.swing.JTextField jTextFieldComplemento;
