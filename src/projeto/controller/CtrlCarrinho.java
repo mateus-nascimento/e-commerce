@@ -45,5 +45,9 @@ public class CtrlCarrinho {
         DAOFactory.getCarrinhoDAO().alterar(car);
     }
 
+    public List<Produto> carrinhoProdutos(int idCarrinho) {
+        return DAOFactory.getCarrinhoDAO().carrinhoProdutos(idCarrinho);
+    }
+
     
 }

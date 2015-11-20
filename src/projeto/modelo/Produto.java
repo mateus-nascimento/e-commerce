@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 /**
@@ -23,7 +24,8 @@ import javax.persistence.NamedQuery;
  * @author bboyrap
  */
 @Entity
-@NamedQuery(name ="Produto.findAll", query = "SELECT p FROM Produto p")
+@NamedQueries({@NamedQuery(name ="Produto.findAll", query = "SELECT p FROM Produto p")})
+
 public class Produto{
     @Id 
     @GeneratedValue

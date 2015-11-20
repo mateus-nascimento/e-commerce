@@ -5,6 +5,7 @@
  */
 package projeto.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -34,6 +35,25 @@ public class CarrinhoDAO extends DAOGeneric<Carrinho> implements ICarrinhoDAO {
             query.setParameter(1, idUsuario);
             List<Carrinho> retorno = query.getResultList();
             return retorno;
+        }finally{
+            tx.commit();
+        }
+    }
+    
+    public List<Produto> carrinhoProdutos(int idCarrinho) {
+        EntityTransaction tx = getEntityManager().getTransaction();
+        try {
+            tx.begin();
+            TypedQuery<Carrinho> query = getEntityManager().createNamedQuery("Carrinho.carrinho", Carrinho.class);
+            query.setParameter(1, idCarrinho);
+            Carrinho carrinho = query.getSingleResult();
+            List<Produto> retorno = new ArrayList<>();
+            
+            for(Produto p : carrinho.getProdutos()){
+                retorno.add(p);
+            }
+            return retorno;
+            
         }finally{
             tx.commit();
         }
@@ -107,6 +127,7 @@ public class CarrinhoDAO extends DAOGeneric<Carrinho> implements ICarrinhoDAO {
             tx.commit();
         }
     }
+
 
     
 }

@@ -34,12 +34,12 @@ Fachada fachada = new Fachada();
     
     private void listarProdutosCarrinho() {
         try {
-            this.listaProdutos = this.fachada.produtosCarrinho(this.carrinho.getId());
+            this.listaProdutos = this.fachada.carrinhoProdutos(this.carrinho.getId());
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.setColumnIdentifiers(new String[]{"Produto, Valor"});
             if (listaProdutos.isEmpty()) {
                 //JOptionPane.showMessageDialog(null, "Usuário não possui carrinho.");
-                JOptionPane.showMessageDialog(null, "Usuário não possui carrinho.");
+                JOptionPane.showMessageDialog(null, "Não existem produtos adicionados ao carrinho..");
             }
             for (Produto p : listaProdutos) {
                 modelo.addRow(new String[]{p.getNome(), 

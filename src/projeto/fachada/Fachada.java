@@ -65,10 +65,7 @@ public class Fachada {
         ctrlProduto.remover(prod);
     }
     
-    public List<Produto> produtosCarrinho(int idCarrinho) throws Exception {
-        List<Produto> lista = ctrlProduto.produtosCarrinho(idCarrinho);
-        return lista;
-    }
+    
     
     //categoria
     public void categoriaCadastrar(Categoria cat)throws Exception{
@@ -117,6 +114,11 @@ public class Fachada {
     
     public void carrinhoAlterar(Carrinho c) throws Exception{
         ctrlCarrinho.alterar(c);
+    }
+    
+    public List<Produto> carrinhoProdutos(int idCarrinho) throws Exception {
+        List<Produto> lista = ctrlCarrinho.carrinhoProdutos(idCarrinho);
+        return lista;
     }
     
     //entrega
