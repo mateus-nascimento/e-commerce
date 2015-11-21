@@ -5,6 +5,8 @@
  */
 package View.desktop.funcionario;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import projeto.fachada.Fachada;
 import projeto.modelo.Endereco;
@@ -20,10 +22,9 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
     /**
      * Creates new form FormSalvarFuncionario
      */
-    private Funcionario funcionario;
-    public FormSalvarFuncionario(Funcionario func) {
+
+    FormSalvarFuncionario() {
         initComponents();
-        this.funcionario = func;
     }
 
     /**
@@ -74,9 +75,11 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
         jTextFieldSetor = new javax.swing.JTextField();
         jToolBar1 = new javax.swing.JToolBar();
         jButtonConfirmar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         jButtonCancelar = new javax.swing.JButton();
 
         setTitle("Cadastrar Funcionário");
+        getContentPane().setLayout(null);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
 
@@ -181,6 +184,9 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(100, 60, 280, 280);
+
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
 
         jLabel7.setText("logradouro");
@@ -264,6 +270,9 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
                 .addGap(6, 6, 6))
         );
 
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(400, 60, 280, 280);
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações"));
 
         jLabel15.setText("setor");
@@ -278,12 +287,12 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
                 .addGap(51, 51, 51)
                 .addComponent(jLabel15)
                 .addGap(18, 18, 18)
-                .addComponent(jTextFieldSetor)
-                .addGap(92, 92, 92)
+                .addComponent(jTextFieldSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel16)
                 .addGap(18, 18, 18)
                 .addComponent(jTextFieldCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,6 +306,11 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(100, 350, 578, 65);
+
+        jToolBar1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ações"));
+        jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
         jButtonConfirmar.setText("Confirmar");
@@ -309,6 +323,7 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
             }
         });
         jToolBar1.add(jButtonConfirmar);
+        jToolBar1.add(jSeparator1);
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.setFocusable(false);
@@ -321,49 +336,28 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(jButtonCancelar);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        getContentPane().add(jToolBar1);
+        jToolBar1.setBounds(340, 420, 120, 50);
 
-        setBounds(0, 0, 1200, 650);
+        setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
         // TODO add your handling code here:
-        Usuario usuario = new Usuario();
-        usuario.setNome(jTextFieldNome.getText().toUpperCase());
-        usuario.setEmail(jTextFieldEmail.getText().toUpperCase());
-        usuario.setCpf(jFormattedTextFieldCpf.getText().replaceAll("\\.", "").replace("-", ""));
-        usuario.setSenha(jPasswordFieldSenha.getText());
-        usuario.setTelefoneFixo(jFormattedTextFieldTelefoneFixo.getText().replace("(", "").replace(")", "").replace("-", ""));
-        usuario.setTelefoneCelular(jFormattedTextFieldTelefoneCelular.getText().replace("(", "").replace(")", "").replace("-", ""));
-        
+        Funcionario func = new Funcionario();
+        func.setNome(jTextFieldNome.getText().toUpperCase());
+        func.setEmail(jTextFieldEmail.getText().toUpperCase());
+        func.setCpf(jFormattedTextFieldCpf.getText().replaceAll("\\.", "").replace("-", ""));
+        func.setSenha(jPasswordFieldSenha.getText());
+        func.setTelefoneFixo(jFormattedTextFieldTelefoneFixo.getText().replace("(", "").replace(")", "").replace("-", ""));
+        func.setTelefoneCelular(jFormattedTextFieldTelefoneCelular.getText().replace("(", "").replace(")", "").replace("-", ""));
+        func.setSetor(jTextFieldSetor.getText().toUpperCase());
+        func.setCargo(jTextFieldCargo.getText().toUpperCase());
+        if (jRadioButtonAtivo.isSelected()) {
+            func.setStatus(true);
+        }else{
+            func.setStatus(false);
+        }
         
         Endereco endereco = new Endereco();
         endereco.setLogradouro(jTextFieldLogradouro.getText().toUpperCase());
@@ -374,36 +368,34 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
         endereco.setNumero(Integer.parseInt(jTextFieldNumero.getText()));
         endereco.setComplemento(jTextFieldComplemento.getText().toUpperCase());
         endereco.setStatus(true);
-        endereco.setUsuario(usuario);
+        endereco.setUsuario(func);
         
-        Funcionario funcionario = new Funcionario();
-        if (jRadioButtonAtivo.isSelected()) {
-            funcionario.setStatus(true);
-        }else{
-            funcionario.setStatus(false);
+        Fachada fachada = new Fachada();
+        
+        
+        try {
+            fachada.enderecoCadastrar(endereco);
+            //fachada.funcionarioCadastrar(func);
+            
+            FormFuncionario ff = new FormFuncionario();
+            ff.setVisible(true);
+            getDesktopPane().add(ff);
+            dispose();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
-        
-        funcionario.setSetor(jTextFieldSetor.getText().toUpperCase());
-        funcionario.setCargo(jTextFieldCargo.getText().toUpperCase());
-        // qual cascata usar para inserir um usuario, endereco, e funcionario td junto.
-        
-        JOptionPane.showMessageDialog(null, "Implementar o tipo de cascata\n"
-                + "do funcionario, endereco e usuario..");
-        //Fachada fachada = new Fachada();
-        //fachada.funcionarioCadastrar(funcionario);
-        
-        //funcionario.set
     }//GEN-LAST:event_jButtonConfirmarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
         try {
-            FormFuncionario fu = new FormFuncionario(this.funcionario);
-            fu.setVisible(true);
-            this.getDesktopPane().add(fu);
-            this.dispose();
+            FormFuncionario ff = new FormFuncionario();
+            ff.setVisible(true);
+            getDesktopPane().add(ff);
+            dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
@@ -439,6 +431,7 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
     private javax.swing.JPasswordField jPasswordFieldSenha;
     private javax.swing.JRadioButton jRadioButtonAtivo;
     private javax.swing.JRadioButton jRadioButtonInativo;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldCargo;
     private javax.swing.JTextField jTextFieldCidade;

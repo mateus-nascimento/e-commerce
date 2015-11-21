@@ -39,15 +39,15 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
     public void buscarEndereco(){
         try {
             this.listaEndereco = this.fachada.enderecoBuscar(this.carrinho.getUsuario().getId());
-            if (listaEndereco.isEmpty()) {
+            if (this.listaEndereco.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Usuário não possui endereços associados, favor inserir um endereço primeiro.");
-                dispose();
-            }else{
-                for (Endereco e : listaEndereco) {
+            }
+            else{
+                for (Endereco e : this.listaEndereco) {
                     jComboBoxLogradouro.addItem(e.getLogradouro());
-                    jComboBoxLogradouro.setSelectedIndex(e.getId());
                 }
             }
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
@@ -58,11 +58,9 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
             this.listaFuncionario = this.fachada.funcionarioEntregador();
             if (listaEndereco.size() == 0) {
                 JOptionPane.showMessageDialog(null, "Não existem entregadores cadastrados.");
-                dispose();
             }else{
-                for (Funcionario f : listaFuncionario) {
+                for (Funcionario f : this.listaFuncionario) {
                     jComboBoxEntregador.addItem(f.getNome());
-                    jComboBoxEntregador.setSelectedIndex(f.getId());
                 }
             }
         } catch (Exception e) {
@@ -86,26 +84,51 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
         jComboBoxLogradouro = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         jComboBoxEntregador = new javax.swing.JComboBox();
+        jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
+
+        getContentPane().setLayout(null);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados da Ordem de Serviço"));
+        jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Carrinho do usuário:");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(155, 27, 161, 22);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("fulano");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(334, 27, 400, 22);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Selecionar endereço:");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(154, 60, 162, 28);
 
         jComboBoxLogradouro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBoxLogradouro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Informe o logradouro..." }));
+        jComboBoxLogradouro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione o logradouro..." }));
         jComboBoxLogradouro.setToolTipText("Selecione o logradouro para entrega");
+        jPanel1.add(jComboBoxLogradouro);
+        jComboBoxLogradouro.setBounds(334, 60, 400, 28);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Selecionar entregador:");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(140, 142, 176, 22);
 
         jComboBoxEntregador.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBoxEntregador.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Informe o nome..." }));
+        jComboBoxEntregador.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione o nome..." }));
+        jPanel1.add(jComboBoxEntregador);
+        jComboBoxEntregador.setBounds(334, 136, 400, 28);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(10, 11, 764, 186);
+
+        jToolBar1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ações"));
+        jToolBar1.setFloatable(false);
+        jToolBar1.setRollover(true);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("Confirmar");
@@ -116,64 +139,10 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jToolBar1.add(jButton1);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBoxLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxEntregador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(36, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(209, 209, 209))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBoxLogradouro)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jComboBoxEntregador, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        getContentPane().add(jToolBar1);
+        jToolBar1.setBounds(330, 220, 100, 79);
 
         setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
@@ -186,24 +155,18 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
             Entrega entrega = new Entrega();
             //Os
             os.setCarrinho(this.carrinho);
-            JOptionPane.showMessageDialog(null, "EOQ1");
 
             //Entrega
             entrega.setOs(os);
-            JOptionPane.showMessageDialog(null, "EOQ2");
             //Endereco
-            Endereco e = this.listaEndereco.get(jComboBoxEntregador.getSelectedIndex());
-            JOptionPane.showMessageDialog(null, "EOQ3");
-            Funcionario f = this.listaFuncionario.get(jComboBoxEntregador.getSelectedIndex());
-            JOptionPane.showMessageDialog(null, "EOQ4");
+            JOptionPane.showMessageDialog(null, "EOQ00");
+            Endereco e = this.listaEndereco.get(jComboBoxEntregador.getSelectedIndex() - 1);//erro aqui
+            JOptionPane.showMessageDialog(null, "EOQ11");
+            Funcionario f = this.listaFuncionario.get(jComboBoxEntregador.getSelectedIndex() - 1);
             entrega.setEndereco(e);
-            JOptionPane.showMessageDialog(null, "EOQ5");
             entrega.setFuncionario(f);
-            JOptionPane.showMessageDialog(null, "EOQ6");
             entrega.setStatus(true);
-            JOptionPane.showMessageDialog(null, "EOQ7");
             entrega.setOs(os);
-            JOptionPane.showMessageDialog(null, "EOQ8");
 
             //Ordem de serviços
             os.setEntrega(entrega);
@@ -211,20 +174,17 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
 
             this.fachada.osCadastrar(os);
             JOptionPane.showMessageDialog(null, "EOQ10");
-            
+
             JOptionPane.showMessageDialog(null, "Ordem de serviço cadastrada no sistema.");
-            
+
             //gerar pdf da ordem
             GerarPdf pdf = new GerarPdf(os);
             JOptionPane.showMessageDialog(null, "EOQ11");
-            
-            
+
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
-        
-        
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -237,5 +197,6 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

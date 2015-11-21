@@ -52,7 +52,7 @@ public class FuncionarioDAO extends DAOGeneric<Funcionario> implements IFunciona
     public List<Funcionario> funcionarioEntregador() {
         EntityTransaction tx = getEntityManager().getTransaction();
         try {
-            List retorno = null;
+            List<Funcionario> retorno = null;
             tx.begin();
             Query query = getEntityManager().createNamedQuery("Funcionario.entregador");
             retorno = query.getResultList();

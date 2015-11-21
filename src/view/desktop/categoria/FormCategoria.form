@@ -90,7 +90,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="170" y="470" width="456" height="39"/>
+          <AbsoluteConstraints x="160" y="470" width="480" height="80"/>
         </Constraint>
       </Constraints>
 
@@ -98,6 +98,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="jButtonInserir">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/material/adicionar24.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Inserir Nova Categoria"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -111,6 +114,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonAlterar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/material/alterar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Alterar Categoria Selecionada"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -124,6 +130,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonRemover">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/material/remover24.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Remover Categoria Selecionada"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -137,6 +146,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonSair">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/material/cancelar24.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Sair"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>

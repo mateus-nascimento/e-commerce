@@ -66,7 +66,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }    
     
@@ -99,6 +99,9 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
         jButtonCancelar = new javax.swing.JButton();
 
         setTitle("Cadastrar Produto");
+        getContentPane().setLayout(null);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do produto"));
 
         jLabel1.setText("nome");
 
@@ -124,31 +127,6 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
         jLabel5.setText("categoria");
 
         jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione uma categoria..." }));
-
-        jToolBar1.setFloatable(false);
-        jToolBar1.setRollover(true);
-
-        jButtonConfirmar.setText("Comfirmar");
-        jButtonConfirmar.setFocusable(false);
-        jButtonConfirmar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonConfirmar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButtonConfirmar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConfirmarActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButtonConfirmar);
-
-        jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.setFocusable(false);
-        jButtonCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButtonCancelar);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -179,10 +157,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(228, 228, 228))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGap(228, 228, 228))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,25 +183,42 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(324, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(260, 80, 300, 296);
 
-        setBounds(0, 0, 1200, 650);
+        jToolBar1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ações"));
+        jToolBar1.setFloatable(false);
+        jToolBar1.setRollover(true);
+
+        jButtonConfirmar.setText("Confirmar");
+        jButtonConfirmar.setFocusable(false);
+        jButtonConfirmar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonConfirmar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConfirmarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButtonConfirmar);
+
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.setFocusable(false);
+        jButtonCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButtonCancelar);
+
+        getContentPane().add(jToolBar1);
+        jToolBar1.setBounds(260, 380, 300, 44);
+
+        setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed

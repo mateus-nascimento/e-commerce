@@ -167,15 +167,10 @@ public class DAOGeneric<Entidade> {
             retorno = query.getResultList();
             tx.commit();
             
-
         } catch (Exception e) {
             e.getMessage();
         }
-        
         return retorno;
-        
-        
-        
     }
     
     /*public final Entidade buscarTudo(Entidade objeto){

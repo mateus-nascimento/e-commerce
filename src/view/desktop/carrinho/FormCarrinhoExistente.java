@@ -28,8 +28,8 @@ Fachada fachada = new Fachada();
     public FormCarrinhoExistente(Carrinho car) {
         this.carrinho = car;
         initComponents();
-        jTextFieldNome.setText(car.getUsuario().getNome());//nao to conseguindo colocar o nome do individuo na porra do label. wtf
-        jTextFieldCarrinho.setText(Integer.toString(car.getId()));
+        jLabelNome.setText(car.getUsuario().getNome());//nao to conseguindo colocar o nome do individuo na porra do label. wtf
+        jLabelCarrinho.setText(Integer.toString(car.getId()));
         listarProdutosCarrinho();
     }
     
@@ -37,7 +37,7 @@ Fachada fachada = new Fachada();
         try {
             this.listaProdutos = this.fachada.carrinhoProdutos(this.carrinho.getId());
             DefaultTableModel modelo = new DefaultTableModel();
-            modelo.setColumnIdentifiers(new String[]{"Produto, Valor"});
+            modelo.setColumnIdentifiers(new String[]{"Produto", "Valor"});
             if (listaProdutos.isEmpty()) {
                 //JOptionPane.showMessageDialog(null, "Usuário não possui carrinho.");
                 JOptionPane.showMessageDialog(null, "Não existem produtos adicionados ao carrinho..");
@@ -66,9 +66,9 @@ Fachada fachada = new Fachada();
         jTableProdutosCarrinho = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldCarrinho = new javax.swing.JTextField();
+        jLabelNome = new javax.swing.JLabel();
+        jLabelCarrinho = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         jButtonAdicionar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
@@ -105,8 +105,8 @@ Fachada fachada = new Fachada();
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel1);
@@ -117,12 +117,10 @@ Fachada fachada = new Fachada();
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("nome:");
 
-        jTextFieldNome.setEditable(false);
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel2.setText("Nº do carrinho:");
+        jLabel2.setText("nº do carrinho:");
 
-        jTextFieldCarrinho.setEditable(false);
+        jLabelNome.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -131,23 +129,22 @@ Fachada fachada = new Fachada();
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jLabelNome, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldCarrinho, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                .addComponent(jLabelCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2))
-                    .addComponent(jTextFieldCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -223,6 +220,7 @@ Fachada fachada = new Fachada();
         // TODO add your handling code here:
         try {
             
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
@@ -234,16 +232,14 @@ Fachada fachada = new Fachada();
     private javax.swing.JButton jButtonRemover;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelCarrinho;
+    private javax.swing.JLabel jLabelNome;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JTable jTableProdutosCarrinho;
-    private javax.swing.JTextField jTextFieldCarrinho;
-    private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
-
-    
 }

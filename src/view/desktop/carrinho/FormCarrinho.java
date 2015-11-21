@@ -52,7 +52,7 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
             }
             jTableCarrinho.setModel(modelo);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro primeiro catch:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
         
     }
@@ -178,7 +178,7 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
                 dispose();
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro segundo catch:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonComprarActionPerformed
 
@@ -197,7 +197,7 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
                 }		
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Erro terceiro catch." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
             }
     }//GEN-LAST:event_jButtonFinalizarActionPerformed
 
@@ -209,7 +209,7 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
             this.getDesktopPane().add(fu);
             this.dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro quarto." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonSairActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables

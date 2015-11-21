@@ -10,6 +10,7 @@ import projeto.fachada.Fachada;
 import projeto.modelo.Funcionario;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JProgressBar;
 //import java.awt.Image;
 //import javax.swing.ImageIcon;
 
@@ -194,25 +195,26 @@ public class FormLogin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //acao de verificar o usuario no banco de dados para liberar o acesso e passar para o form principal
-        try {
-            Funcionario func = new Funcionario();
-            
-            func.setEmail(jTextFieldEmailUsuario.getText());
-            func.setSenha(jPasswordField1.getText());
-            
-            if (new Fachada().usuarioLogin(func)) {
-                
-                //Funcionario funcionario = new Fachada().carregarFuncionario(func);//erro ao carregar os dados do funcionario
-                FormPrincipal fp = new FormPrincipal();
-                this.setVisible(false);
-                fp.setVisible(true);
-                //this.dispose();
-            }else{
-                JOptionPane.showMessageDialog(null, "Dados incoretos, tente novamente\\.");
+            try {
+                Funcionario func = new Funcionario();
+
+                func.setEmail(jTextFieldEmailUsuario.getText());
+                func.setSenha(jPasswordField1.getText());
+
+                if (new Fachada().usuarioLogin(func)) {
+
+                    //Funcionario funcionario = new Fachada().carregarFuncionario(func);//erro ao carregar os dados do funcionario
+                    FormPrincipal fp = new FormPrincipal();
+                    this.setVisible(false);
+                    fp.setVisible(true);
+                    //this.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Dados incoretos, tente novamente\\.");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Erro ao entrar no sistema", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro ao entrar no sistema", JOptionPane.ERROR_MESSAGE);
-        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -236,7 +238,7 @@ public class FormLogin extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

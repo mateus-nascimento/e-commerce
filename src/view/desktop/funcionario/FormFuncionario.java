@@ -16,15 +16,14 @@ import projeto.modelo.Funcionario;
  * @author bboyrap
  */
 public class FormFuncionario extends javax.swing.JInternalFrame {
+    
 
     /**
      * Creates new form FormFuncionario
      */
     private List<Funcionario> lista;
-    private Funcionario funcionario;
-    public FormFuncionario(Funcionario funcionario) {
+    public FormFuncionario() {
         initComponents();
-        this.funcionario = funcionario;
         buscarFuncionario();
     }
     public void buscarFuncionario(){
@@ -33,17 +32,23 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
             this.lista = fachada.funcionarioBuscar();
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.setColumnIdentifiers(new String[]{"Nome", "Matricula", "Cargo", "Status"});
-            if (lista.size() == 0) {
+            System.out.println("01");// <<<=======================================================================
+            if (this.lista.isEmpty()) {
+                System.out.println("xx");// <<<=======================================================================
                 JOptionPane.showMessageDialog(null, "Não existem funcionários cadastrados.");
             }
-            modelo.addRow(new String[]{ this.funcionario.getNome(), Integer.toString(this.funcionario.getMatricula()), this.funcionario.getCargo(), Boolean.toString(this.funcionario.isStatus())});
-            for (Funcionario f : lista) {
+            System.out.println("02");// <<<=======================================================================
+            for (Funcionario f : this.lista) {
+                System.out.println("03");// <<<=======================================================================
                 //System.out.println(c.getNome());
+                
                 modelo.addRow(new String[]{ f.getNome(), Integer.toString(f.getMatricula()), f.getCargo(), Boolean.toString(f.isStatus())});
             }
+            System.out.println("yy");// <<<=======================================================================
+            
             jTable1.setModel(modelo);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }
     /**
@@ -103,6 +108,7 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
+        jButtonInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/adicionar24.png"))); // NOI18N
         jButtonInserir.setText("Inserir Novo Funcionario");
         jButtonInserir.setFocusable(false);
         jButtonInserir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -115,6 +121,7 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonInserir);
         jToolBar1.add(jSeparator1);
 
+        jButtonAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/alterar.png"))); // NOI18N
         jButtonAlterar.setText("Alterar Usuario Selecionado");
         jButtonAlterar.setFocusable(false);
         jButtonAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -127,6 +134,7 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonAlterar);
         jToolBar1.add(jSeparator2);
 
+        jButtonRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/remover24.png"))); // NOI18N
         jButtonRemover.setText("Remover Usuario Selecionado");
         jButtonRemover.setFocusable(false);
         jButtonRemover.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -134,6 +142,7 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonRemover);
         jToolBar1.add(jSeparator3);
 
+        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/cancelar24.png"))); // NOI18N
         jButtonSair.setText("Sair");
         jButtonSair.setFocusable(false);
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -146,14 +155,14 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonSair);
 
         getContentPane().add(jToolBar1);
-        jToolBar1.setBounds(170, 450, 464, 40);
+        jToolBar1.setBounds(170, 450, 464, 70);
 
         setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirActionPerformed
         // TODO add your handling code here:
-        FormSalvarFuncionario fsf = new FormSalvarFuncionario(this.funcionario);
+        FormSalvarFuncionario fsf = new FormSalvarFuncionario();
         fsf.setVisible(true);
         this.getDesktopPane().add(fsf);
         this.dispose();

@@ -302,10 +302,10 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Funcionario alterado com sucesso!");
             
             
-            FormFuncionario ff = new FormFuncionario(this.funcionario);
-            ff.buscarFuncionario();
-            
-            this.dispose();
+            FormFuncionario ff = new FormFuncionario();
+            ff.setVisible(true);
+            getDesktopPane().add(ff);
+            dispose();
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
@@ -315,10 +315,10 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
-        FormFuncionario fu = new FormFuncionario(this.funcionario);
+        FormFuncionario fu = new FormFuncionario();
         fu.setVisible(true);
-        this.getDesktopPane().add(fu);
-        this.dispose();
+        getDesktopPane().add(fu);
+        dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
 

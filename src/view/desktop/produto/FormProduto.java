@@ -75,6 +75,8 @@ public class FormProduto extends javax.swing.JInternalFrame {
 
         setTitle("Produto");
 
+        jPanel1.setLayout(null);
+
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Produtos"));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -98,12 +100,17 @@ public class FormProduto extends javax.swing.JInternalFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
         );
 
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(160, 30, 464, 420);
+
+        jToolBar1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ações"));
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
+        jButtonInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/adicionar24.png"))); // NOI18N
         jButtonInserir.setText("Inserir Novo Produto");
         jButtonInserir.setFocusable(false);
         jButtonInserir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -116,6 +123,7 @@ public class FormProduto extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonInserir);
         jToolBar1.add(jSeparator1);
 
+        jButtonAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/exchange1.png"))); // NOI18N
         jButtonAlterar.setText("Alterar Produto Selecionado");
         jButtonAlterar.setFocusable(false);
         jButtonAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -128,6 +136,7 @@ public class FormProduto extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonAlterar);
         jToolBar1.add(jSeparator2);
 
+        jButtonRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/remover24.png"))); // NOI18N
         jButtonRemover.setText("Remover Produto Selecionado");
         jButtonRemover.setFocusable(false);
         jButtonRemover.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -140,6 +149,7 @@ public class FormProduto extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonRemover);
         jToolBar1.add(jSeparator3);
 
+        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/cancelar24.png"))); // NOI18N
         jButtonSair.setText("Sair");
         jButtonSair.setFocusable(false);
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -151,26 +161,8 @@ public class FormProduto extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(jButtonSair);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(368, 368, 368)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(371, 371, 371))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
-        );
+        jPanel1.add(jToolBar1);
+        jToolBar1.setBounds(160, 450, 464, 70);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,7 +177,7 @@ public class FormProduto extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        setBounds(0, 0, 1200, 650);
+        setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirActionPerformed

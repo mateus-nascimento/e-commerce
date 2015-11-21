@@ -6,6 +6,7 @@
 package view.desktop;
 
 import View.desktop.categoria.FormCategoria;
+import View.desktop.funcionario.FormFuncionario;
 import View.desktop.produto.FormProduto;
 import View.desktop.usuario.FormUsuario;
 import java.awt.Image;
@@ -44,6 +45,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JToolBar.Separator();
         jButtonProdutos = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
+        jButton1 = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JToolBar.Separator();
         jButtonUsuarios = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         jButtonLimpar = new javax.swing.JButton();
@@ -90,6 +93,19 @@ public class FormPrincipal extends javax.swing.JFrame {
         jToolBarPrincipal.add(jButtonProdutos);
         jToolBarPrincipal.add(jSeparator2);
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/staff2.png"))); // NOI18N
+        jButton1.setText("Funcionários");
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jToolBarPrincipal.add(jButton1);
+        jToolBarPrincipal.add(jSeparator5);
+
         jButtonUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/usuario32p.png"))); // NOI18N
         jButtonUsuarios.setText("Usuários");
         jButtonUsuarios.setFocusable(false);
@@ -135,11 +151,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
 
         pack();
@@ -155,6 +171,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.removeAll();
         this.repaint();
+        jToolBarPrincipal.repaint();
+        
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     private void jButtonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuariosActionPerformed
@@ -187,6 +205,13 @@ public class FormPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         jToolBarPrincipal.setVisible(true);
     }//GEN-LAST:event_desktopPaneFocusGained
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        FormFuncionario form = new FormFuncionario();
+        form.setVisible(true);
+        desktopPane.add(form);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,6 +250,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCategorias;
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JButton jButtonProdutos;
@@ -234,6 +260,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
+    private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JToolBar jToolBarPrincipal;
     // End of variables declaration//GEN-END:variables
 

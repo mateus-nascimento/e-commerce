@@ -127,6 +127,7 @@ public class FormEndereco extends javax.swing.JInternalFrame {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
+        jButtonInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/adicionar24.png"))); // NOI18N
         jButtonInserir.setText("Inserir Novo Endereço");
         jButtonInserir.setFocusable(false);
         jButtonInserir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -139,6 +140,7 @@ public class FormEndereco extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonInserir);
         jToolBar1.add(jSeparator1);
 
+        jButtonAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/alterar.png"))); // NOI18N
         jButtonAlterar.setText("Alterar Endereço Selecionado");
         jButtonAlterar.setFocusable(false);
         jButtonAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -151,6 +153,7 @@ public class FormEndereco extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonAlterar);
         jToolBar1.add(jSeparator2);
 
+        jButtonRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/remover24.png"))); // NOI18N
         jButtonRemover.setText("Remover Endereço Selecionado");
         jButtonRemover.setFocusable(false);
         jButtonRemover.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -163,6 +166,7 @@ public class FormEndereco extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonRemover);
         jToolBar1.add(jSeparator3);
 
+        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/cancelar24.png"))); // NOI18N
         jButtonSair.setText("Sair");
         jButtonSair.setFocusable(false);
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -175,7 +179,7 @@ public class FormEndereco extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonSair);
 
         getContentPane().add(jToolBar1);
-        jToolBar1.setBounds(170, 450, 462, 36);
+        jToolBar1.setBounds(170, 450, 462, 80);
 
         setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents

@@ -8,6 +8,8 @@ package projeto.modelo;
 import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -18,11 +20,13 @@ import javax.persistence.PrimaryKeyJoinColumn;
  * @author bboyrap
  */
 @Entity
-@NamedQueries({@NamedQuery(name ="Funcionario.carregarDados", query = "SELECT F FROM Funcionario F WHERE F.email = ?1"),
+@NamedQueries({@NamedQuery(name ="Funcionario.findAll", query = "SELECT F FROM Funcionario F"),
+               @NamedQuery(name ="Funcionario.carregarDados", query = "SELECT F FROM Funcionario F WHERE F.email = ?1"),
                @NamedQuery(name ="Funcionario.entregador", query = "SELECT F FROM Funcionario F WHERE F.cargo LIKE 'entregador' or F.cargo LIKE 'ENTREGADOR'")})
 
 @PrimaryKeyJoinColumn(name="id")
 public class Funcionario extends Usuario{
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int matricula;
     private String cargo;
     private String setor;
