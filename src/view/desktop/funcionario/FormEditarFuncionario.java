@@ -74,6 +74,7 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
         jLabel16 = new javax.swing.JLabel();
         jTextFieldCargo = new javax.swing.JTextField();
         jTextFieldSetor = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         jButtonConfirmar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -137,17 +138,20 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldNome)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jRadioButtonAtivo)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButtonInativo))
-                    .addComponent(jTextFieldEmail)
-                    .addComponent(jFormattedTextFieldCpf)
-                    .addComponent(jPasswordFieldSenha)
-                    .addComponent(jFormattedTextFieldTelefoneFixo)
-                    .addComponent(jFormattedTextFieldTelefoneCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jRadioButtonAtivo)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRadioButtonInativo))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jFormattedTextFieldTelefoneFixo, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jFormattedTextFieldTelefoneCelular, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
+                            .addComponent(jFormattedTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,7 +189,7 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(10, 11, 280, 280);
+        jPanel2.setBounds(250, 60, 310, 280);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações"));
 
@@ -202,11 +206,11 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel15)
                     .addComponent(jLabel16))
-                .addGap(18, 20, Short.MAX_VALUE)
+                .addGap(18, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextFieldSetor, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                     .addComponent(jTextFieldCargo))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,12 +223,15 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(jTextFieldCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(10, 297, 280, 105);
+        jPanel1.setBounds(250, 350, 310, 80);
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Ações"));
+
+        jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
         jButtonConfirmar.setText("Confirmar");
@@ -249,10 +256,26 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(jButtonCancelar);
 
-        getContentPane().add(jToolBar1);
-        jToolBar1.setBounds(10, 408, 579, 23);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(81, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
-        setBounds(0, 0, 1200, 650);
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(250, 440, 310, 50);
+
+        setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
@@ -317,6 +340,7 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordFieldSenha;
     private javax.swing.JRadioButton jRadioButtonAtivo;
     private javax.swing.JRadioButton jRadioButtonInativo;

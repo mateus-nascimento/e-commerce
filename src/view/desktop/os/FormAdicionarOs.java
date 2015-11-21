@@ -29,13 +29,18 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
     private List<Funcionario> listaFuncionario;
     Fachada fachada = new Fachada();
     public FormAdicionarOs(Carrinho c) {
+        JOptionPane.showMessageDialog(null, "EOQ10");
         initComponents();
+        JOptionPane.showMessageDialog(null, "EOQ20");
         this.carrinho = c;
+        JOptionPane.showMessageDialog(null, "EOQ30");
     }
     
     public void buscarEndereco(){
         try {
+            JOptionPane.showMessageDialog(null, "EOQ1");
             this.listaEndereco = this.fachada.enderecoBuscar(this.carrinho.getUsuario().getId());
+            JOptionPane.showMessageDialog(null, "EOQ2");
             if (listaEndereco.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Usuário não possui endereços associados, favor inserir um endereço primeiro.");
                 dispose();
@@ -52,7 +57,9 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
     
     public void buscarFuncionario(){
         try {
+            JOptionPane.showMessageDialog(null, "EOQ3");
             this.listaFuncionario = this.fachada.funcionarioEntregador();
+            JOptionPane.showMessageDialog(null, "EOQ4");
             if (listaEndereco.size() == 0) {
                 JOptionPane.showMessageDialog(null, "Não existem entregadores cadastrados.");
                 dispose();
@@ -85,23 +92,23 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
         jComboBoxEntregador = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Carrinho do usuário:");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("fulano");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Selecionar endereço:");
 
-        jComboBoxLogradouro.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jComboBoxLogradouro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jComboBoxLogradouro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Informe o logradouro..." }));
         jComboBoxLogradouro.setToolTipText("Selecione o logradouro para entrega");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Selecionar entregador:");
 
-        jComboBoxEntregador.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jComboBoxEntregador.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jComboBoxEntregador.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Informe o nome..." }));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -129,11 +136,11 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
                     .addComponent(jComboBoxLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxEntregador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(484, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(440, 440, 440))
+                .addGap(209, 209, 209))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +157,7 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(jComboBoxEntregador, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 313, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -172,7 +179,7 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        setBounds(0, 0, 1200, 650);
+        setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

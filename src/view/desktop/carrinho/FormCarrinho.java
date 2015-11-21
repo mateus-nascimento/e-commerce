@@ -66,19 +66,43 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableCarrinho = new javax.swing.JTable();
         jToolBar1 = new javax.swing.JToolBar();
         jButtonComprar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         jButtonFinalizar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jButtonSair = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTableCarrinho = new javax.swing.JTable();
 
         setTitle("Carrinho");
         setPreferredSize(new java.awt.Dimension(1200, 650));
         getContentPane().setLayout(null);
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Carrinhos do usuário"));
+        jPanel1.setLayout(null);
+
+        jTableCarrinho.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(jTableCarrinho);
+
+        jPanel1.add(jScrollPane2);
+        jScrollPane2.setBounds(10, 20, 420, 402);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(180, 50, 440, 430);
+
+        jToolBar1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ações"));
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
@@ -118,25 +142,9 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonSair);
 
         getContentPane().add(jToolBar1);
-        jToolBar1.setBounds(350, 450, 350, 25);
+        jToolBar1.setBounds(180, 490, 440, 50);
 
-        jTableCarrinho.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane2.setViewportView(jTableCarrinho);
-
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(240, 40, 452, 402);
-
-        setBounds(0, 0, 1200, 650);
+        setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComprarActionPerformed
@@ -208,6 +216,7 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonComprar;
     private javax.swing.JButton jButtonFinalizar;
     private javax.swing.JButton jButtonSair;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;

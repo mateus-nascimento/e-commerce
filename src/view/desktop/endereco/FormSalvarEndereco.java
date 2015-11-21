@@ -28,14 +28,14 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
         this.usuario = u;
         this.endereco = new Endereco();
         this.endereco.setId(0);
-        jLabelNomeUsuario.setText(usuario.getNome());
+        jTextFieldEmail.setText(usuario.getNome());
     }
     
     FormSalvarEndereco(Endereco e) {
         initComponents();
         this.endereco = e;
         
-        jLabelNomeUsuario.setText(e.getUsuario().getNome() + String.valueOf(this.endereco.getId()));
+        jTextFieldEmail.setText(e.getUsuario().getNome() + String.valueOf(this.endereco.getId()));
         
         jTextFieldLogradouro.setText(this.endereco.getLogradouro());
         jFormattedTextFieldCep.setText(this.endereco.getCep());
@@ -75,7 +75,8 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
         jComboBoxEstado = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabelNomeUsuario = new javax.swing.JLabel();
+        jTextFieldEmail = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         jButtonConfirmar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
@@ -116,21 +117,29 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jFormattedTextFieldCep)
-                    .addComponent(jTextFieldBairro)
-                    .addComponent(jTextFieldCidade)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextFieldLogradouro)
-                    .addComponent(jTextFieldNumero)
-                    .addComponent(jTextFieldComplemento)
-                    .addComponent(jComboBoxEstado, 0, 163, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jFormattedTextFieldCep, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel12)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel11)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jTextFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldBairro))
+                    .addComponent(jTextFieldComplemento))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,62 +151,44 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jFormattedTextFieldCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jTextFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jFormattedTextFieldCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(jComboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                    .addComponent(jLabel10)
+                    .addComponent(jTextFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(jTextFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextFieldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6))
+                    .addComponent(jTextFieldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2))
         );
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(250, 160, 280, 270);
+        jPanel3.setBounds(150, 160, 480, 200);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuário"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do Usuário"));
+        jPanel1.setLayout(null);
 
-        jLabel1.setText("nome");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("email:");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(16, 30, 70, 29);
 
-        jLabelNomeUsuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabelNomeUsuario.setText("nome do fulano");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelNomeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabelNomeUsuario)))
-        );
+        jTextFieldEmail.setEditable(false);
+        jTextFieldEmail.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jPanel1.add(jTextFieldEmail);
+        jTextFieldEmail.setBounds(93, 27, 370, 35);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(250, 90, 280, 63);
+        jPanel1.setBounds(150, 70, 480, 80);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Ações"));
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -225,8 +216,24 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(jButtonCancelar);
 
-        getContentPane().add(jToolBar1);
-        jToolBar1.setBounds(260, 440, 270, 23);
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(167, 167, 167)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(162, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 4, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(150, 370, 480, 50);
 
         setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
@@ -264,7 +271,7 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
                 getDesktopPane().add(fe);
                 dispose();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
             }
             
         
@@ -294,13 +301,14 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelNomeUsuario;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldCidade;
     private javax.swing.JTextField jTextFieldComplemento;
+    private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldLogradouro;
     private javax.swing.JTextField jTextFieldNumero;
     private javax.swing.JToolBar jToolBar1;

@@ -104,12 +104,17 @@
     </Container>
     <Container class="javax.swing.JToolBar" name="jToolBar1">
       <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="A&#xe7;&#xf5;es"/>
+          </Border>
+        </Property>
         <Property name="floatable" type="boolean" value="false"/>
         <Property name="rollover" type="boolean" value="true"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="160" y="440" width="510" height="36"/>
+          <AbsoluteConstraints x="170" y="450" width="462" height="36"/>
         </Constraint>
       </Constraints>
 

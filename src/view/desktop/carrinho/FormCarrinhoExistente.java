@@ -28,7 +28,8 @@ Fachada fachada = new Fachada();
     public FormCarrinhoExistente(Carrinho car) {
         this.carrinho = car;
         initComponents();
-        jLabelFulano.setText(car.getUsuario().getNome());//nao to conseguindo colocar o nome do individuo na porra do label. wtf
+        jTextFieldNome.setText(car.getUsuario().getNome());//nao to conseguindo colocar o nome do individuo na porra do label. wtf
+        jTextFieldCarrinho.setText(Integer.toString(car.getId()));
         listarProdutosCarrinho();
     }
     
@@ -61,19 +62,23 @@ Fachada fachada = new Fachada();
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableProdutosCarrinho = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldNome = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldCarrinho = new javax.swing.JTextField();
         jToolBar1 = new javax.swing.JToolBar();
         jButtonAdicionar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         jButtonRemover = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jButtonConcluir = new javax.swing.JButton();
-        jLabelFulano = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("usuário:");
+        getContentPane().setLayout(null);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Produtos Do Carrinho"));
 
         jTableProdutosCarrinho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,6 +93,68 @@ Fachada fachada = new Fachada();
         ));
         jScrollPane1.setViewportView(jTableProdutosCarrinho);
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(150, 70, 498, 425);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do usuário"));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("nome:");
+
+        jTextFieldNome.setEditable(false);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setText("Nº do carrinho:");
+
+        jTextFieldCarrinho.setEditable(false);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldCarrinho, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2))
+                    .addComponent(jTextFieldCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(150, 10, 500, 60);
+
+        jToolBar1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ações"));
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
@@ -126,56 +193,10 @@ Fachada fachada = new Fachada();
         });
         jToolBar1.add(jButtonConcluir);
 
-        jLabelFulano.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabelFulano.setText("fulano");
+        getContentPane().add(jToolBar1);
+        jToolBar1.setBounds(150, 500, 500, 50);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelFulano, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(702, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabelFulano))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        setBounds(0, 0, 1200, 650);
+        setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConcluirActionPerformed
@@ -189,7 +210,7 @@ Fachada fachada = new Fachada();
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
         // TODO add your handling code here:
         try {
-            FormAdicionarProdutos fap = new FormAdicionarProdutos(this.carrinho);
+            FormAdicionarProdutos fap = new FormAdicionarProdutos(this.carrinho, this.listaProdutos);
             fap.setVisible(true);
             getDesktopPane().add(fap);
             dispose();
@@ -206,17 +227,21 @@ Fachada fachada = new Fachada();
             JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonRemoverActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionar;
     private javax.swing.JButton jButtonConcluir;
     private javax.swing.JButton jButtonRemover;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabelFulano;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JTable jTableProdutosCarrinho;
+    private javax.swing.JTextField jTextFieldCarrinho;
+    private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 

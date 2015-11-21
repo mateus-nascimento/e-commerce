@@ -123,6 +123,7 @@ public class FormEndereco extends javax.swing.JInternalFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 784, 443);
 
+        jToolBar1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ações"));
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
@@ -174,7 +175,7 @@ public class FormEndereco extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonSair);
 
         getContentPane().add(jToolBar1);
-        jToolBar1.setBounds(160, 440, 510, 36);
+        jToolBar1.setBounds(170, 450, 462, 36);
 
         setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
@@ -215,7 +216,7 @@ public class FormEndereco extends javax.swing.JInternalFrame {
                 buscarEndereco();
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro:" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
             		
         
@@ -235,7 +236,7 @@ public class FormEndereco extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
             }
         
     }//GEN-LAST:event_jButtonAlterarActionPerformed
