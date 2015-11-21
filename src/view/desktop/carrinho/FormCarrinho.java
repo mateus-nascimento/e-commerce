@@ -186,8 +186,8 @@ public class FormCarrinho extends javax.swing.JInternalFrame {
             try {
                 if(jTableCarrinho.getSelectedRow() != -1){
                     Carrinho c = this.lista.get(jTableCarrinho.getSelectedRow());
-                    c.setStatus(false);
-                    this.fachada.carrinhoAlterar(c);
+                    //c.setStatus(false);
+                    //this.fachada.carrinhoAlterar(c);
                     
                     FormAdicionarOs fo = new FormAdicionarOs(c);
                     fo.setVisible(true);

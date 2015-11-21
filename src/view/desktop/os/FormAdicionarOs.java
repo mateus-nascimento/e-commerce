@@ -28,19 +28,17 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
     private List<Endereco> listaEndereco;
     private List<Funcionario> listaFuncionario;
     Fachada fachada = new Fachada();
+    
     public FormAdicionarOs(Carrinho c) {
-        JOptionPane.showMessageDialog(null, "EOQ10");
         initComponents();
-        JOptionPane.showMessageDialog(null, "EOQ20");
         this.carrinho = c;
-        JOptionPane.showMessageDialog(null, "EOQ30");
+        buscarEndereco();
+        buscarFuncionario();
     }
     
     public void buscarEndereco(){
         try {
-            JOptionPane.showMessageDialog(null, "EOQ1");
             this.listaEndereco = this.fachada.enderecoBuscar(this.carrinho.getUsuario().getId());
-            JOptionPane.showMessageDialog(null, "EOQ2");
             if (listaEndereco.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Usuário não possui endereços associados, favor inserir um endereço primeiro.");
                 dispose();
@@ -51,15 +49,13 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }
     
     public void buscarFuncionario(){
         try {
-            JOptionPane.showMessageDialog(null, "EOQ3");
             this.listaFuncionario = this.fachada.funcionarioEntregador();
-            JOptionPane.showMessageDialog(null, "EOQ4");
             if (listaEndereco.size() == 0) {
                 JOptionPane.showMessageDialog(null, "Não existem entregadores cadastrados.");
                 dispose();
@@ -70,7 +66,7 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -190,30 +186,41 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
             Entrega entrega = new Entrega();
             //Os
             os.setCarrinho(this.carrinho);
+            JOptionPane.showMessageDialog(null, "EOQ1");
 
             //Entrega
             entrega.setOs(os);
+            JOptionPane.showMessageDialog(null, "EOQ2");
             //Endereco
             Endereco e = this.listaEndereco.get(jComboBoxEntregador.getSelectedIndex());
+            JOptionPane.showMessageDialog(null, "EOQ3");
             Funcionario f = this.listaFuncionario.get(jComboBoxEntregador.getSelectedIndex());
+            JOptionPane.showMessageDialog(null, "EOQ4");
             entrega.setEndereco(e);
+            JOptionPane.showMessageDialog(null, "EOQ5");
             entrega.setFuncionario(f);
+            JOptionPane.showMessageDialog(null, "EOQ6");
             entrega.setStatus(true);
+            JOptionPane.showMessageDialog(null, "EOQ7");
             entrega.setOs(os);
+            JOptionPane.showMessageDialog(null, "EOQ8");
 
             //Ordem de serviços
             os.setEntrega(entrega);
+            JOptionPane.showMessageDialog(null, "EOQ9");
 
             this.fachada.osCadastrar(os);
+            JOptionPane.showMessageDialog(null, "EOQ10");
             
             JOptionPane.showMessageDialog(null, "Ordem de serviço cadastrada no sistema.");
             
             //gerar pdf da ordem
             GerarPdf pdf = new GerarPdf(os);
+            JOptionPane.showMessageDialog(null, "EOQ11");
             
             
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
         
         
