@@ -24,7 +24,7 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
      * Creates new form FormAdicionarProdutos
      */
     private List<Produto> listaProdutos;
-    private List<Produto> listaProdutosAdicionados = new ArrayList<>();
+    private List<Produto> listaProdutosAdicionados;
     private Carrinho carrinho;
     Fachada fachada = new Fachada();
 
@@ -33,7 +33,6 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
         this.listaProdutosAdicionados = listaProdutos;
         initComponents();
         buscarProdutos();
-        listarProdutosAdicionados();
     }
     public void buscarProdutos(){
         try {
@@ -58,17 +57,6 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
-    }
-    
-    public void listarProdutosAdicionados(){
-        DefaultTableModel modelo = (DefaultTableModel) jTableProdutosAdicionados.getModel();
-        
-        modelo.setColumnIdentifiers(new String[]{"ID", "Nome", "Valor", "Status"});
-        for(Produto p : this.listaProdutosAdicionados){
-            modelo.addRow(new String[]{Integer.toString(p.getId()), p.getNome(), Float.toString(p.getValor()), Boolean.toString(p.isStatus())});
-        }
-        
-        jTableProdutosAdicionados.setModel(modelo);
     }
     
     public void addProdutosAdicionados(){

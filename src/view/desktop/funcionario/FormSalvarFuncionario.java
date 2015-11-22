@@ -374,7 +374,7 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
         
         
         try {
-            fachada.enderecoCadastrar(endereco);
+            fachada.enderecoCadastrarComUsuario(endereco);
             //fachada.funcionarioCadastrar(func);
             
             FormFuncionario ff = new FormFuncionario();

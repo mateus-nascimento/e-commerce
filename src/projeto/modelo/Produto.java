@@ -26,7 +26,7 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({@NamedQuery(name ="Produto.findAll", query = "SELECT p FROM Produto p")})
 
-public class Produto{
+public class Produto implements Comparable<Produto>{
     @Id 
     @GeneratedValue
     private int id;
@@ -54,6 +54,9 @@ public class Produto{
                inverseJoinColumns = @JoinColumn(name = "idCarrinho"))//nome da chave estrangeira na tabela carrinho em Produto_Carrinho
     private Collection<Carrinho> carrinhos;
 
+    public int compareTo(Produto produto) {
+        return this.nome.compareTo(produto.getNome());
+    }
     /**
      * @return the id
      */
@@ -150,10 +153,6 @@ public class Produto{
      */
     public void setCarrinhos(Collection<Carrinho> carrinhos) {
         this.carrinhos = carrinhos;
-    }
-    
-    
-
-            
+    }        
     
 }

@@ -8,6 +8,8 @@ package view.desktop.carrinho;
 import projeto.modelo.Carrinho;
 import View.desktop.carrinho.FormCarrinho;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import projeto.fachada.Fachada;
@@ -36,6 +38,9 @@ Fachada fachada = new Fachada();
     private void listarProdutosCarrinho() {
         try {
             this.listaProdutos = this.fachada.carrinhoProdutos(this.carrinho.getId());
+            
+            Collections.sort(this.listaProdutos);
+            
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.setColumnIdentifiers(new String[]{"Produto", "Valor"});
             if (listaProdutos.isEmpty()) {
@@ -219,8 +224,29 @@ Fachada fachada = new Fachada();
     private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
         // TODO add your handling code here:
         try {
-            
-            
+            if(jTableProdutosCarrinho.getSelectedRowCount() == -1){
+                JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+            }else{    
+                
+                List<Produto> removerProdutos = new ArrayList<Produto>();
+                
+                for(int i : jTableProdutosCarrinho.getSelectedRows()){
+                    Produto produto = this.listaProdutos.get(i);
+                    removerProdutos.add(produto);
+                }
+                
+                for(Produto prod : removerProdutos){
+                    this.listaProdutos.remove(prod);
+                    System.out.println("Removeu index "+prod.getNome());
+                }
+                Fachada fachada = new Fachada();
+                
+                this.carrinho.setProdutos(this.listaProdutos);
+                
+                fachada.carrinhoAlterar(this.carrinho);
+                
+                this.listarProdutosCarrinho();
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }

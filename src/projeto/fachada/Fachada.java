@@ -32,9 +32,13 @@ public class Fachada {
     
     //endereco
     public void enderecoCadastrar(Endereco end)throws Exception{
-        
         ctrlEndereco.cadastrar(end);
     }
+    
+    public void enderecoCadastrarComUsuario(Endereco end)throws Exception{
+        ctrlEndereco.cadastrar(end);
+    }
+    
     public List<Endereco> enderecoBuscar(int idUsuario)throws Exception{
         List<Endereco> lista = ctrlEndereco.buscarEndereco(idUsuario);
         return lista;

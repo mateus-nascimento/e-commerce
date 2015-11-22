@@ -248,7 +248,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 novoProd.setDescricao(jTextAreaDescricao.getText().toUpperCase());
                 novoProd.setCategoria(categoria);//
                 Fachada fachada = new Fachada();
-                fachada.produtoCadastrar(novoProd);//erro fixed
+                fachada.produtoCadastrar(novoProd);//erro aqui <====================================================================================
                 
                 JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
                 
@@ -256,8 +256,6 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 fp.setVisible(true);
                 getDesktopPane().add(fp);
                 dispose();
-                
-                
             }else{
                 Produto editarProd = new Produto();
                 editarProd.setId(this.produto.getId());

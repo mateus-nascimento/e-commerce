@@ -351,13 +351,14 @@ public class FormSalvarUsuario extends javax.swing.JInternalFrame {
             endereco.setNumero(Integer.parseInt(jTextFieldNumero.getText()));
             endereco.setComplemento(jTextFieldComplemento.getText().toUpperCase());
             endereco.setStatus(true);
+            endereco.setUsuario(usuario);
 
             
 
             
             Fachada fachada = new Fachada();
-            fachada.usuarioCadastrar(usuario);
-            fachada.enderecoCadastrar(endereco);
+            //fachada.usuarioCadastrar(usuario);
+            fachada.enderecoCadastrarComUsuario(endereco);
 
             JOptionPane.showMessageDialog(null, "Usuário e endereço correspondente cadastrado com sucesso!");
             
