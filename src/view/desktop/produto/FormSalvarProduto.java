@@ -27,6 +27,8 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
     
     public FormSalvarProduto() {
         initComponents();
+        this.produto = new Produto();
+        this.produto.setId(0);
         buscarCategorias();
     }
     
@@ -227,30 +229,26 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
         //como eu fiz somente um form (salvarProduto) eu coloquei esse id pra diferenciar, quando for para inserir o idProduto é nulo
         //mas quando for alteracao o idProduto FICA COM o id que veio do objeto da tabela BUT....
         try {
-            
             if (jComboBoxCategoria.getSelectedIndex() == 0){
                 throw new Exception("Selecione uma categoria!");
             }
+            
             
             if (this.produto.getId() == 0) {
                 Produto novoProd = new Produto();
                 Categoria categoria = this.listaCategorias.get(jComboBoxCategoria.getSelectedIndex() - 1);
                 novoProd.setNome(jTextFieldNome.getText().toUpperCase());
                 novoProd.setValor(Float.parseFloat(jFormattedTextFieldValor.getText().replace("\\.", "")));
-                JOptionPane.showMessageDialog(null, categoria.getNome());
                 
                 if (jRadioButtonAtivo.isSelected()) {
                     novoProd.setStatus(true);
                 }else{
                     novoProd.setStatus(false);
                 }
-
                 novoProd.setDescricao(jTextAreaDescricao.getText().toUpperCase());
-
                 novoProd.setCategoria(categoria);//
-
                 Fachada fachada = new Fachada();
-                fachada.produtoAlterar(novoProd);//erro aqui <====================================================================================
+                fachada.produtoCadastrar(novoProd);//erro fixed
                 
                 JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
                 
@@ -258,10 +256,12 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 fp.setVisible(true);
                 getDesktopPane().add(fp);
                 dispose();
+                
+                
             }else{
                 Produto editarProd = new Produto();
                 editarProd.setId(this.produto.getId());
-                Categoria categoria = new Categoria();
+                Categoria categoria = this.listaCategorias.get(jComboBoxCategoria.getSelectedIndex() - 1);
                 categoria.setId(jComboBoxCategoria.getSelectedIndex());
                 editarProd.setNome(jTextFieldNome.getText().toUpperCase());
                 editarProd.setValor(Float.parseFloat(jFormattedTextFieldValor.getText()));
@@ -271,13 +271,13 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 }else{
                     editarProd.setStatus(false);
                 }
-
                 editarProd.setDescricao(jTextAreaDescricao.getText().toUpperCase());
-
                 editarProd.setCategoria(categoria);//
 
                 Fachada fachada = new Fachada();
-                fachada.produtoAlterar(editarProd);
+                System.out.println(this.produto.getCategoria().getId());
+                fachada.produtoAlterar(editarProd);//erro aqui xD
+                System.out.println("11");
 
                 JOptionPane.showMessageDialog(null, "Produto alterado com sucesso!");
                 
@@ -285,10 +285,9 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 fp.setVisible(true);
                 getDesktopPane().add(fp);
                 dispose();
-                
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonConfirmarActionPerformed
 

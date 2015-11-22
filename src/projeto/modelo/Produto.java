@@ -41,7 +41,7 @@ public class Produto{
     }
     
     //anottations do relacionamento com categoria (N:1)
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "idCategoria")//coluna estrangeira que vai ser criada aqui (idCategoria em produto)
     private Categoria categoria;
     

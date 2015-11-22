@@ -41,22 +41,14 @@ public class DAOGeneric<Entidade> {
     public Entidade alterar(Entidade objeto) {
         
         EntityTransaction tx = getEntityManager().getTransaction();
-        try {
-            tx.begin();
-
-            objeto = getEntityManager().merge(objeto);
-
-            //tx.commit();
-
-            return objeto;
             
-        }finally{
-            tx.commit();
-        }
-            
-            
-        
-        
+        tx.begin();
+
+        objeto = getEntityManager().merge(objeto);
+
+        tx.commit();
+
+        return objeto;
     }
 
    /**
@@ -72,14 +64,12 @@ public class DAOGeneric<Entidade> {
             getEntityManager().persist(objeto);//erro aqui!!! <<=================================
             
             System.out.println(classePersistente.getSimpleName() + " persistiu o objeto");
-//            tx.commit();
+            tx.commit();
             System.out.println(classePersistente.getSimpleName() + " salvo com sucesso");
         } catch (PersistenceException e) {
             
             tx.rollback();
-        }finally{
-            tx.commit();
-        }
+        }   
     }
 
    /**
@@ -97,15 +87,12 @@ public class DAOGeneric<Entidade> {
                     getEntityManager().persist(entidade);	
             }
 
-            //tx.commit();
+            tx.commit();
 
             System.out.println(classePersistente.getSimpleName() + " salvos com sucesso: " + colecao.size());
         } catch (PersistenceException e) {
             e.printStackTrace();
-        }finally{
-            tx.commit();
         }
-        
     }
 
    /**
@@ -115,22 +102,19 @@ public class DAOGeneric<Entidade> {
     *            a ser removido
     */
     public final void remover(Entidade objeto) {
-        EntityTransaction tx = getEntityManager().getTransaction();
-        try {
-            tx.begin();
-
-            // Este merge foi incluido para permitir a exclusao de objetos no estado Detached
-            objeto = getEntityManager().merge(objeto);
-
-            getEntityManager().remove(objeto);
-
-            //tx.commit();
-
-            System.out.println(classePersistente.getSimpleName() + " removido com sucesso");		
-        }finally{
-            tx.commit();
-        }
         
+        EntityTransaction tx = getEntityManager().getTransaction();
+        
+        tx.begin();
+
+        // Este merge foi incluido para permitir a exclusao de objetos no estado Detached
+        objeto = getEntityManager().merge(objeto);
+
+        getEntityManager().remove(objeto);
+
+        tx.commit();
+
+        System.out.println(classePersistente.getSimpleName() + " removido com sucesso");		
     }
 
 
