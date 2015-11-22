@@ -273,9 +273,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 editarProd.setCategoria(categoria);//
 
                 Fachada fachada = new Fachada();
-                System.out.println(this.produto.getCategoria().getId());
-                fachada.produtoAlterar(editarProd);//erro aqui xD
-                System.out.println("11");
+                fachada.produtoAlterar(editarProd);//fixed
 
                 JOptionPane.showMessageDialog(null, "Produto alterado com sucesso!");
                 

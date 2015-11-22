@@ -54,15 +54,12 @@ public class FormPrincipal extends javax.swing.JFrame {
         jButtonSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        desktopPane.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                desktopPaneFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                desktopPaneFocusLost(evt);
-            }
-        });
+        setTitle("E-commerce 2.0");
+        setLocation(new java.awt.Point(0, 0));
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
+        setSize(new java.awt.Dimension(0, 0));
 
         jToolBarPrincipal.setFloatable(false);
         jToolBarPrincipal.setRollover(true);
@@ -192,19 +189,25 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void jButtonCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCategoriasActionPerformed
         // TODO add your handling code here:
         FormCategoria form = new FormCategoria();
+//        jToolBarPrincipal.setVisible(false);
         form.setVisible(true);
         desktopPane.add(form);
+        
+        if (form.isClosed()) {
+            jToolBarPrincipal.setVisible(true);
+        }
+        
+//        if (form.isVisible()) {
+//            jToolBarPrincipal.setVisible(false);
+//        }else{
+//            jToolBarPrincipal.setVisible(true);
+//        }
+//        if (form.isShowing()) {
+//            jToolBarPrincipal.setVisible(false);
+//        }else{
+//            jToolBarPrincipal.setVisible(true);
+//        }
     }//GEN-LAST:event_jButtonCategoriasActionPerformed
-
-    private void desktopPaneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_desktopPaneFocusLost
-        // TODO add your handling code here:
-        jToolBarPrincipal.hide();
-    }//GEN-LAST:event_desktopPaneFocusLost
-
-    private void desktopPaneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_desktopPaneFocusGained
-        // TODO add your handling code here:
-        jToolBarPrincipal.setVisible(true);
-    }//GEN-LAST:event_desktopPaneFocusGained
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:

@@ -179,7 +179,9 @@ public class FormCategoria extends javax.swing.JInternalFrame {
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         // TODO add your handling code here:
         dispose();
-        
+//        if(getDesktopPane().getSelectedFrame() == null){
+//            
+//        }
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
