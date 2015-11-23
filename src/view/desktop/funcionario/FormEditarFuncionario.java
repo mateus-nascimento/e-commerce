@@ -77,6 +77,7 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         jButtonConfirmar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         jButtonCancelar = new javax.swing.JButton();
 
         setEnabled(false);
@@ -97,6 +98,12 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
         jLabel6.setText("telefone celular");
 
         jLabel14.setText("status");
+
+        jTextFieldNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNomeKeyTyped(evt);
+            }
+        });
 
         try {
             jFormattedTextFieldCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -197,6 +204,18 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
 
         jLabel16.setText("cargo");
 
+        jTextFieldCargo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldCargoKeyTyped(evt);
+            }
+        });
+
+        jTextFieldSetor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldSetorKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -244,6 +263,7 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
             }
         });
         jToolBar1.add(jButtonConfirmar);
+        jToolBar1.add(jSeparator1);
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.setFocusable(false);
@@ -321,6 +341,30 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
+    private void jTextFieldNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNomeKeyTyped
+        // TODO add your handling code here:
+        String caracteres="0987654321";
+        if(caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldNomeKeyTyped
+
+    private void jTextFieldSetorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSetorKeyTyped
+        // TODO add your handling code here:
+        String caracteres="0987654321";
+        if(caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldSetorKeyTyped
+
+    private void jTextFieldCargoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCargoKeyTyped
+        // TODO add your handling code here:
+        String caracteres="0987654321";
+        if(caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldCargoKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -344,6 +388,7 @@ public class FormEditarFuncionario extends javax.swing.JInternalFrame {
     private javax.swing.JPasswordField jPasswordFieldSenha;
     private javax.swing.JRadioButton jRadioButtonAtivo;
     private javax.swing.JRadioButton jRadioButtonInativo;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JTextField jTextFieldCargo;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldNome;

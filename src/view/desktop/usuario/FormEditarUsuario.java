@@ -233,23 +233,23 @@ public class FormEditarUsuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
             try {
                 
-                Usuario usuario = new Usuario();
-                usuario.setNome(jTextFieldNome.getText().toUpperCase());
-                usuario.setEmail(jTextFieldEmail.getText().toUpperCase());
-                usuario.setCpf(jFormattedTextFieldCpf.getText().replaceAll("\\.", "").replace("-", ""));
-                usuario.setSenha(jPasswordFieldSenha.getText());
-                usuario.setTelefoneFixo(jFormattedTextFieldTelefoneFixo.getText().replace("(", "").replace(")", "").replace("-", ""));
-                usuario.setTelefoneCelular(jFormattedTextFieldTelefoneCelular.getText().replace("(", "").replace(")", "").replace("-", ""));
+                Usuario user = new Usuario();
+                user.setNome(jTextFieldNome.getText().toUpperCase());
+                user.setEmail(jTextFieldEmail.getText().toUpperCase());
+                user.setCpf(jFormattedTextFieldCpf.getText().replaceAll("\\.", "").replace("-", ""));
+                user.setSenha(jPasswordFieldSenha.getText());
+                user.setTelefoneFixo(jFormattedTextFieldTelefoneFixo.getText().replace("(", "").replace(")", "").replace("-", ""));
+                user.setTelefoneCelular(jFormattedTextFieldTelefoneCelular.getText().replace("(", "").replace(")", "").replace("-", ""));
                 if (jRadioButtonAtivo.isSelected()) {
-                    usuario.setStatus(true);//radion buttons
+                    user.setStatus(true);//radion buttons
                 }else{
-                    usuario.setStatus(false);
+                    user.setStatus(false);
                 }
                 
-                usuario.setId(this.usuario.getId());
+                user.setId(this.usuario.getId());
 
                 Fachada fachada = new Fachada();
-                fachada.usuarioAlterar(usuario);
+                fachada.usuarioAlterar(user);
 
                 JOptionPane.showMessageDialog(null, "Usuário alterado com sucesso!");
 

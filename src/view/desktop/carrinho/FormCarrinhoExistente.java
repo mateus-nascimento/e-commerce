@@ -28,18 +28,23 @@ private Carrinho carrinho;
 private List<Produto> listaProdutos;
 Fachada fachada = new Fachada();
     public FormCarrinhoExistente(Carrinho car) {
-        this.carrinho = car;
         initComponents();
+        this.carrinho = car;
+        
         jLabelNome.setText(car.getUsuario().getNome());//nao to conseguindo colocar o nome do individuo na porra do label. wtf
         jLabelCarrinho.setText(Integer.toString(car.getId()));
         listarProdutosCarrinho();
+        
     }
     
     private void listarProdutosCarrinho() {
-        try {
-            this.listaProdutos = this.fachada.carrinhoProdutos(this.carrinho.getId());
             
+        try {
+            System.out.println("00");
+            this.listaProdutos = this.fachada.carrinhoProdutos(this.carrinho.getId());//não existem produtos para listar ou seja = null
+            System.out.println("10");
             Collections.sort(this.listaProdutos);
+            System.out.println("20");
             
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.setColumnIdentifiers(new String[]{"Produto", "Valor"});
@@ -51,10 +56,10 @@ Fachada fachada = new Fachada();
                 modelo.addRow(new String[]{p.getNome(), 
                         Double.toString(p.getValor())});
             }
-            jTableProdutosCarrinho.setModel(modelo);
             
+            jTableProdutosCarrinho.setModel(modelo);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Carrinho Vazio!", "Adicione Produtos", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     /**
@@ -74,6 +79,7 @@ Fachada fachada = new Fachada();
         jLabel2 = new javax.swing.JLabel();
         jLabelNome = new javax.swing.JLabel();
         jLabelCarrinho = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
         jToolBar1 = new javax.swing.JToolBar();
         jButtonAdicionar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
@@ -118,40 +124,22 @@ Fachada fachada = new Fachada();
         jPanel1.setBounds(150, 70, 498, 425);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do usuário"));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("nome:");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 30, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("nº do carrinho:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, -1, -1));
 
         jLabelNome.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jPanel2.add(jLabelNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 16, 270, 29));
+        jPanel2.add(jLabelCarrinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 25, 29));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelNome, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 10, 40));
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(150, 10, 500, 60);
@@ -239,11 +227,10 @@ Fachada fachada = new Fachada();
                     this.listaProdutos.remove(prod);
                     System.out.println("Removeu index "+prod.getNome());
                 }
-                Fachada fachada = new Fachada();
                 
                 this.carrinho.setProdutos(this.listaProdutos);
                 
-                fachada.carrinhoAlterar(this.carrinho);
+                this.fachada.carrinhoAlterar(this.carrinho);
                 
                 this.listarProdutosCarrinho();
             }
@@ -265,6 +252,7 @@ Fachada fachada = new Fachada();
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTableProdutosCarrinho;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables

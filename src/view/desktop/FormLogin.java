@@ -28,6 +28,7 @@ public class FormLogin extends javax.swing.JFrame {
         
         Image image = new ImageIcon(this.getClass().getResource("/material/icone.png")).getImage();
         this.setIconImage(image);
+        
     }
 
     /**
@@ -38,7 +39,6 @@ public class FormLogin extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -57,43 +57,19 @@ public class FormLogin extends javax.swing.JFrame {
         setLocation(new java.awt.Point(0, 0));
         setResizable(false);
 
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("E-mail de usuário");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(76, 10, 0, 0);
-        jPanel1.add(jLabel1, gridBagConstraints);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         jLabel2.setText("Senha");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 61, 0, 0);
-        jPanel1.add(jLabel2, gridBagConstraints);
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 128, -1, -1));
 
         jLabel3.setText("Iniciar sessão no e-commerce");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        jPanel1.add(jLabel3, gridBagConstraints);
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jTextFieldEmailUsuario.setText("joao@email.com");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 12;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 234;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(76, 19, 0, 0);
-        jPanel1.add(jTextFieldEmailUsuario, gridBagConstraints);
+        jPanel1.add(jTextFieldEmailUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 240, -1));
 
         jButton1.setText("Inicar Sessão");
         jButton1.setToolTipText("Inicia a sessão no sistema de comércio eletrônico");
@@ -103,14 +79,7 @@ public class FormLogin extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 17;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(41, 18, 0, 0);
-        jPanel1.add(jButton1, gridBagConstraints);
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 183, 114, -1));
 
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -118,42 +87,14 @@ public class FormLogin extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 13;
-        gridBagConstraints.ipadx = 63;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(41, 6, 0, 0);
-        jPanel1.add(jButton2, gridBagConstraints);
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 183, 138, -1));
 
         jPasswordField1.setText("123456");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 12;
-        gridBagConstraints.ipadx = 234;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 19, 0, 0);
-        jPanel1.add(jPasswordField1, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 22;
-        gridBagConstraints.ipadx = 359;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 10, 0, 10);
-        jPanel1.add(jSeparator1, gridBagConstraints);
+        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 240, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 217, 360, 10));
 
         jLabel4.setText("Esqueceu a senha?");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(22, 66, 0, 0);
-        jPanel1.add(jLabel4, gridBagConstraints);
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 249, -1, -1));
 
         jButton3.setText("Esqueci a Senha");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -161,15 +102,7 @@ public class FormLogin extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 25;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 18, 11, 0);
-        jPanel1.add(jButton3, gridBagConstraints);
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 245, 136, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -192,31 +125,6 @@ public class FormLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        //acao de verificar o usuario no banco de dados para liberar o acesso e passar para o form principal
-            try {
-                Funcionario func = new Funcionario();
-
-                func.setEmail(jTextFieldEmailUsuario.getText());
-                func.setSenha(jPasswordField1.getText());
-
-                if (new Fachada().usuarioLogin(func)) {
-
-                    //Funcionario funcionario = new Fachada().carregarFuncionario(func);//erro ao carregar os dados do funcionario
-                    FormPrincipal fp = new FormPrincipal();
-                    this.setVisible(false);
-                    fp.setVisible(true);
-                    //this.dispose();
-                }else{
-                    JOptionPane.showMessageDialog(null, "Dados incoretos, tente novamente\\.");
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Erro ao entrar no sistema", JOptionPane.ERROR_MESSAGE);
-            }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Chorou papai.");
@@ -226,6 +134,31 @@ public class FormLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //acao de verificar o usuario no banco de dados para liberar o acesso e passar para o form principal
+        try {
+            Funcionario func = new Funcionario();
+
+            func.setEmail(jTextFieldEmailUsuario.getText());
+            func.setSenha(jPasswordField1.getText());
+
+            if (new Fachada().usuarioLogin(func)) {
+
+                //Funcionario funcionario = new Fachada().carregarFuncionario(func);//erro ao carregar os dados do funcionario
+                FormPrincipal fp = new FormPrincipal();
+                this.setVisible(false);
+                fp.setVisible(true);
+                //this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "Dados incoretos, tente novamente\\.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro ao entrar no sistema", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

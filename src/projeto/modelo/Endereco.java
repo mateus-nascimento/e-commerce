@@ -23,7 +23,7 @@ import org.hibernate.annotations.Cascade;
  */
 @Entity
 @NamedQuery(name ="Endereco.byUser", query = "SELECT E FROM Endereco E WHERE E.usuario.id = ?1 ") //where idUsuario = :N ou :2
-public class Endereco {
+public class Endereco implements Comparable<Endereco>{
     @Id 
     @GeneratedValue
     private int id;
@@ -52,6 +52,10 @@ public class Endereco {
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
     
+    
+    public int compareTo(Endereco endereco){
+        return this.logradouro.compareTo(endereco.getLogradouro());
+    }
 
     /**
      * @return the id

@@ -7,6 +7,7 @@ package View.desktop.usuario;
 
 import View.desktop.carrinho.FormCarrinho;
 import View.desktop.endereco.FormEndereco;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -33,20 +34,23 @@ public class FormUsuario extends javax.swing.JInternalFrame {
         try {
             Fachada fachada = new Fachada();
             this.lista = fachada.usuarioBuscar();
-                DefaultTableModel modelo = new DefaultTableModel();
+            
+            Collections.sort(lista);
+            
+            DefaultTableModel modelo = new DefaultTableModel();
 
-                modelo.setColumnIdentifiers(new String[]{"ID", "Nome", "Email", "CPF", "Status"});
+            modelo.setColumnIdentifiers(new String[]{"ID", "Nome", "Email", "CPF", "Status"});
 
-                if (lista.size() == 0) {
+            if (lista.size() == 0) {
 
-                    JOptionPane.showMessageDialog(null, "Não existem usuários cadastrados.");
-                }
-                for(Usuario u : lista){
-                    //System.out.println(p.getNome());
+                JOptionPane.showMessageDialog(null, "Não existem usuários cadastrados.");
+            }
+            for(Usuario u : lista){
+                //System.out.println(p.getNome());
 
-                    modelo.addRow(new String[]{ Integer.toString(u.getId()), u.getNome(), u.getEmail(), u.getCpf(), Boolean.toString(u.isStatus())});
-                }
-                jTable1.setModel(modelo);
+                modelo.addRow(new String[]{ Integer.toString(u.getId()), u.getNome(), u.getEmail(), u.getCpf(), Boolean.toString(u.isStatus())});
+            }
+            jTable1.setModel(modelo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }

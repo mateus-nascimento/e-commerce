@@ -6,6 +6,7 @@
 package view.desktop.os;
 
 import Outras.GerarPdf;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.JOptionPane;
 import projeto.fachada.Fachada;
@@ -57,6 +58,7 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
     public void buscarEndereco(){
         try {
             this.listaEndereco = this.fachada.enderecoBuscar(this.carrinho.getUsuario().getId());
+            Collections.sort(listaEndereco);
             if (this.listaEndereco.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Usuário não possui endereços associados, favor inserir um endereço primeiro.");
             }
@@ -74,6 +76,7 @@ public class FormAdicionarOs extends javax.swing.JInternalFrame {
     public void buscarFuncionario(){
         try {
             this.listaFuncionario = this.fachada.funcionarioEntregador();
+            Collections.sort(listaFuncionario);
             if (listaEndereco.size() == 0) {
                 JOptionPane.showMessageDialog(null, "Não existem entregadores cadastrados.");
                 System.out.println("0000000");

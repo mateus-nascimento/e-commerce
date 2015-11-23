@@ -28,14 +28,15 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
         this.usuario = u;
         this.endereco = new Endereco();
         this.endereco.setId(0);
-        jTextFieldEmail.setText(usuario.getNome());
+        jLabelNome.setText(usuario.getNome());
+        jLabelEmail.setText(usuario.getEmail());
     }
     
     FormSalvarEndereco(Endereco e) {
         initComponents();
         this.endereco = e;
         
-        jTextFieldEmail.setText(e.getUsuario().getNome() + String.valueOf(this.endereco.getId()));
+        //jTextFieldEmail.setText(e.getUsuario().getNome() + String.valueOf(this.endereco.getId()));
         
         jTextFieldLogradouro.setText(this.endereco.getLogradouro());
         jFormattedTextFieldCep.setText(this.endereco.getCep());
@@ -75,7 +76,9 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
         jComboBoxEstado = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldEmail = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabelNome = new javax.swing.JLabel();
+        jLabelEmail = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         jButtonConfirmar = new javax.swing.JButton();
@@ -100,11 +103,35 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
 
         jLabel13.setText("complemento");
 
+        jTextFieldLogradouro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldLogradouroKeyTyped(evt);
+            }
+        });
+
+        jTextFieldCidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldCidadeKeyTyped(evt);
+            }
+        });
+
+        jTextFieldBairro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldBairroKeyTyped(evt);
+            }
+        });
+
         try {
             jFormattedTextFieldCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+
+        jTextFieldNumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNumeroKeyTyped(evt);
+            }
+        });
 
         jComboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione um estado...", "AC ", "AL ", "AP ", "AM ", "BA ", "CE ", "DF ", "ES ", "MA ", "MT ", "MS ", "MG ", "PA ", "PB ", "PR ", "PE ", "PI ", "RJ ", "RN ", "RS ", "RO ", "RR ", "SC ", "SP ", "SE ", "TO" }));
 
@@ -175,18 +202,26 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do Usuário"));
         jPanel1.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("email:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(16, 30, 70, 29);
+        jLabel1.setBounds(20, 90, 60, 22);
 
-        jTextFieldEmail.setEditable(false);
-        jTextFieldEmail.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jPanel1.add(jTextFieldEmail);
-        jTextFieldEmail.setBounds(93, 27, 370, 35);
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("nome:");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(20, 40, 60, 22);
+
+        jLabelNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanel1.add(jLabelNome);
+        jLabelNome.setBounds(120, 40, 0, 0);
+
+        jLabelEmail.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanel1.add(jLabelEmail);
+        jLabelEmail.setBounds(120, 90, 0, 0);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(150, 70, 480, 80);
+        jPanel1.setBounds(150, 10, 480, 140);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Ações"));
 
@@ -287,6 +322,38 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
+    private void jTextFieldLogradouroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldLogradouroKeyTyped
+        // TODO add your handling code here:
+        String caracteres="0987654321";
+        if(caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldLogradouroKeyTyped
+
+    private void jTextFieldNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNumeroKeyTyped
+        // TODO add your handling code here:
+        String caracteres="0987654321";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldNumeroKeyTyped
+
+    private void jTextFieldCidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCidadeKeyTyped
+        // TODO add your handling code here:
+        String caracteres="0987654321";
+        if(caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldCidadeKeyTyped
+
+    private void jTextFieldBairroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBairroKeyTyped
+        // TODO add your handling code here:
+        String caracteres="0987654321";
+        if(caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldBairroKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
@@ -298,9 +365,12 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelEmail;
+    private javax.swing.JLabel jLabelNome;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -308,7 +378,6 @@ public class FormSalvarEndereco extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldCidade;
     private javax.swing.JTextField jTextFieldComplemento;
-    private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldLogradouro;
     private javax.swing.JTextField jTextFieldNumero;
     private javax.swing.JToolBar jToolBar1;

@@ -280,18 +280,21 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
             if (jTableProdutosAdicionados.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(null, "Favor Selecionar Produtos para adicionar.");
             }else{
+                System.out.println("00");
                 for (int i = 0; i < jTableProdutosAdicionados.getRowCount(); i++) {//Fixado
                     Produto produto = new Produto();
                     Object o = jTableProdutosAdicionados.getValueAt(i, 0);
                     produto.setId(Integer.parseInt(o.toString()));
                     this.listaProdutosAdicionados.add(produto);//fixado
                     //this.listaProdutosAdicionados.set(i, produto);
-                    
+                    System.out.println("for");
                 }
-                
+                System.out.println("exit");
                 this.carrinho.setProdutos(listaProdutosAdicionados);
+                System.out.println("11");
                 //setou os produtos da lista 
                 this.fachada.carrinhoAlterar(this.carrinho);
+                System.out.println("22");
                 JOptionPane.showMessageDialog(null, "Adicionou os produtos ao carrinho");
 //                cadastrou o carrinho
             
@@ -301,7 +304,7 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
                 dispose();
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro no ortica :\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
         
         

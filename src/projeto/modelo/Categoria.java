@@ -20,7 +20,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 @NamedQuery(name ="Categoria.findAll", query = "SELECT c FROM Categoria c")
-public class Categoria {
+public class Categoria implements Comparable<Categoria>{
     @Id
     @GeneratedValue
     private int id;
@@ -35,6 +35,10 @@ public class Categoria {
     @OneToMany(cascade=CascadeType.PERSIST, mappedBy = "categoria")
     private Collection<Produto> produtos;
 
+    public int compareTo(Categoria categoria){
+        return this.nome.compareTo(categoria.getNome());
+    }
+    
     /**
      * @return the id
      */
