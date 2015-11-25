@@ -35,6 +35,8 @@ public class FormProduto extends javax.swing.JInternalFrame {
             
             Collections.sort(this.lista);
             
+            Collections.sort(this.lista);
+            
             DefaultTableModel modelo = new DefaultTableModel();
             
             modelo.setColumnIdentifiers(new String[]{"ID", "Nome", "Valor", "Status"});
