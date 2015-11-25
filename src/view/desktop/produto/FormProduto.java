@@ -6,6 +6,7 @@
 package View.desktop.produto;
 
 
+import java.util.Collections;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -31,6 +32,8 @@ public class FormProduto extends javax.swing.JInternalFrame {
         try {
             Fachada fachada = new Fachada();
             this.lista = fachada.produtoBuscar();
+            
+            Collections.sort(this.lista);
             
             DefaultTableModel modelo = new DefaultTableModel();
             
@@ -186,6 +189,7 @@ public class FormProduto extends javax.swing.JInternalFrame {
         fsp.setVisible(true);
         getDesktopPane().add(fsp);
         dispose();
+        fsp.moveToFront();
     }//GEN-LAST:event_jButtonInserirActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
@@ -204,6 +208,7 @@ public class FormProduto extends javax.swing.JInternalFrame {
                 fsp.setVisible(true);
                 getDesktopPane().add(fsp);
                 dispose();
+                fsp.moveToFront();
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);

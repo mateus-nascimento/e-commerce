@@ -31,7 +31,7 @@ public class GerarPdf {
         
         try {
             //cria uma instancia do documento e da o nome dele na saida informada
-            PdfWriter.getInstance(documentoPDF, new FileOutputStream("C:\\OrdensDeServiço\\OS_" + os.getId()));
+            PdfWriter.getInstance(documentoPDF, new FileOutputStream("C:\\OrdensDeServico\\OS_" + os.getId()));
             
             //abertura do documento
             documentoPDF.open();
@@ -44,7 +44,7 @@ public class GerarPdf {
             documentoPDF.addTitle("Ordem de Serviço");
             
             //adicionando imagens da OS e redimensionando
-            Image imagem = Image.getInstance("C:\\Users\\bboyrap\\Documents\\NetBeansProjects\\e-commerce\\src\\material\\imagemOs.png");
+            Image imagem = Image.getInstance("C:\\Users\\aluno\\Documents\\NetBeansProjects\\e-commerce\\src\\material\\imagemOs.png");
             imagem.scaleToFit(200, 200);
             documentoPDF.add(imagem);
             

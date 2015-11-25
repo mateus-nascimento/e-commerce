@@ -6,6 +6,7 @@
 package View.desktop.produto;
 
 import View.desktop.categoria.FormCategoria;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.JOptionPane;
 import projeto.fachada.Fachada;
@@ -55,6 +56,8 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
             Fachada fachada = new Fachada();
             this.listaCategorias = fachada.categoriaBuscar();
             
+            Collections.sort(listaCategorias);
+            
             if (this.listaCategorias.size() == 0) {
                     JOptionPane.showMessageDialog(null, "Favor criar uma categoria para organizar os produtos.", "Não existem categorias cadastradas", JOptionPane.INFORMATION_MESSAGE);
                     dispose();
@@ -98,9 +101,10 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
         jComboBoxCategoria = new javax.swing.JComboBox();
         jToolBar1 = new javax.swing.JToolBar();
         jButtonConfirmar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         jButtonCancelar = new javax.swing.JButton();
 
-        setTitle("Cadastrar Produto");
+        setTitle("Produto");
         getContentPane().setLayout(null);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do produto"));
@@ -113,11 +117,17 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
 
         jLabel4.setText("descrição");
 
+        jTextFieldNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNomeKeyTyped(evt);
+            }
+        });
+
         jTextAreaDescricao.setColumns(20);
         jTextAreaDescricao.setRows(5);
         jScrollPane1.setViewportView(jTextAreaDescricao);
 
-        jFormattedTextFieldValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,00"))));
+        jFormattedTextFieldValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
 
         buttonGroup1.add(jRadioButtonAtivo);
         jRadioButtonAtivo.setSelected(true);
@@ -205,6 +215,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
             }
         });
         jToolBar1.add(jButtonConfirmar);
+        jToolBar1.add(jSeparator1);
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.setFocusable(false);
@@ -218,7 +229,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
         jToolBar1.add(jButtonCancelar);
 
         getContentPane().add(jToolBar1);
-        jToolBar1.setBounds(260, 380, 300, 44);
+        jToolBar1.setBounds(360, 380, 120, 60);
 
         setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
@@ -238,7 +249,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 Produto novoProd = new Produto();
                 Categoria categoria = this.listaCategorias.get(jComboBoxCategoria.getSelectedIndex() - 1);
                 novoProd.setNome(jTextFieldNome.getText().toUpperCase());
-                novoProd.setValor(Float.parseFloat(jFormattedTextFieldValor.getText().replace("\\.", "")));
+                novoProd.setValor(Float.parseFloat(jFormattedTextFieldValor.getText().replace("\\.", "").replace(",", "")));
                 
                 if (jRadioButtonAtivo.isSelected()) {
                     novoProd.setStatus(true);
@@ -256,6 +267,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 fp.setVisible(true);
                 getDesktopPane().add(fp);
                 dispose();
+                fp.moveToFront();
             }else{
                 Produto editarProd = new Produto();
                 editarProd.setId(this.produto.getId());
@@ -273,9 +285,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 editarProd.setCategoria(categoria);//
 
                 Fachada fachada = new Fachada();
-                System.out.println(this.produto.getCategoria().getId());
-                fachada.produtoAlterar(editarProd);//erro aqui xD
-                System.out.println("11");
+                fachada.produtoAlterar(editarProd);//fixed
 
                 JOptionPane.showMessageDialog(null, "Produto alterado com sucesso!");
                 
@@ -283,6 +293,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
                 fp.setVisible(true);
                 getDesktopPane().add(fp);
                 dispose();
+                fp.moveToFront();
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
@@ -294,9 +305,18 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
         
         FormProduto fp = new FormProduto();
         fp.setVisible(true);
-        this.getDesktopPane().add(fp);
-        this.dispose();
+        getDesktopPane().add(fp);
+        dispose();
+        fp.moveToFront();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jTextFieldNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNomeKeyTyped
+        // TODO add your handling code here:
+        String caracteres="0987654321";
+        if(caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldNomeKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -314,6 +334,7 @@ public class FormSalvarProduto extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioButtonAtivo;
     private javax.swing.JRadioButton jRadioButtonInativo;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JTextArea jTextAreaDescricao;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JToolBar jToolBar1;

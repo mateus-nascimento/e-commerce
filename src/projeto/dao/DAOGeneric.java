@@ -7,14 +7,12 @@ package projeto.dao;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
 /**
  *
@@ -102,19 +100,26 @@ public class DAOGeneric<Entidade> {
     *            a ser removido
     */
     public final void remover(Entidade objeto) {
-        
-        EntityTransaction tx = getEntityManager().getTransaction();
-        
-        tx.begin();
+            EntityTransaction tx = getEntityManager().getTransaction();
+        try{
 
-        // Este merge foi incluido para permitir a exclusao de objetos no estado Detached
-        objeto = getEntityManager().merge(objeto);
+            tx.begin();
 
-        getEntityManager().remove(objeto);
-
-        tx.commit();
-
-        System.out.println(classePersistente.getSimpleName() + " removido com sucesso");		
+            // Este merge foi incluido para permitir a exclusao de objetos no estado Detached
+            objeto = getEntityManager().merge(objeto);
+            getEntityManager().remove(objeto);
+                
+            //tx.commit();// ele deleta funcionario_entrega, funcionario, e usuario mas Funcionário possui um endereço ai dá pau 
+//            no retorno do metodo ele entra no catch mas não consegue fazer o rollback.
+            System.out.println(classePersistente.getSimpleName() + " removido com sucesso");		
+        }catch(PersistenceException e){
+            System.out.println("00");
+            tx.rollback();
+            System.out.println("11");
+            
+        }finally{
+            tx.commit();
+        }
     }
 
 

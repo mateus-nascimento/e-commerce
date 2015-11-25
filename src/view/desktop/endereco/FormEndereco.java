@@ -191,6 +191,7 @@ public class FormEndereco extends javax.swing.JInternalFrame {
             fse.setVisible(true);
             getDesktopPane().add(fse);
             dispose();
+            fse.moveToFront();
             
         } catch (Exception e) {
             e.getMessage();
@@ -204,6 +205,7 @@ public class FormEndereco extends javax.swing.JInternalFrame {
             fu.setVisible(true);
             getDesktopPane().add(fu);
             dispose();
+            fu.moveToFront();
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jButtonSairActionPerformed
@@ -234,8 +236,9 @@ public class FormEndereco extends javax.swing.JInternalFrame {
                 Endereco e = this.lista.get(jTable1.getSelectedRow());
                 FormSalvarEndereco fse = new FormSalvarEndereco(e);
                 fse.setVisible(true);
-                this.getDesktopPane().add(fse);
-                this.dispose();
+                getDesktopPane().add(fse);
+                dispose();
+                fse.moveToFront();
                 }else{
                     JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
                 }

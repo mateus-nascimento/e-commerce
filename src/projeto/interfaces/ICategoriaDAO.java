@@ -13,4 +13,6 @@ import projeto.dao.DAOFactory;
 public interface ICategoriaDAO {//implements DAOFactory
     
     
+    
+    
 }

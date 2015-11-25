@@ -31,20 +31,15 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
             Fachada fachada = new Fachada();
             this.lista = fachada.funcionarioBuscar();
             DefaultTableModel modelo = new DefaultTableModel();
-            modelo.setColumnIdentifiers(new String[]{"Nome", "Matricula", "Cargo", "Status"});
-            System.out.println("01");// <<<=======================================================================
+            modelo.setColumnIdentifiers(new String[]{"Matricula", "Nome", "Setor", "Cargo", "Status"});
             if (this.lista.isEmpty()) {
-                System.out.println("xx");// <<<=======================================================================
                 JOptionPane.showMessageDialog(null, "Não existem funcionários cadastrados.");
             }
-            System.out.println("02");// <<<=======================================================================
             for (Funcionario f : this.lista) {
-                System.out.println("03");// <<<=======================================================================
                 //System.out.println(c.getNome());
                 
-                modelo.addRow(new String[]{ f.getNome(), Integer.toString(f.getMatricula()), f.getCargo(), Boolean.toString(f.isStatus())});
+                modelo.addRow(new String[]{Integer.toString(f.getMatricula()), f.getNome(), f.getSetor(), f.getCargo(), Boolean.toString(f.isStatus())});
             }
-            System.out.println("yy");// <<<=======================================================================
             
             jTable1.setModel(modelo);
         } catch (Exception e) {
@@ -122,7 +117,7 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
         jToolBar1.add(jSeparator1);
 
         jButtonAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/alterar.png"))); // NOI18N
-        jButtonAlterar.setText("Alterar Usuario Selecionado");
+        jButtonAlterar.setText("Alterar Selecionado");
         jButtonAlterar.setFocusable(false);
         jButtonAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonAlterar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -135,10 +130,15 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
         jToolBar1.add(jSeparator2);
 
         jButtonRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/remover24.png"))); // NOI18N
-        jButtonRemover.setText("Remover Usuario Selecionado");
+        jButtonRemover.setText("Remover Funcionário Selecionado");
         jButtonRemover.setFocusable(false);
         jButtonRemover.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonRemover.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoverActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButtonRemover);
         jToolBar1.add(jSeparator3);
 
@@ -164,8 +164,9 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         FormSalvarFuncionario fsf = new FormSalvarFuncionario();
         fsf.setVisible(true);
-        this.getDesktopPane().add(fsf);
-        this.dispose();
+        getDesktopPane().add(fsf);
+        dispose();
+        fsf.moveToFront();
     }//GEN-LAST:event_jButtonInserirActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
@@ -178,9 +179,29 @@ public class FormFuncionario extends javax.swing.JInternalFrame {
         Funcionario f = this.lista.get(jTable1.getSelectedRow());
         FormEditarFuncionario fef = new FormEditarFuncionario(f);
         fef.setVisible(true);
-        this.getDesktopPane().add(fef);
-        this.dispose();
+        getDesktopPane().add(fef);
+        dispose();
+        fef.moveToFront();
     }//GEN-LAST:event_jButtonAlterarActionPerformed
+
+    private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
+        // TODO add your handling code here:
+        try {
+            if(jTable1.getSelectedRow() == -1){
+                JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
+            }else{
+                Funcionario f = this.lista.get(jTable1.getSelectedRow());
+                Fachada fachada = new Fachada();
+                fachada.funcionarioRemover(f);
+                JOptionPane.showMessageDialog(null, "Funcionário removido com sucesso.");
+                buscarFuncionario();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "O funcionário possui endereços associados.\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+    }//GEN-LAST:event_jButtonRemoverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

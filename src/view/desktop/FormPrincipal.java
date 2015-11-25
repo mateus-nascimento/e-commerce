@@ -11,7 +11,6 @@ import View.desktop.produto.FormProduto;
 import View.desktop.usuario.FormUsuario;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,6 +40,9 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         desktopPane = new javax.swing.JDesktopPane();
         jToolBarPrincipal = new javax.swing.JToolBar();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jSeparator3 = new javax.swing.JToolBar.Separator();
         jButtonCategorias = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         jButtonProdutos = new javax.swing.JButton();
@@ -48,25 +50,36 @@ public class FormPrincipal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JToolBar.Separator();
         jButtonUsuarios = new javax.swing.JButton();
-        jSeparator3 = new javax.swing.JToolBar.Separator();
-        jButtonLimpar = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
         jButtonSair = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("E-commerce 2.0");
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
 
-        desktopPane.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                desktopPaneFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                desktopPaneFocusLost(evt);
-            }
-        });
+        desktopPane.setMaximumSize(new java.awt.Dimension(800, 600));
+        desktopPane.setMinimumSize(new java.awt.Dimension(800, 600));
 
+        jToolBarPrincipal.setBackground(new java.awt.Color(153, 153, 153));
+        jToolBarPrincipal.setBorder(null);
         jToolBarPrincipal.setFloatable(false);
         jToolBarPrincipal.setRollover(true);
 
+        jLabel1.setFont(new java.awt.Font("Xirod", 0, 36)); // NOI18N
+        jLabel1.setForeground(java.awt.Color.red);
+        jLabel1.setText("  e-commerce 2.0");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jToolBarPrincipal.add(jLabel1);
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setLayout(null);
+        jToolBarPrincipal.add(jPanel1);
+        jToolBarPrincipal.add(jSeparator3);
+
+        jButtonCategorias.setBackground(new java.awt.Color(153, 153, 153));
         jButtonCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/categoria32p.png"))); // NOI18N
         jButtonCategorias.setText("Categorias");
         jButtonCategorias.setFocusable(false);
@@ -80,6 +93,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         jToolBarPrincipal.add(jButtonCategorias);
         jToolBarPrincipal.add(jSeparator1);
 
+        jButtonProdutos.setBackground(new java.awt.Color(153, 153, 153));
         jButtonProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/produto32p.png"))); // NOI18N
         jButtonProdutos.setText("Produtos");
         jButtonProdutos.setFocusable(false);
@@ -93,6 +107,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         jToolBarPrincipal.add(jButtonProdutos);
         jToolBarPrincipal.add(jSeparator2);
 
+        jButton1.setBackground(new java.awt.Color(153, 153, 153));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/staff2.png"))); // NOI18N
         jButton1.setText("Funcionários");
         jButton1.setFocusable(false);
@@ -106,6 +121,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         jToolBarPrincipal.add(jButton1);
         jToolBarPrincipal.add(jSeparator5);
 
+        jButtonUsuarios.setBackground(new java.awt.Color(153, 153, 153));
         jButtonUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/usuario32p.png"))); // NOI18N
         jButtonUsuarios.setText("Usuários");
         jButtonUsuarios.setFocusable(false);
@@ -117,21 +133,9 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
         jToolBarPrincipal.add(jButtonUsuarios);
-        jToolBarPrincipal.add(jSeparator3);
-
-        jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/limpar32p.png"))); // NOI18N
-        jButtonLimpar.setText("Limpar Tela");
-        jButtonLimpar.setFocusable(false);
-        jButtonLimpar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonLimpar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLimparActionPerformed(evt);
-            }
-        });
-        jToolBarPrincipal.add(jButtonLimpar);
         jToolBarPrincipal.add(jSeparator4);
 
+        jButtonSair.setBackground(new java.awt.Color(153, 153, 153));
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/sair32p.png"))); // NOI18N
         jButtonSair.setText("Sair");
         jButtonSair.setFocusable(false);
@@ -145,17 +149,24 @@ public class FormPrincipal extends javax.swing.JFrame {
         jToolBarPrincipal.add(jButtonSair);
 
         desktopPane.add(jToolBarPrincipal);
-        jToolBarPrincipal.setBounds(0, 0, 1200, 60);
+        jToolBarPrincipal.setBounds(0, 540, 800, 60);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/material/principal.png"))); // NOI18N
+        jLabel2.setOpaque(true);
+        desktopPane.add(jLabel2);
+        jLabel2.setBounds(0, 0, 800, 540);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -167,19 +178,12 @@ public class FormPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButtonSairActionPerformed
 
-    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        // TODO add your handling code here:
-        this.removeAll();
-        this.repaint();
-        jToolBarPrincipal.repaint();
-        
-    }//GEN-LAST:event_jButtonLimparActionPerformed
-
     private void jButtonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuariosActionPerformed
         // TODO add your handling code here:
         FormUsuario form = new FormUsuario();
         form.setVisible(true);
         desktopPane.add(form);
+        form.moveToFront();
     }//GEN-LAST:event_jButtonUsuariosActionPerformed
 
     private void jButtonProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProdutosActionPerformed
@@ -187,6 +191,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         FormProduto form = new FormProduto();
         form.setVisible(true);
         desktopPane.add(form);
+        form.moveToFront();
     }//GEN-LAST:event_jButtonProdutosActionPerformed
 
     private void jButtonCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCategoriasActionPerformed
@@ -194,23 +199,29 @@ public class FormPrincipal extends javax.swing.JFrame {
         FormCategoria form = new FormCategoria();
         form.setVisible(true);
         desktopPane.add(form);
+        form.moveToFront();
+//        if (form.isClosed()) {
+//            jToolBarPrincipal.setVisible(true);
+//        }
+        
+//        if (form.isVisible()) {
+//            jToolBarPrincipal.setVisible(false);
+//        }else{
+//            jToolBarPrincipal.setVisible(true);
+//        }
+//        if (form.isShowing()) {
+//            jToolBarPrincipal.setVisible(false);
+//        }else{
+//            jToolBarPrincipal.setVisible(true);
+//        }
     }//GEN-LAST:event_jButtonCategoriasActionPerformed
-
-    private void desktopPaneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_desktopPaneFocusLost
-        // TODO add your handling code here:
-        jToolBarPrincipal.hide();
-    }//GEN-LAST:event_desktopPaneFocusLost
-
-    private void desktopPaneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_desktopPaneFocusGained
-        // TODO add your handling code here:
-        jToolBarPrincipal.setVisible(true);
-    }//GEN-LAST:event_desktopPaneFocusGained
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         FormFuncionario form = new FormFuncionario();
         form.setVisible(true);
         desktopPane.add(form);
+        form.moveToFront();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -252,10 +263,12 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCategorias;
-    private javax.swing.JButton jButtonLimpar;
     private javax.swing.JButton jButtonProdutos;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonUsuarios;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;

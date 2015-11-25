@@ -117,7 +117,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/material/alterar.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Alterar Usuario Selecionado"/>
+            <Property name="text" type="java.lang.String" value="Alterar Selecionado"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
@@ -133,11 +133,14 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/material/remover24.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Remover Usuario Selecionado"/>
+            <Property name="text" type="java.lang.String" value="Remover Funcion&#xe1;rio Selecionado"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRemoverActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JToolBar$Separator" name="jSeparator3">
         </Component>

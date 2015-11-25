@@ -65,6 +65,12 @@ public class FormSalvarCategoria extends javax.swing.JInternalFrame {
 
         jLabel2.setText("status");
 
+        jTextFieldNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNomeKeyTyped(evt);
+            }
+        });
+
         buttonGroup1.add(jRadioButtonAtivo);
         jRadioButtonAtivo.setSelected(true);
         jRadioButtonAtivo.setText("Ativo");
@@ -156,6 +162,7 @@ public class FormSalvarCategoria extends javax.swing.JInternalFrame {
                 fc.setVisible(true);
                 getDesktopPane().add(fc);
                 dispose();
+                fc.moveToFront();
             }else{
                 categoria.setId(this.idCategoria);
                 categoria.setNome(jTextFieldNome.getText().toUpperCase());
@@ -176,6 +183,7 @@ public class FormSalvarCategoria extends javax.swing.JInternalFrame {
                 fc.setVisible(true);
                 this.getDesktopPane().add(fc);
                 this.dispose();
+                fc.moveToFront();
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
@@ -193,6 +201,14 @@ public class FormSalvarCategoria extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jTextFieldNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNomeKeyTyped
+        // TODO add your handling code here:
+        String caracteres="0987654321";
+        if(caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldNomeKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

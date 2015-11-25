@@ -5,7 +5,6 @@
  */
 package projeto.modelo;
 
-import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -25,7 +24,7 @@ import javax.persistence.OneToMany;
 @Inheritance(strategy=InheritanceType.JOINED)
 @NamedQueries({@NamedQuery(name ="Usuario.findAll", query = "SELECT U FROM Usuario U"),
                @NamedQuery(name ="Usuario.login", query = "SELECT U.id, U.email, F.matricula FROM Usuario U, Funcionario F WHERE U.email = ?1 AND U.senha = ?2")})
-public class Usuario implements Serializable{
+public class Usuario implements Comparable<Usuario>{
     @Id
     @GeneratedValue
     private int id;
@@ -47,6 +46,10 @@ public class Usuario implements Serializable{
     
     public Usuario(){
         
+    }
+    
+    public int compareTo(Usuario usuario){
+        return this.nome.compareTo(usuario.getNome());
     }
 
     /**

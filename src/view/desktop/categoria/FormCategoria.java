@@ -6,6 +6,7 @@
 package View.desktop.categoria;
 
 
+import java.util.Collections;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -33,6 +34,9 @@ public class FormCategoria extends javax.swing.JInternalFrame {
         try {
             Fachada fachada = new Fachada();
             this.lista = fachada.categoriaBuscar();
+            
+            Collections.sort(this.lista);
+            
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.setColumnIdentifiers(new String[]{"ID", "Nome", "Status"});
             if (lista.size() == 0) {
@@ -44,7 +48,7 @@ public class FormCategoria extends javax.swing.JInternalFrame {
             }
             jTable1.setModel(modelo);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido." + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro:" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
         
         
@@ -171,6 +175,7 @@ public class FormCategoria extends javax.swing.JInternalFrame {
             fsc.setVisible(true);
             getDesktopPane().add(fsc);
             dispose();
+            fsc.moveToFront();
             //this.buscarCategorias();
         
         
@@ -179,7 +184,9 @@ public class FormCategoria extends javax.swing.JInternalFrame {
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         // TODO add your handling code here:
         dispose();
-        
+//        if(getDesktopPane().getSelectedFrame() == null){
+//            
+//        }
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
@@ -191,11 +198,12 @@ public class FormCategoria extends javax.swing.JInternalFrame {
                 fsc.setVisible(true);
                 getDesktopPane().add(fsc);
                 dispose();
+                fsc.moveToFront();
             }else{
                 JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
         
         
@@ -213,7 +221,7 @@ public class FormCategoria extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "Favor selecionar uma linha.");
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
             }
             
         

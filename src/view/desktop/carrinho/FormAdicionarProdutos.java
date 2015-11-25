@@ -280,18 +280,28 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
             if (jTableProdutosAdicionados.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(null, "Favor Selecionar Produtos para adicionar.");
             }else{
+                System.out.println("00");
                 for (int i = 0; i < jTableProdutosAdicionados.getRowCount(); i++) {//Fixado
+                    System.out.println("Entrou no for");
                     Produto produto = new Produto();
+                    System.out.println("Instanciou Produto");
                     Object o = jTableProdutosAdicionados.getValueAt(i, 0);
+                    System.out.println("Pegou a: "+ i + " linha da tabela");
                     produto.setId(Integer.parseInt(o.toString()));
-                    this.listaProdutosAdicionados.add(produto);//fixado
+                    System.out.println(produto.getId());
+                    System.out.println("Colocou a primeira linha da tabela aos produtos adicionados");
+                    this.listaProdutosAdicionados.add(produto);//ERRO AQUI ... Tenta colocar um produto, carregado da lista de produtos
+                    //mas não existem produtos na primeira venda.
+                    System.out.println("Adicionou o produto a lista de produtos");
                     //this.listaProdutosAdicionados.set(i, produto);
-                    
+                    System.out.println("for");
                 }
-                
+                System.out.println("exit");
                 this.carrinho.setProdutos(listaProdutosAdicionados);
+                System.out.println("xx");
                 //setou os produtos da lista 
                 this.fachada.carrinhoAlterar(this.carrinho);
+                System.out.println("zz");
                 JOptionPane.showMessageDialog(null, "Adicionou os produtos ao carrinho");
 //                cadastrou o carrinho
             
@@ -301,7 +311,7 @@ public class FormAdicionarProdutos extends javax.swing.JInternalFrame {
                 dispose();
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro desconhecido:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro no ortica :\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
         
         

@@ -97,6 +97,12 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
 
         jLabel14.setText("status");
 
+        jTextFieldNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNomeKeyTyped(evt);
+            }
+        });
+
         try {
             jFormattedTextFieldCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
@@ -203,11 +209,35 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
 
         jLabel13.setText("complemento");
 
+        jTextFieldLogradouro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldLogradouroKeyTyped(evt);
+            }
+        });
+
+        jTextFieldCidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldCidadeKeyTyped(evt);
+            }
+        });
+
+        jTextFieldBairro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldBairroKeyTyped(evt);
+            }
+        });
+
         try {
             jFormattedTextFieldCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+
+        jTextFieldNumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNumeroKeyTyped(evt);
+            }
+        });
 
         jComboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione um estado...", "AC ", "AL ", "AP ", "AM ", "BA ", "CE ", "DF ", "ES ", "MA ", "MT ", "MS ", "MG ", "PA ", "PB ", "PR ", "PE ", "PI ", "RJ ", "RN ", "RS ", "RO ", "RR ", "SC ", "SP ", "SE ", "TO" }));
 
@@ -231,9 +261,11 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
                     .addComponent(jTextFieldBairro)
                     .addComponent(jTextFieldCidade)
                     .addComponent(jTextFieldLogradouro)
-                    .addComponent(jTextFieldNumero)
                     .addComponent(jTextFieldComplemento)
-                    .addComponent(jComboBoxEstado, 0, 163, Short.MAX_VALUE))
+                    .addComponent(jComboBoxEstado, 0, 163, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -278,6 +310,18 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
         jLabel15.setText("setor");
 
         jLabel16.setText("cargo");
+
+        jTextFieldCargo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldCargoKeyTyped(evt);
+            }
+        });
+
+        jTextFieldSetor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldSetorKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -381,6 +425,7 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
             ff.setVisible(true);
             getDesktopPane().add(ff);
             dispose();
+            ff.moveToFront();
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
@@ -394,10 +439,67 @@ public class FormSalvarFuncionario extends javax.swing.JInternalFrame {
             ff.setVisible(true);
             getDesktopPane().add(ff);
             dispose();
+            ff.moveToFront();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro:\n" + e.getMessage(), "Contate o suporte", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jTextFieldNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNomeKeyTyped
+        // TODO add your handling code here:
+        String caracteres="0987654321";
+        if(caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldNomeKeyTyped
+
+    private void jTextFieldLogradouroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldLogradouroKeyTyped
+        // TODO add your handling code here:
+        String caracteres="0987654321";
+        if(caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldLogradouroKeyTyped
+
+    private void jTextFieldBairroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBairroKeyTyped
+        // TODO add your handling code here:
+        String caracteres="0987654321";
+        if(caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldBairroKeyTyped
+
+    private void jTextFieldCidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCidadeKeyTyped
+        // TODO add your handling code here:
+        String caracteres="0987654321";
+        if(caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldCidadeKeyTyped
+
+    private void jTextFieldNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNumeroKeyTyped
+        // TODO add your handling code here:
+        String caracteres="0987654321";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldNumeroKeyTyped
+
+    private void jTextFieldSetorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSetorKeyTyped
+        // TODO add your handling code here:
+        String caracteres="0987654321";
+        if(caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldSetorKeyTyped
+
+    private void jTextFieldCargoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCargoKeyTyped
+        // TODO add your handling code here:
+        String caracteres="0987654321";
+        if(caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldCargoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
